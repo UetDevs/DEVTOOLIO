@@ -25,12 +25,12 @@ export default function KgGuidePage() {
       <h2>When precision matters</h2>
       <p>
         Shipping labels, gym logs and cooking often need only one or two decimal places. Laboratory or
-        aviation work may need the full factor. Toolora’s{" "}
-        <Link href="/tools/unit-converters/kg-to-lbs" className="font-semibold text-brand">
+        aviation work may need the full factor. DEVTOOLIO’s{" "}
+        <Link href="/tools/unit-converters/kg-to-lbs" >
           KG → LBS
         </Link>{" "}
         and{" "}
-        <Link href="/tools/unit-converters/lbs-to-kg" className="font-semibold text-brand">
+        <Link href="/tools/unit-converters/lbs-to-kg" >
           LBS → KG
         </Link>{" "}
         pages use the international pound, not a rounded 2.2 shortcut.

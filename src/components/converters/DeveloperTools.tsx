@@ -48,7 +48,7 @@ async function digest(algorithm: AlgorithmIdentifier, text: string) {
 }
 
 export function Base64Tool({ tool, lockedMode }: { tool: Tool; lockedMode?: "encode" | "decode" }) {
-  const [input, setInput] = useState(lockedMode === "decode" ? "SGVsbG8gVG9vbG9yYQ==" : "Hello Toolora");
+  const [input, setInput] = useState(lockedMode === "decode" ? "SGVsbG8gREVWVE9PTElP" : "Hello DEVTOOLIO");
   const [mode, setMode] = useState(lockedMode ?? "encode");
   const result = useMemo(() => {
     try {
@@ -88,7 +88,7 @@ export function Base64Tool({ tool, lockedMode }: { tool: Tool; lockedMode?: "enc
 
 export function UrlEncoder({ tool, lockedMode }: { tool: Tool; lockedMode?: "encode" | "decode" }) {
   const [input, setInput] = useState(
-    lockedMode === "decode" ? "https%3A%2F%2Ftoolora.app%2Ftools%3Fq%3Dpdf%20to%20jpg" : "https://toolora.app/tools?q=pdf to jpg",
+    lockedMode === "decode" ? "https%3A%2F%2Fdevtoolio.app%2Ftools%3Fq%3Dpdf%20to%20jpg" : "https://devtoolio.app/tools?q=pdf to jpg",
   );
   const [mode, setMode] = useState(lockedMode ?? "encode");
   let result = "";
@@ -127,7 +127,7 @@ export function UrlEncoder({ tool, lockedMode }: { tool: Tool; lockedMode?: "enc
 }
 
 export function HtmlEntityEncoder({ tool }: { tool: Tool }) {
-  const [input, setInput] = useState('<p class="note">Hello & welcome to Toolora</p>');
+  const [input, setInput] = useState('<p class="note">Hello & welcome to DEVTOOLIO</p>');
   const [mode, setMode] = useState("encode");
   const result = mode === "encode" ? encodeEntities(input) : decodeEntities(input);
 
@@ -227,14 +227,14 @@ export function UuidGenerator({ tool }: { tool: Tool }) {
         <div className="mt-4 flex justify-end">
           <CopyButton text={values.join("\n")} />
         </div>
-        <pre className="mt-3 overflow-auto rounded-lg bg-slate-50 p-4 font-mono text-sm">{values.join("\n")}</pre>
+        <pre className="mt-3 overflow-auto rounded-lg bg-surface-2 p-4 font-mono text-sm">{values.join("\n")}</pre>
       </Panel>
     </ToolPageLayout>
   );
 }
 
 export function HashGenerator({ tool }: { tool: Tool }) {
-  const [input, setInput] = useState("Hello Toolora");
+  const [input, setInput] = useState("Hello DEVTOOLIO");
   const [algorithm, setAlgorithm] = useState("SHA-256");
   const [output, setOutput] = useState("");
   const [error, setError] = useState("");

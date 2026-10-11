@@ -71,7 +71,7 @@ function DualConvert({
 }
 
 export function JsonFormatter({ tool }: { tool: Tool }) {
-  const [input, setInput] = useState('{"hello":"toolora","ready":true,"tools":["json","csv","xml"]}');
+  const [input, setInput] = useState('{"hello":"devtoolio","ready":true,"tools":["json","csv","xml"]}');
   const [output, setOutput] = useState("");
   const [error, setError] = useState("");
   const [indent, setIndent] = useState(2);
@@ -96,7 +96,7 @@ export function JsonFormatter({ tool }: { tool: Tool }) {
             <PrimaryButton className="w-auto px-5" onClick={() => format(true)}>
               Format
             </PrimaryButton>
-            <button type="button" onClick={() => format(false)} className="h-12 rounded-lg border border-line px-5 text-sm font-semibold text-ink hover:bg-slate-50">
+            <button type="button" onClick={() => format(false)} className="h-12 rounded-lg border border-line px-5 text-sm font-semibold text-ink hover:bg-surface-2">
               Minify
             </button>
             <label className="flex items-center gap-2 text-sm text-muted">
@@ -171,7 +171,7 @@ export function XmlFormatter({ tool }: { tool: Tool }) {
       tool={tool}
       inputLabel="XML input"
       outputLabel="Formatted XML"
-      sample={"<root><item id=\"1\"><name>Toolora</name></item></root>"}
+      sample={"<root><item id=\"1\"><name>DEVTOOLIO</name></item></root>"}
       actionLabel="Format XML"
       downloadName="data.xml"
       downloadMime="application/xml;charset=utf-8"
@@ -186,7 +186,7 @@ export function YamlToJson({ tool }: { tool: Tool }) {
       tool={tool}
       inputLabel="YAML"
       outputLabel="JSON"
-      sample={"site: Toolora\nready: true\ntools:\n  - json\n  - yaml"}
+      sample={"site: DEVTOOLIO\nready: true\ntools:\n  - json\n  - yaml"}
       actionLabel="Convert to JSON"
       downloadName="data.json"
       downloadMime="application/json;charset=utf-8"
@@ -201,7 +201,7 @@ export function JsonToYaml({ tool }: { tool: Tool }) {
       tool={tool}
       inputLabel="JSON"
       outputLabel="YAML"
-      sample={'{"site":"Toolora","ready":true,"tools":["json","yaml"]}'}
+      sample={'{"site":"DEVTOOLIO","ready":true,"tools":["json","yaml"]}'}
       actionLabel="Convert to YAML"
       downloadName="data.yaml"
       downloadMime="text/yaml;charset=utf-8"

@@ -105,7 +105,7 @@ export function JsonMinifier({ tool }: { tool: Tool }) {
       tool={tool}
       inputLabel="JSON"
       outputLabel="Minified JSON"
-      sample={'{\n  "hello": "toolora",\n  "ready": true\n}'}
+      sample={'{\n  "hello": "devtoolio",\n  "ready": true\n}'}
       action="Minify JSON"
       convert={(input) => JSON.stringify(JSON.parse(input))}
     />
@@ -160,7 +160,7 @@ export function RegexTester({ tool }: { tool: Tool }) {
           {!result.error && !result.matches.length ? <p className="text-sm text-muted">No matches.</p> : null}
           <ul className="space-y-2">
             {result.matches.map((match, index) => (
-              <li key={`${match.index}-${index}`} className="rounded-xl bg-slate-50 px-3 py-2 text-sm">
+              <li key={`${match.index}-${index}`} className="rounded-xl bg-surface-2 px-3 py-2 text-sm">
                 <span className="font-mono font-semibold text-ink">{match.value}</span>
                 <span className="ml-2 text-subtle">at {match.index}</span>
                 {match.groups.length ? <p className="mt-1 text-xs text-muted">Groups: {match.groups.join(", ")}</p> : null}
@@ -226,7 +226,7 @@ export function HtmlFormatter({ tool }: { tool: Tool }) {
       tool={tool}
       inputLabel="HTML"
       outputLabel="Formatted HTML"
-      sample={"<section><h1>Toolora</h1><p>Free browser tools.</p></section>"}
+      sample={"<section><h1>DEVTOOLIO</h1><p>Free browser tools.</p></section>"}
       action="Format HTML"
       convert={formatHtml}
     />

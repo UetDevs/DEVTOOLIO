@@ -11,10 +11,10 @@ export function ContactForm() {
 
   return (
     <form
-      className="mt-8 space-y-4 rounded-2xl border border-line bg-white p-6 shadow-card"
+      className="mt-8 space-y-4 rounded-lg border border-line bg-surface p-5"
       onSubmit={(event) => {
         event.preventDefault();
-        const subject = encodeURIComponent(`Toolora message from ${name || "a visitor"}`);
+        const subject = encodeURIComponent(`${site.name} message from ${name || "a visitor"}`);
         const body = encodeURIComponent(`${message}\n\nName: ${name}\nEmail: ${from}`);
         window.location.href = `mailto:${site.email}?subject=${subject}&body=${body}`;
       }}
@@ -31,7 +31,7 @@ export function ContactForm() {
           required
           value={message}
           onChange={(event) => setMessage(event.target.value)}
-          className="min-h-32 w-full rounded-lg border border-line px-3.5 py-3 text-sm outline-none focus:border-brand focus:ring-4 focus:ring-brand/15"
+          className="min-h-32 w-full rounded-md border border-line bg-surface px-3.5 py-3 text-sm text-ink outline-none placeholder:text-subtle focus:border-ink/30"
         />
       </Field>
       <PrimaryButton type="submit">Open email to {site.email}</PrimaryButton>

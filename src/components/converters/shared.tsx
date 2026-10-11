@@ -16,8 +16,8 @@ export function FileDrop({
   onFiles: (files: File[]) => void;
 }) {
   return (
-    <label className="flex cursor-pointer flex-col items-center justify-center rounded-xl border border-dashed border-slate-300 bg-slate-50 px-4 py-8 text-center hover:border-brand hover:bg-blue-50">
-      <Upload className="h-6 w-6 text-brand" />
+    <label className="flex cursor-pointer flex-col items-center justify-center rounded-lg border border-dashed border-line bg-surface-2 px-4 py-8 text-center hover:border-ink/25">
+      <Upload className="h-6 w-6 text-muted" />
       <span className="mt-2 text-sm font-semibold text-ink">Choose a file</span>
       <span className="mt-1 text-xs text-subtle">{hint}</span>
       <input
@@ -79,7 +79,7 @@ export function CodeBox({
       readOnly={readOnly}
       placeholder={placeholder}
       onChange={onChange ? (event) => onChange(event.target.value) : undefined}
-      className="min-h-64 w-full rounded-lg border border-line bg-white px-3.5 py-3 font-mono text-sm outline-none focus:border-brand focus:ring-4 focus:ring-brand/15"
+      className="min-h-64 w-full rounded-md border border-line bg-surface px-3.5 py-3 font-mono text-sm text-ink outline-none placeholder:text-subtle focus:border-ink/30"
     />
   );
 }

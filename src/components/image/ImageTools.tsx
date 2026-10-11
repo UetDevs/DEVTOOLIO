@@ -32,8 +32,8 @@ function FilePicker({
   onFile: (file: File) => void;
 }) {
   return (
-    <label className="flex cursor-pointer flex-col items-center justify-center rounded-xl border border-dashed border-slate-300 bg-slate-50 px-4 py-8 text-center hover:border-brand hover:bg-blue-50">
-      <Upload className="h-6 w-6 text-brand" />
+    <label className="flex cursor-pointer flex-col items-center justify-center rounded-lg border border-dashed border-line bg-surface-2 px-4 py-8 text-center hover:border-ink/25">
+      <Upload className="h-6 w-6 text-muted" />
       <span className="mt-2 text-sm font-semibold text-ink">Choose an image</span>
       <span className="mt-1 text-xs text-subtle">JPG, PNG, WebP and other browser-supported formats</span>
       <input
@@ -317,7 +317,7 @@ export function ImageCropper({ tool }: { tool: Tool }) {
               <button
                 key={preset.label}
                 type="button"
-                className="rounded-full bg-slate-100 px-3 py-1.5 text-xs font-semibold text-muted hover:bg-slate-200"
+                className="rounded-full bg-surface-2 px-3 py-1.5 text-xs font-semibold text-muted hover:bg-slate-200"
                 onClick={() => setCrop({ x: (100 - preset.w) / 2, y: (100 - preset.h) / 2, w: preset.w, h: preset.h })}
               >
                 {preset.label}
@@ -346,7 +346,7 @@ export function ImageCropper({ tool }: { tool: Tool }) {
           {loaded ? (
             <div
               ref={frame}
-              className="relative cursor-crosshair overflow-hidden rounded-xl bg-slate-100"
+              className="relative cursor-crosshair overflow-hidden rounded-xl bg-surface-2"
               onPointerDown={onPointerDown}
               onPointerMove={onPointerMove}
               onPointerUp={() => {
@@ -599,7 +599,7 @@ export function ImageRotator({ tool }: { tool: Tool }) {
                 key={value}
                 type="button"
                 onClick={() => setAngle(value)}
-                className={`rounded-full px-3 py-1.5 text-xs font-semibold ${angle === value ? "bg-brand text-white" : "bg-slate-100 text-muted"}`}
+                className={`rounded-full px-3 py-1.5 text-xs font-semibold ${angle === value ? "bg-brand text-brand-ink" : "bg-surface-2 text-muted"}`}
               >
                 {value}°
               </button>
@@ -657,8 +657,8 @@ export function ImageFlipper({ tool }: { tool: Tool }) {
           <FilePicker onFile={(file) => void onFile(file)} />
           {error ? <p className="mt-3 text-sm text-rose-600">{error}</p> : null}
           <div className="mt-4 flex gap-2">
-            <button type="button" onClick={() => setMode("horizontal")} className={`rounded-full px-3 py-1.5 text-xs font-semibold ${mode === "horizontal" ? "bg-brand text-white" : "bg-slate-100 text-muted"}`}>Horizontal</button>
-            <button type="button" onClick={() => setMode("vertical")} className={`rounded-full px-3 py-1.5 text-xs font-semibold ${mode === "vertical" ? "bg-brand text-white" : "bg-slate-100 text-muted"}`}>Vertical</button>
+            <button type="button" onClick={() => setMode("horizontal")} className={`rounded-full px-3 py-1.5 text-xs font-semibold ${mode === "horizontal" ? "bg-brand text-brand-ink" : "bg-surface-2 text-muted"}`}>Horizontal</button>
+            <button type="button" onClick={() => setMode("vertical")} className={`rounded-full px-3 py-1.5 text-xs font-semibold ${mode === "vertical" ? "bg-brand text-brand-ink" : "bg-surface-2 text-muted"}`}>Vertical</button>
           </div>
           <PrimaryButton
             className="mt-4"
@@ -778,7 +778,7 @@ export function FaviconGenerator({ tool }: { tool: Tool }) {
                     key={size}
                     type="button"
                     onClick={() => void downloadSize(size, size === 180 ? "apple-touch-icon.png" : `favicon-${size}x${size}.png`)}
-                    className="rounded-xl border border-line bg-white p-3 text-center text-xs font-semibold text-ink hover:border-brand"
+                    className="rounded-lg border border-line bg-surface p-3 text-center text-xs font-semibold text-ink hover:border-ink/25"
                   >
                     {/* eslint-disable-next-line @next/next/no-img-element */}
                     <img src={loaded.url} alt="" className="mx-auto object-cover" style={{ width: Math.min(size, 64), height: Math.min(size, 64) }} />
@@ -805,7 +805,7 @@ export function FaviconGenerator({ tool }: { tool: Tool }) {
               <p className="text-sm font-semibold text-ink">HTML snippet</p>
               <CopyButton text={snippet} />
             </div>
-            <pre className="overflow-auto rounded-lg bg-slate-50 p-3 text-xs">{snippet}</pre>
+            <pre className="overflow-auto rounded-lg bg-surface-2 p-3 text-xs">{snippet}</pre>
           </div>
         </Panel>
       </div>
@@ -847,7 +847,7 @@ export function ImageDimensionChecker({ tool }: { tool: Tool }) {
 
 function Stat({ label, value }: { label: string; value: string }) {
   return (
-    <div className="rounded-xl bg-slate-50 px-2 py-3 text-center">
+    <div className="rounded-xl bg-surface-2 px-2 py-3 text-center">
       <p className="text-xs text-subtle">{label}</p>
       <p className="mt-1 text-sm font-semibold text-ink">{value}</p>
     </div>

@@ -28,7 +28,7 @@ function LocalCopy({ text }: { text: string }) {
 }
 
 export function QrCodeGenerator({ tool }: { tool: Tool }) {
-  const [text, setText] = useState("https://toolora.app");
+  const [text, setText] = useState("https://devtoolio.app");
   const [src, setSrc] = useState("");
   const [error, setError] = useState("");
 
@@ -153,7 +153,7 @@ export function HtaccessGenerator({ tool }: { tool: Tool }) {
           </div>
         </Panel>
         <Panel title=".htaccess line" action={<CopyButton text={line} />}>
-          <pre className="overflow-auto rounded-lg bg-slate-50 p-4 text-sm">{line}</pre>
+          <pre className="overflow-auto rounded-lg bg-surface-2 p-4 text-sm">{line}</pre>
         </Panel>
       </div>
     </ToolPageLayout>
@@ -162,7 +162,7 @@ export function HtaccessGenerator({ tool }: { tool: Tool }) {
 
 export function RobotsTxtGenerator({ tool }: { tool: Tool }) {
   const [mode, setMode] = useState("allow");
-  const [sitemap, setSitemap] = useState("https://toolora.app/sitemap.xml");
+  const [sitemap, setSitemap] = useState("https://devtoolio.app/sitemap.xml");
   const text = `User-agent: *\n${mode === "allow" ? "Allow: /" : "Disallow: /"}\nSitemap: ${sitemap}`;
 
   return (
@@ -180,7 +180,7 @@ export function RobotsTxtGenerator({ tool }: { tool: Tool }) {
           </div>
         </Panel>
         <Panel title="robots.txt" action={<CopyButton text={text} />}>
-          <pre className="whitespace-pre-wrap rounded-lg bg-slate-50 p-4 text-sm">{text}</pre>
+          <pre className="whitespace-pre-wrap rounded-lg bg-surface-2 p-4 text-sm">{text}</pre>
         </Panel>
       </div>
     </ToolPageLayout>

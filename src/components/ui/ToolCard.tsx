@@ -1,5 +1,4 @@
 import Link from "next/link";
-import { ArrowRight } from "lucide-react";
 import { IconBadge } from "./IconBadge";
 import type { Tool } from "@/lib/types";
 
@@ -7,15 +6,32 @@ export function ToolCard({ tool }: { tool: Tool }) {
   return (
     <Link
       href={tool.href}
-      className="group flex flex-col rounded-2xl border border-line bg-white p-5 shadow-card transition hover:-translate-y-0.5 hover:border-slate-300 hover:shadow-card-hover"
+      className="motion-card group flex flex-col rounded-lg border border-line bg-surface p-4"
     >
-      <IconBadge name={tool.icon} tint={tool.iconTint} />
-      <h3 className="mt-4 text-base font-semibold text-ink">{tool.name}</h3>
+      <div className="flex items-start justify-between gap-3">
+        <IconBadge name={tool.icon} tint={tool.iconTint} size="sm" />
+        {tool.status === "soon" ? (
+          <span className="font-mono text-[10px] uppercase tracking-wider text-subtle">Soon</span>
+        ) : null}
+      </div>
+      <h3 className="mt-3 text-sm font-semibold text-ink">{tool.name}</h3>
       <p className="mt-1 flex-1 text-sm leading-6 text-muted">{tool.description}</p>
-      <span className="mt-4 inline-flex items-center gap-1 text-sm font-semibold text-brand">
-        {tool.status === "soon" ? "Coming soon" : "Open tool"}
-        <ArrowRight className="h-4 w-4 transition group-hover:translate-x-0.5" />
-      </span>
+    </Link>
+  );
+}
+
+export function ToolRow({ tool }: { tool: Tool }) {
+  return (
+    <Link
+      href={tool.href}
+      className="motion-card flex items-center gap-3 rounded-lg border border-line bg-surface px-3 py-3"
+    >
+      <IconBadge name={tool.icon} tint={tool.iconTint} size="sm" />
+      <div className="min-w-0 flex-1">
+        <p className="truncate text-sm font-medium text-ink">{tool.name}</p>
+        <p className="truncate text-xs text-muted">{tool.description}</p>
+      </div>
+      <span className="hidden font-mono text-[11px] text-subtle sm:inline">{tool.category}</span>
     </Link>
   );
 }

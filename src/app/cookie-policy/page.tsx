@@ -5,7 +5,7 @@ import { site } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "Cookie Policy",
-  description: "Cookies and local storage used on Toolora, including Google AdSense if ads are enabled.",
+  description: "Cookies and local storage used on DEVTOOLIO, including Google AdSense if ads are enabled.",
 };
 
 export default function CookiePolicyPage() {
@@ -13,7 +13,7 @@ export default function CookiePolicyPage() {
     <Article title="Cookie Policy" updated="3 October 2026">
       <p>
         Cookies and similar storage on {site.url}. Also see the{" "}
-        <Link href="/privacy-policy" className="font-semibold text-brand">
+        <Link href="/privacy-policy" >
           Privacy Policy
         </Link>
         .
@@ -30,7 +30,6 @@ export default function CookiePolicyPage() {
         visited. You can manage ad personalization at{" "}
         <a
           href="https://adssettings.google.com"
-          className="font-semibold text-brand"
           rel="noreferrer"
           target="_blank"
         >
@@ -39,7 +38,6 @@ export default function CookiePolicyPage() {
         and read{" "}
         <a
           href="https://policies.google.com/technologies/ads"
-          className="font-semibold text-brand"
           rel="noreferrer"
           target="_blank"
         >
@@ -56,7 +54,7 @@ export default function CookiePolicyPage() {
       <h2>Questions</h2>
       <p>
         Email{" "}
-        <a href={`mailto:${site.email}`} className="font-semibold text-brand">
+        <a href={`mailto:${site.email}`} >
           {site.email}
         </a>
         .

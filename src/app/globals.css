@@ -1,26 +1,77 @@
 @import "tailwindcss";
 
+@custom-variant dark (&:where(.dark, .dark *));
+
 :root {
-  --background: #f8fafc;
-  --foreground: #0f172a;
+  --background: #f7f7f4;
+  --foreground: #20221f;
+  --surface: #ffffff;
+  --surface-2: #f1f1ec;
+  --muted: #73766f;
+  --subtle: #8b8e86;
+  --line: #e5e6df;
+  --brand: #b8f36b;
+  --brand-hover: #a6e258;
+  --brand-ink: #171916;
+  --ink: #20221f;
+  --canvas: #f7f7f4;
+  --footer: #171916;
+  --success: #3d8b4a;
+  --danger: #b42318;
+  --focus: #b8f36b;
+  --radius: 10px;
+  --radius-sm: 6px;
+  --shadow-card: none;
+  --grid-line: color-mix(in srgb, #6d7268 14%, transparent);
+  --grid-major: color-mix(in srgb, #6d7268 22%, transparent);
+  --grid-dot: color-mix(in srgb, #20221f 16%, transparent);
+  --glow: color-mix(in srgb, #b8f36b 18%, transparent);
+  --graph: color-mix(in srgb, #6d7268 28%, transparent);
+}
+
+.dark {
+  --background: #121411;
+  --foreground: #f4f4ef;
+  --surface: #1c1f1b;
+  --surface-2: #242722;
+  --muted: #9a9d95;
+  --subtle: #7d8078;
+  --line: #2f332c;
+  --brand: #b8f36b;
+  --brand-hover: #c6f784;
+  --brand-ink: #171916;
+  --ink: #f4f4ef;
+  --canvas: #121411;
+  --footer: #0d0f0c;
+  --success: #8ed48a;
+  --danger: #f97066;
+  --grid-line: color-mix(in srgb, #b8f36b 7%, transparent);
+  --grid-major: color-mix(in srgb, #f4f4ef 8%, transparent);
+  --grid-dot: color-mix(in srgb, #b8f36b 16%, transparent);
+  --glow: color-mix(in srgb, #b8f36b 16%, transparent);
+  --graph: color-mix(in srgb, #b8f36b 18%, transparent);
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --color-brand: #2563eb;
-  --color-brand-hover: #1d4ed8;
-  --color-brand-deep: #1e40af;
-  --color-ink: #0f172a;
-  --color-muted: #475569;
-  --color-subtle: #94a3b8;
-  --color-line: #e2e8f0;
-  --color-canvas: #f8fafc;
-  --color-footer: #0f172a;
-  --color-success: #10b981;
-  --font-sans: var(--font-plus-jakarta);
-  --shadow-card: 0 1px 3px rgba(15, 23, 42, 0.04), 0 4px 12px rgba(15, 23, 42, 0.03);
-  --shadow-card-hover: 0 4px 6px -1px rgba(15, 23, 42, 0.06), 0 12px 24px -4px rgba(15, 23, 42, 0.06);
+  --color-brand: var(--brand);
+  --color-brand-hover: var(--brand-hover);
+  --color-brand-ink: var(--brand-ink);
+  --color-ink: var(--ink);
+  --color-muted: var(--muted);
+  --color-subtle: var(--subtle);
+  --color-line: var(--line);
+  --color-canvas: var(--canvas);
+  --color-surface: var(--surface);
+  --color-surface-2: var(--surface-2);
+  --color-footer: var(--footer);
+  --color-success: var(--success);
+  --color-danger: var(--danger);
+  --font-sans: var(--font-geist);
+  --font-mono: var(--font-geist-mono);
+  --shadow-card: var(--shadow-card);
+  --shadow-card-hover: 0 0 0 1px var(--line);
 }
 
 html {
@@ -28,12 +79,279 @@ html {
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: var(--font-plus-jakarta), "Plus Jakarta Sans", sans-serif;
+  background: var(--canvas);
+  color: var(--ink);
+  font-family: var(--font-geist), Inter, ui-sans-serif, system-ui, sans-serif;
+  overflow-x: hidden;
 }
 
 ::selection {
-  background: #dbeafe;
-  color: #0f172a;
+  background: #d8f5a6;
+  color: #171916;
+}
+
+.dark ::selection {
+  background: #3d4a28;
+  color: #f4f4ef;
+}
+
+:focus-visible {
+  outline: 2px solid var(--brand);
+  outline-offset: 2px;
+}
+
+.font-mono,
+code,
+kbd,
+pre {
+  font-family: var(--font-geist-mono), ui-monospace, SFMono-Regular, Menlo, monospace;
+}
+
+@keyframes fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.animate-enter {
+  animation: fade-up 0.4s ease-out both;
+}
+
+.animate-enter-slow {
+  animation: fade-up 0.5s ease-out both;
+}
+
+.animate-fade {
+  animation: fade-up 0.35s ease-out both;
+}
+
+.animate-menu {
+  animation: fade-up 0.18s ease-out both;
+}
+
+.delay-1 {
+  animation-delay: 60ms;
+}
+.delay-2 {
+  animation-delay: 120ms;
+}
+.delay-3 {
+  animation-delay: 180ms;
+}
+
+.motion-card {
+  transition:
+    border-color 0.18s ease,
+    background-color 0.18s ease,
+    transform 0.18s ease;
+}
+
+.motion-card:hover {
+  border-color: color-mix(in srgb, var(--ink) 18%, var(--line));
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  .animate-enter,
+  .animate-enter-slow,
+  .animate-fade,
+  .animate-menu {
+    animation: none;
+  }
+
+  .motion-card,
+  .motion-card:hover {
+    transition: none;
+    transform: none;
+  }
+}
+
+.site-backdrop {
+  pointer-events: none;
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+}
+
+.site-backdrop__grid,
+.site-backdrop__major,
+.site-backdrop__dots,
+.site-backdrop__glow,
+.site-backdrop__graph {
+  position: absolute;
+  inset: 0;
+}
+
+.site-backdrop__grid {
+  background-image:
+    linear-gradient(var(--grid-line) 1px, transparent 1px),
+    linear-gradient(90deg, var(--grid-line) 1px, transparent 1px);
+  background-size: 32px 32px;
+  -webkit-mask-image: radial-gradient(ellipse 85% 70% at 50% 12%, #000 8%, transparent 78%);
+  mask-image: radial-gradient(ellipse 85% 70% at 50% 12%, #000 8%, transparent 78%);
+}
+
+.site-backdrop__major {
+  background-image:
+    linear-gradient(var(--grid-major) 1px, transparent 1px),
+    linear-gradient(90deg, var(--grid-major) 1px, transparent 1px);
+  background-size: 160px 160px;
+  -webkit-mask-image: radial-gradient(ellipse 75% 60% at 50% 10%, #000 0%, transparent 72%);
+  mask-image: radial-gradient(ellipse 75% 60% at 50% 10%, #000 0%, transparent 72%);
+}
+
+.site-backdrop__dots {
+  background-image: radial-gradient(circle at center, var(--grid-dot) 1px, transparent 1.2px);
+  background-size: 48px 48px;
+  opacity: 0.55;
+  -webkit-mask-image: radial-gradient(ellipse 70% 50% at 50% 18%, #000 10%, transparent 70%);
+  mask-image: radial-gradient(ellipse 70% 50% at 50% 18%, #000 10%, transparent 70%);
+}
+
+.site-backdrop__glow {
+  inset: auto;
+  left: 50%;
+  top: 4.5rem;
+  width: min(40rem, 92vw);
+  height: 18rem;
+  transform: translateX(-50%);
+  background: radial-gradient(ellipse at 50% 40%, var(--glow) 0%, transparent 68%);
+}
+
+.site-backdrop__graph {
+  width: 100%;
+  height: min(42rem, 70vh);
+  opacity: 0.55;
+  stroke: var(--graph);
+  stroke-width: 1;
+}
+
+.site-backdrop__graph circle {
+  fill: var(--graph);
+  stroke: none;
+}
+
+.site-backdrop__graph text {
+  fill: var(--graph);
+  font-family: var(--font-geist-mono), ui-monospace, monospace;
+  font-size: 13px;
+}
+
+.stage-hero,
+.stage-page,
+.stage-inset,
+.stage-band,
+.stage-footer {
+  position: relative;
+}
+
+.stage-hero::before,
+.stage-page::before,
+.stage-inset::before,
+.stage-band::before,
+.stage-footer::before {
+  content: "";
+  pointer-events: none;
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+
+.stage-hero > *,
+.stage-page > *,
+.stage-inset > *,
+.stage-band > *,
+.stage-footer > * {
+  position: relative;
+  z-index: 1;
+}
+
+.stage-hero::before {
+  background:
+    radial-gradient(ellipse 60% 70% at 50% 0%, var(--glow), transparent 70%),
+    linear-gradient(var(--grid-line) 1px, transparent 1px),
+    linear-gradient(90deg, var(--grid-line) 1px, transparent 1px);
+  background-size: auto, 32px 32px, 32px 32px;
+  mask-image: linear-gradient(to bottom, #000 40%, transparent 100%);
+}
+
+.stage-page::before {
+  background:
+    radial-gradient(ellipse 50% 80% at 50% 0%, color-mix(in srgb, var(--glow) 70%, transparent), transparent 72%),
+    linear-gradient(var(--grid-line) 1px, transparent 1px),
+    linear-gradient(90deg, var(--grid-line) 1px, transparent 1px);
+  background-size: auto, 32px 32px, 32px 32px;
+  mask-image: linear-gradient(to bottom, #000 0%, transparent 280px);
+}
+
+.stage-inset {
+  border-block: 1px solid var(--line);
+  background: color-mix(in srgb, var(--surface) 72%, transparent);
+}
+
+.stage-inset::before {
+  background-image:
+    linear-gradient(var(--grid-line) 1px, transparent 1px),
+    linear-gradient(90deg, var(--grid-line) 1px, transparent 1px);
+  background-size: 28px 28px;
+  opacity: 0.55;
+  mask-image: radial-gradient(ellipse 70% 80% at 50% 50%, #000 20%, transparent 80%);
+}
+
+.stage-band {
+  border-block: 1px solid var(--line);
+  background: color-mix(in srgb, var(--surface) 88%, var(--canvas));
+}
+
+.stage-band::before {
+  background:
+    radial-gradient(ellipse 40% 80% at 12% 50%, color-mix(in srgb, var(--glow) 55%, transparent), transparent 70%),
+    linear-gradient(90deg, var(--grid-line) 1px, transparent 1px);
+  background-size: auto, 48px 48px;
+  opacity: 0.7;
+}
+
+.stage-footer {
+  background: var(--footer);
+}
+
+.stage-footer::before {
+  background-image:
+    linear-gradient(color-mix(in srgb, #b8f36b 8%, transparent) 1px, transparent 1px),
+    linear-gradient(90deg, color-mix(in srgb, #b8f36b 8%, transparent) 1px, transparent 1px);
+  background-size: 40px 40px;
+  opacity: 0.45;
+  mask-image: radial-gradient(ellipse 80% 70% at 50% 0%, #000 10%, transparent 80%);
+}
+
+.site-shell {
+  position: relative;
+  z-index: 1;
+}
+
+@media (max-width: 640px) {
+  .site-backdrop__graph,
+  .site-backdrop__dots {
+    display: none;
+  }
+
+  .site-backdrop__glow {
+    height: 12rem;
+    opacity: 0.75;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .site-backdrop__glow {
+    transform: translateX(-50%);
+  }
 }

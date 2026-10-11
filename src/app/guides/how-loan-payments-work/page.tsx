@@ -4,7 +4,7 @@ import { Article } from "@/components/legal/Article";
 
 export const metadata: Metadata = {
   title: "How loan payments work",
-  description: "Understand principal, interest rate and loan term, then estimate a monthly payment with Toolora.",
+  description: "Understand principal, interest rate and loan term, then estimate a monthly payment with DEVTOOLIO.",
 };
 
 export default function LoanGuidePage() {
@@ -22,9 +22,9 @@ export default function LoanGuidePage() {
         interest.
       </p>
       <p>
-        Toolora uses the common amortization formula so you can estimate EMI before you talk to a lender.
+        DEVTOOLIO uses the common amortization formula so you can estimate EMI before you talk to a lender.
         Try the{" "}
-        <Link href="/tools/calculators/loan-calculator" className="font-semibold text-brand">
+        <Link href="/tools/calculators/loan-calculator" >
           Loan Calculator
         </Link>
         . The number is an illustration, not an offer.

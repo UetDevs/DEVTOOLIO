@@ -1,10 +1,10 @@
-import { ToolCard } from "@/components/ui/ToolCard";
-import { categories } from "@/lib/categories";
-import { searchTools, tools } from "@/lib/tools";
+import { ToolsCatalog } from "@/components/catalog/ToolsCatalog";
+import { PageFrame } from "@/components/theme/PageFrame";
+import { tools } from "@/lib/tools";
 
 export const metadata = {
   title: "All Tools",
-  description: "Every Toolora calculator, converter and utility on one page.",
+  description: "Every DEVTOOLIO calculator, converter and utility on one page.",
 };
 
 export default async function ToolsPage({
@@ -13,28 +13,17 @@ export default async function ToolsPage({
   searchParams: Promise<{ q?: string }>;
 }) {
   const { q } = await searchParams;
-  const filtered = q ? searchTools(q) : tools;
 
   return (
-    <div className="mx-auto max-w-7xl px-4 py-12 sm:px-6">
-      <h1 className="text-3xl font-extrabold tracking-tight text-ink">All Tools</h1>
-      <p className="mt-2 max-w-2xl text-muted">
-        {q ? `Results for “${q}”.` : "Everything in one place, grouped by category."}
+    <PageFrame className="animate-enter mx-auto max-w-6xl px-4 py-8 sm:px-6 sm:py-10">
+      <p className="font-mono text-[11px] uppercase tracking-[0.14em] text-subtle">{tools.length} utilities</p>
+      <h1 className="mt-2 text-3xl font-semibold tracking-tight text-ink">All tools</h1>
+      <p className="mt-2 max-w-2xl text-sm leading-6 text-muted">
+        {q ? `Results for “${q}”. Refine with a category or sort.` : "Search, filter by category, or scan the full catalog."}
       </p>
-      {categories.map((category) => {
-        const items = filtered.filter((tool) => tool.category === category.id);
-        if (!items.length) return null;
-        return (
-          <section key={category.id} className="mt-10">
-            <h2 className="text-xl font-bold text-ink">{category.name}</h2>
-            <div className="mt-4 grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
-              {items.map((tool) => (
-                <ToolCard key={tool.slug} tool={tool} />
-              ))}
-            </div>
-          </section>
-        );
-      })}
-    </div>
+      <div className="mt-6">
+        <ToolsCatalog initialQuery={q ?? ""} />
+      </div>
+    </PageFrame>
   );
 }

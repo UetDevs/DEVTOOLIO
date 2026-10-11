@@ -1,4 +1,3 @@
-import { categories } from "./categories";
 import { extraTools } from "./extra-tools";
 import type { CategoryId, Tool } from "./types";
 
@@ -1572,7 +1571,7 @@ export function searchTools(query: string) {
 }
 
 export function getCategoryToolCount(category: CategoryId) {
-  const ready = getToolsByCategory(category).filter((tool) => tool.status === "ready").length;
-  const categoryMeta = categories.find((item) => item.id === category);
-  return { ready, label: categoryMeta?.countLabel ?? `${ready}+ tools` };
+  const items = getToolsByCategory(category);
+  const ready = items.filter((tool) => tool.status === "ready").length;
+  return { ready, total: items.length, label: `${items.length}` };
 }

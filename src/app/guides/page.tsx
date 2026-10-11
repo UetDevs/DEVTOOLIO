@@ -1,5 +1,6 @@
 import Link from "next/link";
 import type { Metadata } from "next";
+import { PageFrame } from "@/components/theme/PageFrame";
 
 export const metadata: Metadata = {
   title: "Guides",
@@ -41,23 +42,19 @@ const guides = [
 
 export default function GuidesPage() {
   return (
-    <div className="mx-auto max-w-3xl px-4 py-14 sm:px-6">
-      <h1 className="text-4xl font-extrabold tracking-tight">Guides</h1>
-      <p className="mt-3 text-muted">
+    <PageFrame className="mx-auto max-w-3xl px-4 py-10 sm:px-6 sm:py-14">
+      <h1 className="text-3xl font-semibold tracking-tight">Guides</h1>
+      <p className="mt-3 text-sm leading-7 text-muted">
         A few notes that sit next to the tools. How a formula works, or why a file stays on your computer.
       </p>
-      <div className="mt-8 space-y-4">
+      <div className="mt-8 divide-y divide-line border-y border-line">
         {guides.map((guide) => (
-          <Link
-            key={guide.href}
-            href={guide.href}
-            className="block rounded-2xl border border-line bg-white p-5 shadow-card hover:shadow-card-hover"
-          >
-            <h2 className="text-lg font-semibold text-ink">{guide.title}</h2>
+          <Link key={guide.href} href={guide.href} className="block py-4">
+            <h2 className="text-sm font-semibold text-ink">{guide.title}</h2>
             <p className="mt-1 text-sm text-muted">{guide.description}</p>
           </Link>
         ))}
       </div>
-    </div>
+    </PageFrame>
   );
 }

@@ -1,10 +1,10 @@
 export const site = {
-  name: "Toolora",
-  url: process.env.NEXT_PUBLIC_SITE_URL ?? "https://toolora.app",
-  email: process.env.NEXT_PUBLIC_CONTACT_EMAIL ?? "hello@toolora.app",
-  tagline: "Small web tools. No signup.",
+  name: "DEVTOOLIO",
+  url: process.env.NEXT_PUBLIC_SITE_URL ?? "https://toolora-chi.vercel.app",
+  email: process.env.NEXT_PUBLIC_CONTACT_EMAIL ?? "devexe01@gmail.com",
+  tagline: "Developer tools. Minus the friction.",
   description:
-    "Free calculators, converters, image tools and code utilities. Most of them run on your computer, not on our servers.",
+    "Practical tools for coding, converting, calculating, and getting work done — all in one place. Most run in your browser.",
 };
 
 export const adsenseClient = process.env.NEXT_PUBLIC_ADSENSE_CLIENT ?? "";

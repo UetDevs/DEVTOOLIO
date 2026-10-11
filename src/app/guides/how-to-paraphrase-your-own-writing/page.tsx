@@ -23,11 +23,11 @@ export default function ParaphraseGuidePage() {
       </p>
       <p>
         Try the{" "}
-        <Link href="/tools/writing/paraphrasing-tool" className="font-semibold text-brand">
+        <Link href="/tools/writing/paraphrasing-tool" >
           Paraphrasing Tool
         </Link>{" "}
         or browse all{" "}
-        <Link href="/tools/writing" className="font-semibold text-brand">
+        <Link href="/tools/writing" >
           writing tools
         </Link>
         .

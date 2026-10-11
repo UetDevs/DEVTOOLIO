@@ -4,14 +4,14 @@ import { Article } from "@/components/legal/Article";
 
 export const metadata: Metadata = {
   title: "Disclaimer",
-  description: "Limits of Toolora calculators, converters, writing helpers and health or finance estimates.",
+  description: "Limits of DEVTOOLIO calculators, converters, writing helpers and health or finance estimates.",
 };
 
 export default function DisclaimerPage() {
   return (
     <Article title="Disclaimer" updated="3 October 2026">
       <p>
-        Toolora publishes free utilities and short explainers. Nothing on this website is professional
+        DEVTOOLIO publishes free utilities and short explainers. Nothing on this website is professional
         advice tailored to you.
       </p>
       <h2>Health and fitness</h2>
@@ -46,7 +46,7 @@ export default function DisclaimerPage() {
       </p>
       <p>
         Privacy practices are in the{" "}
-        <Link href="/privacy-policy" className="font-semibold text-brand">
+        <Link href="/privacy-policy" >
           Privacy Policy
         </Link>
         .

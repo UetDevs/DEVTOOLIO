@@ -183,7 +183,7 @@ export function PdfToWord({ tool }: { tool: Tool }) {
           <p className="mt-3 text-xs text-subtle">{PRIVACY} Downloads a Word-compatible .doc with extracted text, not original layout.</p>
         </Panel>
         <Panel title="Extracted text">
-          <pre className="min-h-64 overflow-auto whitespace-pre-wrap rounded-lg bg-slate-50 p-4 text-sm">{preview || "Converted text will appear here."}</pre>
+          <pre className="min-h-64 overflow-auto whitespace-pre-wrap rounded-lg bg-surface-2 p-4 text-sm">{preview || "Converted text will appear here."}</pre>
         </Panel>
       </div>
     </ToolPageLayout>

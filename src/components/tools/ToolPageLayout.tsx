@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { ChevronRight } from "lucide-react";
+import { PageFrame } from "@/components/theme/PageFrame";
 import { AdSlot } from "@/components/ui/AdSlot";
 import { FaqAccordion } from "@/components/ui/FaqAccordion";
 import { ToolCard } from "@/components/ui/ToolCard";
@@ -29,7 +30,7 @@ export function ToolPageLayout({
   const faqs = defaultFaqs(tool);
 
   return (
-    <div className="bg-gradient-to-b from-blue-50/80 to-canvas">
+    <PageFrame className="animate-fade">
       <JsonLd
         data={{
           "@context": "https://schema.org",
@@ -65,14 +66,12 @@ export function ToolPageLayout({
         <div className="mt-6 grid items-start gap-6 lg:grid-cols-[1fr_auto]">
           <div>
             {tool.badge ? (
-              <p className="inline-flex rounded-full bg-emerald-50 px-3 py-1 text-xs font-semibold text-emerald-700">
-                {tool.badge}
-              </p>
+              <p className="font-mono text-[11px] uppercase tracking-[0.14em] text-subtle">{tool.badge}</p>
             ) : null}
-            <h1 className="mt-3 text-3xl font-extrabold tracking-tight text-ink sm:text-4xl">
+            <h1 className="mt-2 text-3xl font-semibold tracking-tight text-ink sm:text-4xl">
               {tool.name}
             </h1>
-            <p className="mt-3 max-w-2xl text-base leading-7 text-muted">
+            <p className="mt-3 max-w-2xl text-sm leading-7 text-muted sm:text-base">
               {tool.longDescription ?? tool.description}
             </p>
             <div className="mt-5">
@@ -89,13 +88,13 @@ export function ToolPageLayout({
         </div>
 
         <div className="mt-8 grid gap-4 lg:grid-cols-2">
-          <section className="rounded-2xl border border-line bg-white p-6 shadow-card">
-            <h2 className="text-lg font-semibold text-ink">How to use {toolTitle(tool)}</h2>
+          <section className="rounded-lg border border-line bg-surface p-5">
+            <h2 className="text-sm font-semibold text-ink">How to use {toolTitle(tool)}</h2>
             <p className="mt-3 text-sm leading-7 text-muted">{toolHowTo(tool)}</p>
             {example}
           </section>
-          <section className="rounded-2xl border border-line bg-white p-6 shadow-card">
-            <h2 className="text-lg font-semibold text-ink">Questions</h2>
+          <section className="rounded-lg border border-line bg-surface p-5">
+            <h2 className="text-sm font-semibold text-ink">Questions</h2>
             <div className="mt-2">
               <FaqAccordion items={faqs} />
             </div>
@@ -106,9 +105,9 @@ export function ToolPageLayout({
 
         {related.length ? (
           <section className="mt-10">
-            <h2 className="text-xl font-bold text-ink">Related tools</h2>
+            <h2 className="text-lg font-semibold text-ink">Related tools</h2>
             <p className="mt-1 text-sm text-muted">Same category, nearby jobs.</p>
-            <div className="mt-6 grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
+            <div className="mt-5 grid gap-3 sm:grid-cols-2 xl:grid-cols-4">
               {related.map((item) => (
                 <ToolCard key={item.slug} tool={item} />
               ))}
@@ -116,6 +115,6 @@ export function ToolPageLayout({
           </section>
         ) : null}
       </div>
-    </div>
+    </PageFrame>
   );
 }

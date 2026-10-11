@@ -5,14 +5,14 @@ import { site } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "About",
-  description: "What Toolora is, what we will not build, and how to reach us.",
+  description: `What ${site.name} is, what we will not build, and how to reach us.`,
 };
 
 export default function AboutPage() {
   return (
-    <Article title="About Toolora">
+    <Article title={`About ${site.name}`}>
       <p>
-        Toolora is a pile of small web tools: calculators, converters, image and file helpers, writing
+        {site.name} is a pile of small web tools: calculators, converters, image and file helpers, writing
         editors, and a few developer utilities. I built it so you can finish a task and leave. No app, no
         account.
       </p>
@@ -20,7 +20,7 @@ export default function AboutPage() {
       <p>
         Check BMI or a loan payment. Convert kilograms or file sizes. Resize a photo on your machine.
         Format JSON or decode a JWT. The full list is on the{" "}
-        <Link href="/tools" className="font-semibold text-brand">
+        <Link href="/tools">
           tools page
         </Link>
         .
@@ -40,7 +40,7 @@ export default function AboutPage() {
       <p>
         The tools are free. We may show Google ads later to cover hosting. You do not have to click an ad
         to see a result.{" "}
-        <Link href="/guides" className="font-semibold text-brand">
+        <Link href="/guides">
           Guides
         </Link>{" "}
         explain formulas and privacy. They are not product pitches.
@@ -48,11 +48,11 @@ export default function AboutPage() {
       <h2>Contact</h2>
       <p>
         Corrections, tool requests and privacy questions:{" "}
-        <a href={`mailto:${site.email}`} className="font-semibold text-brand">
+        <a href={`mailto:${site.email}`}>
           {site.email}
         </a>{" "}
         or the{" "}
-        <Link href="/contact" className="font-semibold text-brand">
+        <Link href="/contact">
           contact page
         </Link>
         .

@@ -15,28 +15,15 @@ export function Field({
   );
 }
 
+const control =
+  "h-11 w-full rounded-md border border-line bg-surface px-3.5 text-sm text-ink outline-none placeholder:text-subtle focus:border-ink/30";
+
 export function TextInput(props: React.InputHTMLAttributes<HTMLInputElement>) {
-  return (
-    <input
-      {...props}
-      className={cn(
-        "h-12 w-full rounded-lg border border-line bg-white px-3.5 text-sm text-ink outline-none ring-brand/15 placeholder:text-subtle focus:border-brand focus:ring-4",
-        props.className,
-      )}
-    />
-  );
+  return <input {...props} className={cn(control, props.className)} />;
 }
 
 export function SelectInput(props: React.SelectHTMLAttributes<HTMLSelectElement>) {
-  return (
-    <select
-      {...props}
-      className={cn(
-        "h-12 w-full rounded-lg border border-line bg-white px-3.5 text-sm text-ink outline-none ring-brand/15 focus:border-brand focus:ring-4",
-        props.className,
-      )}
-    />
-  );
+  return <select {...props} className={cn(control, props.className)} />;
 }
 
 export function AffixInput({
@@ -44,12 +31,9 @@ export function AffixInput({
   ...props
 }: React.InputHTMLAttributes<HTMLInputElement> & { suffix: string }) {
   return (
-    <div className="flex overflow-hidden rounded-lg border border-line focus-within:border-brand focus-within:ring-4 focus-within:ring-brand/15">
-      <input
-        {...props}
-        className="h-12 min-w-0 flex-1 bg-white px-3.5 text-sm text-ink outline-none placeholder:text-subtle"
-      />
-      <span className="flex items-center border-l border-line bg-slate-50 px-3 text-sm text-slate-500">
+    <div className="flex overflow-hidden rounded-md border border-line focus-within:border-ink/30">
+      <input {...props} className="h-11 min-w-0 flex-1 bg-surface px-3.5 text-sm text-ink outline-none placeholder:text-subtle" />
+      <span className="flex items-center border-l border-line bg-surface-2 px-3 font-mono text-xs text-muted">
         {suffix}
       </span>
     </div>
@@ -64,7 +48,7 @@ export function PrimaryButton({
     <button
       {...props}
       className={cn(
-        "inline-flex h-12 w-full items-center justify-center rounded-lg bg-brand text-sm font-semibold text-white hover:bg-brand-hover disabled:cursor-not-allowed disabled:opacity-60",
+        "inline-flex h-11 w-full items-center justify-center rounded-md bg-brand text-sm font-semibold text-brand-ink transition hover:bg-brand-hover disabled:cursor-not-allowed disabled:opacity-55",
         props.className,
       )}
     >
@@ -81,7 +65,7 @@ export function ResetButton({
     <button
       type="button"
       {...props}
-      className="inline-flex h-10 w-full items-center justify-center text-sm font-medium text-brand hover:underline"
+      className="inline-flex h-10 w-full items-center justify-center text-sm font-medium text-muted hover:text-ink"
     >
       {children}
     </button>
@@ -98,15 +82,15 @@ export function Segmented<T extends string>({
   options: { value: T; label: string }[];
 }) {
   return (
-    <div className="grid grid-cols-2 rounded-lg bg-slate-100 p-1">
+    <div className="grid grid-cols-2 rounded-md border border-line bg-surface-2 p-0.5">
       {options.map((option) => (
         <button
           key={option.value}
           type="button"
           onClick={() => onChange(option.value)}
           className={cn(
-            "h-9 rounded-md text-sm font-semibold",
-            value === option.value ? "bg-brand text-white shadow-sm" : "text-slate-500",
+            "h-9 rounded-[5px] text-sm font-medium",
+            value === option.value ? "bg-surface text-ink" : "text-muted",
           )}
         >
           {option.label}
@@ -128,10 +112,10 @@ export function ResultCard({
   children?: React.ReactNode;
 }) {
   return (
-    <div className="rounded-2xl border border-line bg-white p-6 shadow-card">
-      <p className="text-sm font-medium text-muted">{title}</p>
-      <p className="mt-2 text-5xl font-extrabold tracking-tight text-ink">{value}</p>
-      {subtitle ? <p className="mt-2 text-sm font-semibold text-success">{subtitle}</p> : null}
+    <div className="rounded-lg border border-line bg-surface p-5">
+      <p className="text-xs font-medium uppercase tracking-[0.12em] text-subtle">{title}</p>
+      <p className="mt-2 font-mono text-4xl font-semibold tracking-tight text-ink sm:text-5xl">{value}</p>
+      {subtitle ? <p className="mt-2 text-sm font-medium text-success">{subtitle}</p> : null}
       {children}
     </div>
   );
@@ -147,9 +131,9 @@ export function Panel({
   children: React.ReactNode;
 }) {
   return (
-    <section className="rounded-2xl border border-line bg-white p-6 shadow-card">
-      <div className="mb-5 flex items-center justify-between gap-3">
-        <h2 className="text-lg font-semibold text-ink">{title}</h2>
+    <section className="rounded-lg border border-line bg-surface p-5">
+      <div className="mb-4 flex items-center justify-between gap-3">
+        <h2 className="text-sm font-semibold text-ink">{title}</h2>
         {action}
       </div>
       {children}

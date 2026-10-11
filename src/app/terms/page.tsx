@@ -5,7 +5,7 @@ import { site } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "Terms & Conditions",
-  description: "Rules for using Toolora’s free tools, including acceptable use and limits of liability.",
+  description: "Rules for using DEVTOOLIO’s free tools, including acceptable use and limits of liability.",
 };
 
 export default function TermsPage() {
@@ -16,7 +16,7 @@ export default function TermsPage() {
       </p>
       <h2>The service</h2>
       <p>
-        Toolora provides free web pages that help with calculations, conversions, formatting and similar
+        DEVTOOLIO provides free web pages that help with calculations, conversions, formatting and similar
         tasks. We may add, change or remove a tool at any time. There is no paid plan and no guarantee of
         uninterrupted access.
       </p>
@@ -25,14 +25,14 @@ export default function TermsPage() {
       <ul>
         <li>overload or attack the site, or scrape it in a way that harms other visitors</li>
         <li>use a tool to break the law or to infringe someone else’s copyright or privacy</li>
-        <li>copy the Toolora name or layout to impersonate this site</li>
+        <li>copy the DEVTOOLIO name or layout to impersonate this site</li>
         <li>treat writing tools as a way to submit another person’s work as your own</li>
       </ul>
       <h2>Results are estimates</h2>
       <p>
         Health, money, grades and conversions are educational estimates. They are not medical, financial,
         legal or academic advice. Confirm important decisions with a qualified professional. See the{" "}
-        <Link href="/disclaimer" className="font-semibold text-brand">
+        <Link href="/disclaimer" >
           Disclaimer
         </Link>
         .
@@ -45,7 +45,7 @@ export default function TermsPage() {
       <h2>Advertising</h2>
       <p>
         Pages may include third-party ads. Advertisers are responsible for their own offers. Clicking an ad
-        takes you away from Toolora.
+        takes you away from DEVTOOLIO.
       </p>
       <h2>Limitation of liability</h2>
       <p>
@@ -55,7 +55,7 @@ export default function TermsPage() {
       <h2>Contact</h2>
       <p>
         Legal notices:{" "}
-        <a href={`mailto:${site.email}`} className="font-semibold text-brand">
+        <a href={`mailto:${site.email}`} >
           {site.email}
         </a>
         .

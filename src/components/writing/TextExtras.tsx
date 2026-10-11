@@ -160,7 +160,7 @@ export function TextCompare({ tool }: { tool: Tool }) {
       <Panel title="Line by line">
         <div className="space-y-2 text-sm">
           {rows.map((row, index) => (
-            <div key={`${index}-${row.left}`} className={`rounded-lg px-3 py-2 ${row.same ? "bg-slate-50" : "bg-amber-50"}`}>
+            <div key={`${index}-${row.left}`} className={`rounded-lg px-3 py-2 ${row.same ? "bg-surface-2" : "bg-amber-50"}`}>
               <p className="text-xs text-subtle">Line {index + 1}{row.same ? "" : " — differs"}</p>
               <p className="font-medium text-ink">{row.left || "—"}</p>
               {row.same ? null : <p className="text-muted">{row.right || "—"}</p>}

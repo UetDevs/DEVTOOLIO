@@ -1,24 +1,25 @@
 import type { Metadata } from "next";
 import { ContactForm } from "@/components/contact/ContactForm";
+import { PageFrame } from "@/components/theme/PageFrame";
 import { site } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "Contact",
-  description: `Email ${site.email} for Toolora feedback, tool requests or privacy questions.`,
+  description: `Email ${site.email} for ${site.name} feedback, tool requests or privacy questions.`,
 };
 
 export default function ContactPage() {
   return (
-    <div className="mx-auto max-w-xl px-4 py-14 sm:px-6">
-      <h1 className="text-4xl font-extrabold tracking-tight">Contact</h1>
-      <p className="mt-3 leading-7 text-muted">
+    <PageFrame className="animate-enter mx-auto max-w-xl px-4 py-10 sm:px-6 sm:py-14">
+      <h1 className="text-3xl font-semibold tracking-tight sm:text-4xl">Contact</h1>
+      <p className="mt-3 text-sm leading-7 text-muted">
         For feedback, a tool request, a correction or a privacy question, email{" "}
-        <a href={`mailto:${site.email}`} className="font-semibold text-brand">
+        <a href={`mailto:${site.email}`} className="font-medium text-ink underline underline-offset-2">
           {site.email}
         </a>
         . We read every message. We cannot give medical, legal or financial advice.
       </p>
       <ContactForm />
-    </div>
+    </PageFrame>
   );
 }

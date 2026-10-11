@@ -4,7 +4,7 @@ import { Article } from "@/components/legal/Article";
 
 export const metadata: Metadata = {
   title: "Keep files private in browser tools",
-  description: "How Toolora image, document and video tools process files locally, and when a site would need a server.",
+  description: "How DEVTOOLIO image, document and video tools process files locally, and when a site would need a server.",
 };
 
 export default function PrivacyGuidePage() {
@@ -24,24 +24,24 @@ export default function PrivacyGuidePage() {
       <p>
         Homework screenshots, receipts, class notes, a logo, a clip you filmed. If you would not email
         that file to a stranger, use a local tool. Start with the{" "}
-        <Link href="/tools/image-tools" className="font-semibold text-brand">
+        <Link href="/tools/image-tools" >
           image tools
         </Link>{" "}
         or{" "}
-        <Link href="/tools/file-converters" className="font-semibold text-brand">
+        <Link href="/tools/file-converters" >
           document converters
         </Link>
         .
       </p>
       <h2>Honest limits</h2>
       <p>
-        A phone browser can run out of memory on a huge video. Word-to-PDF on Toolora extracts text; it
+        A phone browser can run out of memory on a huge video. Word-to-PDF on DEVTOOLIO extracts text; it
         does not reprint every font and image. If a future tool must use a server, the page will say so
         before you attach a file.
       </p>
       <p>
         Read the{" "}
-        <Link href="/privacy-policy" className="font-semibold text-brand">
+        <Link href="/privacy-policy" >
           Privacy Policy
         </Link>{" "}
         for contact email and advertising cookies.

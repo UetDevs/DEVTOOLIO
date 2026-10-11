@@ -68,7 +68,7 @@ export function BmiCalculator({ tool }: { tool: Tool }) {
       tool={tool}
       illustration={<ScaleArt />}
       extra={
-        <section className="mt-4 rounded-2xl border border-line bg-white p-6 shadow-card">
+        <section className="mt-4 rounded-lg border border-line bg-surface p-5">
           <h2 className="text-lg font-semibold text-ink">BMI Categories</h2>
           <div className="mt-4 divide-y divide-line">
             {categories.map((item) => (
@@ -84,7 +84,7 @@ export function BmiCalculator({ tool }: { tool: Tool }) {
         </section>
       }
       example={
-        <div className="mt-5 rounded-xl bg-slate-50 p-4">
+        <div className="mt-5 rounded-xl bg-surface-2 p-4">
           <p className="text-sm font-semibold text-ink">Example</p>
           <p className="mt-1 text-sm text-muted">If you weigh 70 kg and your height is 175 cm:</p>
           <ol className="mt-3 space-y-2 text-sm text-muted">
@@ -185,7 +185,7 @@ export function BmiCalculator({ tool }: { tool: Tool }) {
 
 function Stat({ label, value }: { label: string; value: string }) {
   return (
-    <div className="rounded-xl bg-slate-50 px-2 py-3">
+    <div className="rounded-md bg-surface-2 px-2 py-3">
       <p className="text-xs text-subtle">{label}</p>
       <p className="mt-1 text-sm font-semibold text-ink">{value}</p>
     </div>
@@ -194,8 +194,8 @@ function Stat({ label, value }: { label: string; value: string }) {
 
 function ScaleArt() {
   return (
-    <div className="hidden h-36 w-44 items-center justify-center rounded-3xl bg-blue-50 lg:flex">
-      <svg viewBox="0 0 160 120" className="h-24 w-32 text-blue-400" fill="none">
+    <div className="hidden h-28 w-36 items-center justify-center rounded-lg border border-line bg-surface lg:flex">
+      <svg viewBox="0 0 160 120" className="h-16 w-24 text-muted" fill="none">
         <rect x="38" y="38" width="84" height="54" rx="16" stroke="currentColor" strokeWidth="4" />
         <circle cx="80" cy="65" r="10" fill="currentColor" />
         <path d="M20 92h120" stroke="currentColor" strokeWidth="4" strokeLinecap="round" />

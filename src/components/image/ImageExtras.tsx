@@ -12,8 +12,8 @@ const PRIVACY = "The photo stays on this device. We do not get a copy.";
 
 function FilePicker({ accept = "image/*", onFile }: { accept?: string; onFile: (file: File) => void }) {
   return (
-    <label className="flex cursor-pointer flex-col items-center justify-center rounded-xl border border-dashed border-slate-300 bg-slate-50 px-4 py-8 text-center hover:border-brand hover:bg-blue-50">
-      <Upload className="h-6 w-6 text-brand" />
+    <label className="flex cursor-pointer flex-col items-center justify-center rounded-lg border border-dashed border-line bg-surface-2 px-4 py-8 text-center hover:border-ink/25">
+      <Upload className="h-6 w-6 text-muted" />
       <span className="mt-2 text-sm font-semibold text-ink">Choose an image</span>
       <input type="file" accept={accept} className="sr-only" onChange={(event) => { const file = event.target.files?.[0]; if (file) onFile(file); }} />
     </label>
@@ -94,7 +94,7 @@ export function HeicToJpg({ tool }: { tool: Tool }) {
 
 export function ImageWatermark({ tool }: { tool: Tool }) {
   const { loaded, error, onFile } = useLoaded();
-  const [text, setText] = useState("toolora.app");
+  const [text, setText] = useState("DEVTOOLIO");
   const [opacity, setOpacity] = useState("0.35");
 
   return (

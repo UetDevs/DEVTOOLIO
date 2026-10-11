@@ -46,7 +46,7 @@ function TextArea({
       readOnly={readOnly}
       onChange={onChange ? (event) => onChange(event.target.value.slice(0, LIMIT)) : undefined}
       placeholder={placeholder}
-      className="min-h-56 w-full resize-y rounded-lg border border-line bg-white px-3.5 py-3 text-sm leading-6 text-ink outline-none ring-brand/15 placeholder:text-subtle focus:border-brand focus:ring-4"
+      className="min-h-56 w-full resize-y rounded-md border border-line bg-surface px-3.5 py-3 text-sm leading-6 text-ink outline-none placeholder:text-subtle focus:border-ink/30"
     />
   );
 }
@@ -85,7 +85,7 @@ function StylePills({
           type="button"
           onClick={() => onChange(style.id)}
           className={`rounded-full px-3 py-1.5 text-xs font-semibold ${
-            value === style.id ? "bg-brand text-white" : "bg-slate-100 text-muted hover:bg-slate-200"
+            value === style.id ? "bg-brand text-brand-ink" : "bg-surface-2 text-muted hover:text-ink"
           }`}
         >
           {style.label}
@@ -322,7 +322,7 @@ export function GrammarChecker({ tool }: { tool: Tool }) {
 }
 
 export function WordCounter({ tool }: { tool: Tool }) {
-  const [input, setInput] = useState("Toolora helps you edit your own writing with clear, free browser tools.");
+  const [input, setInput] = useState("DEVTOOLIO helps you edit your own writing with clear, free browser tools.");
   const stats = analyzeText(input);
 
   return (
@@ -452,7 +452,7 @@ export function ReadabilityChecker({ tool }: { tool: Tool }) {
     <ToolPageLayout
       tool={tool}
       extra={
-        <section className="mt-4 rounded-2xl border border-line bg-white p-6 shadow-card">
+        <section className="mt-4 rounded-lg border border-line bg-surface p-5">
           <h2 className="text-lg font-semibold text-ink">How to read the score</h2>
           <p className="mt-2 text-sm leading-6 text-muted">
             Flesch Reading Ease runs from 0 to 100. Higher is easier. The grade estimate is Flesch–Kincaid.
@@ -480,7 +480,7 @@ export function ReadabilityChecker({ tool }: { tool: Tool }) {
 
 function Stat({ label, value }: { label: string; value: string }) {
   return (
-    <div className="rounded-xl bg-slate-50 px-2 py-3 text-center">
+    <div className="rounded-xl bg-surface-2 px-2 py-3 text-center">
       <p className="text-xs text-subtle">{label}</p>
       <p className="mt-1 text-sm font-semibold text-ink">{value}</p>
     </div>

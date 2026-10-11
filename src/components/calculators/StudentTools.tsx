@@ -35,7 +35,7 @@ function letterFromPercent(score: number) {
 
 function Stat({ label, value }: { label: string; value: string }) {
   return (
-    <div className="rounded-xl bg-slate-50 px-2 py-3 text-center">
+    <div className="rounded-xl bg-surface-2 px-2 py-3 text-center">
       <p className="text-xs text-subtle">{label}</p>
       <p className="mt-1 text-sm font-semibold text-ink">{value}</p>
     </div>
@@ -511,7 +511,7 @@ export function WeightedGradeCalculator({ tool }: { tool: Tool }) {
       tool={tool}
       example={
         <p className="mt-4 text-sm text-muted">
-          Each category score is multiplied by its weight. If weights do not add to 100, Toolora scales them so the result stays fair.
+          Each category score is multiplied by its weight. If weights do not add to 100, DEVTOOLIO scales them so the result stays fair.
         </p>
       }
     >
@@ -699,7 +699,7 @@ function GradeScale() {
   ];
 
   return (
-    <section className="mt-4 rounded-2xl border border-line bg-white p-6 shadow-card">
+    <section className="mt-4 rounded-lg border border-line bg-surface p-5">
       <h2 className="text-lg font-semibold text-ink">Standard 4.0 grade scale</h2>
       <div className="mt-4 divide-y divide-line text-sm">
         {rows.map(([letter, range, points]) => (

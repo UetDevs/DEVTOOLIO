@@ -1,9 +1,10 @@
 import type { MetadataRoute } from "next";
 import { categories } from "@/lib/categories";
+import { site } from "@/lib/site";
 import { tools } from "@/lib/tools";
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const base = "https://toolora.app";
+  const base = site.url;
   const staticRoutes = [
     "",
     "/tools",

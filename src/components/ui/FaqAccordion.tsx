@@ -24,7 +24,7 @@ export function FaqAccordion({ items }: { items: FaqItem[] }) {
               <ChevronRight
                 className={cn(
                   "h-4 w-4 shrink-0 text-subtle transition",
-                  isOpen && "rotate-90 text-brand",
+                  isOpen && "rotate-90 text-ink",
                 )}
               />
             </button>

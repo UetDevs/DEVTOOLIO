@@ -4,7 +4,7 @@ import { Article } from "@/components/legal/Article";
 
 export const metadata: Metadata = {
   title: "What is a Unix timestamp",
-  description: "Unix epoch time in seconds, how it relates to UTC, and how to convert it on Toolora.",
+  description: "Unix epoch time in seconds, how it relates to UTC, and how to convert it on DEVTOOLIO.",
 };
 
 export default function UnixGuidePage() {
@@ -29,7 +29,7 @@ export default function UnixGuidePage() {
       </p>
       <p>
         Use the{" "}
-        <Link href="/tools/developer-tools/unix-timestamp" className="font-semibold text-brand">
+        <Link href="/tools/developer-tools/unix-timestamp" >
           Unix Timestamp Converter
         </Link>{" "}
         to move between epoch seconds and a readable ISO date.

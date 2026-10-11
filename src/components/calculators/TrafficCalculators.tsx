@@ -8,7 +8,7 @@ import { formatNumber, parseNumber } from "@/lib/utils";
 
 function Stat({ label, value }: { label: string; value: string }) {
   return (
-    <div className="rounded-xl bg-slate-50 px-2 py-3 text-center">
+    <div className="rounded-xl bg-surface-2 px-2 py-3 text-center">
       <p className="text-xs text-subtle">{label}</p>
       <p className="mt-1 text-sm font-semibold text-ink">{value}</p>
     </div>

@@ -1,5 +1,5 @@
-import type { Metadata } from "next";
-import { Plus_Jakarta_Sans } from "next/font/google";
+import type { Metadata, Viewport } from "next";
+import { Geist, Geist_Mono } from "next/font/google";
 import { AdSenseScript } from "@/components/ads/AdSenseScript";
 import { CookieBanner } from "@/components/legal/CookieBanner";
 import { SiteShell } from "@/components/layout/SiteShell";
@@ -7,23 +7,31 @@ import { JsonLd } from "@/components/seo/JsonLd";
 import { adsenseClient, googleSiteVerification, site } from "@/lib/site";
 import "./globals.css";
 
-const plusJakarta = Plus_Jakarta_Sans({
-  variable: "--font-plus-jakarta",
+const geist = Geist({
+  variable: "--font-geist",
   subsets: ["latin"],
-  weight: ["400", "500", "600", "700", "800"],
+});
+
+const geistMono = Geist_Mono({
+  variable: "--font-geist-mono",
+  subsets: ["latin"],
 });
 
 export const metadata: Metadata = {
   metadataBase: new URL(site.url),
   title: {
-    default: "Toolora — Calculators, converters and small web tools",
-    template: "%s | Toolora",
+    default: `${site.name} — Developer tools without the friction`,
+    template: `%s | ${site.name}`,
   },
   description: site.description,
   applicationName: site.name,
+  icons: {
+    icon: "/favicon.svg",
+    apple: "/brand/devtoolio-mark.png",
+  },
   alternates: { canonical: "/" },
   openGraph: {
-    title: "Toolora — Calculators, converters and small web tools",
+    title: `${site.name} — Developer tools without the friction`,
     description: site.description,
     type: "website",
     locale: "en_US",
@@ -32,7 +40,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Toolora — Calculators, converters and small web tools",
+    title: `${site.name} — Developer tools without the friction`,
     description: site.description,
   },
   robots: {
@@ -43,9 +51,23 @@ export const metadata: Metadata = {
   other: adsenseClient ? { "google-adsense-account": adsenseClient } : undefined,
 };
 
+export const viewport: Viewport = {
+  themeColor: [
+    { media: "(prefers-color-scheme: light)", color: "#F7F7F4" },
+    { media: "(prefers-color-scheme: dark)", color: "#121411" },
+  ],
+};
+
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
-    <html lang="en" data-scroll-behavior="smooth" className={`${plusJakarta.variable} h-full antialiased`}>
+    <html lang="en" data-scroll-behavior="smooth" className={`${geist.variable} ${geistMono.variable} h-full antialiased`}>
+      <head>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `try{var t=localStorage.getItem('devtoolio-theme');if(t==='dark'||(!t&&matchMedia('(prefers-color-scheme: dark)').matches))document.documentElement.classList.add('dark')}catch(e){}`,
+          }}
+        />
+      </head>
       <body className="min-h-full bg-canvas font-sans text-ink">
         <JsonLd
           data={{

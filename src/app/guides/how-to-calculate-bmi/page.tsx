@@ -4,7 +4,7 @@ import { Article } from "@/components/legal/Article";
 
 export const metadata: Metadata = {
   title: "How to calculate BMI",
-  description: "Learn the Body Mass Index formula, the standard adult ranges, and how to use the Toolora BMI calculator.",
+  description: "Learn the Body Mass Index formula, the standard adult ranges, and how to use the DEVTOOLIO BMI calculator.",
 };
 
 export default function BmiGuidePage() {
@@ -29,7 +29,7 @@ export default function BmiGuidePage() {
       </p>
       <p>
         Use the{" "}
-        <Link href="/tools/calculators/bmi-calculator" className="font-semibold text-brand">
+        <Link href="/tools/calculators/bmi-calculator" >
           BMI Calculator
         </Link>{" "}
         for a fast check.

@@ -56,7 +56,7 @@ function VideoPreview({ url }: { url: string | null }) {
 function ProgressBar({ value, busy }: { value: number; busy: boolean }) {
   if (!busy) return null;
   return (
-    <div className="mt-3 h-2 overflow-hidden rounded-full bg-slate-100">
+    <div className="mt-3 h-2 overflow-hidden rounded-full bg-surface-2">
       <div className="h-full bg-brand transition-all" style={{ width: `${Math.round(value * 100)}%` }} />
     </div>
   );
@@ -262,7 +262,7 @@ export function VideoResizer({ tool }: { tool: Tool }) {
                 <button
                   key={preset.label}
                   type="button"
-                  className="rounded-full border border-line px-3 py-1 text-xs font-semibold text-ink hover:bg-slate-50"
+                  className="rounded-full border border-line px-3 py-1 text-xs font-semibold text-ink hover:bg-surface-2"
                   onClick={() => {
                     if (!loaded) {
                       setWidth(preset.w);
@@ -566,7 +566,7 @@ export function VideoFpsChecker({ tool }: { tool: Tool }) {
             >
               {busy ? "Measuring…" : "Check FPS"}
             </PrimaryButton>
-            {result ? <pre className="mt-4 whitespace-pre-wrap rounded-lg bg-slate-50 p-4 text-sm">{result}</pre> : null}
+            {result ? <pre className="mt-4 whitespace-pre-wrap rounded-lg bg-surface-2 p-4 text-sm">{result}</pre> : null}
           </Panel>
           <Panel title="Preview">
             <VideoPreview url={loaded?.url ?? null} />

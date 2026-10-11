@@ -7,7 +7,7 @@ import { formatNumber, parseNumber } from "@/lib/utils";
 import { Field, Panel, PrimaryButton, ResultCard, SelectInput, TextInput } from "./fields";
 
 export function JsonFormatter({ tool }: { tool: Tool }) {
-  const [input, setInput] = useState('{"hello":"toolora","ready":true}');
+  const [input, setInput] = useState('{"hello":"devtoolio","ready":true}');
   const [output, setOutput] = useState("");
   const [error, setError] = useState("");
 
@@ -34,7 +34,7 @@ export function JsonFormatter({ tool }: { tool: Tool }) {
         </Panel>
         <Panel title="Formatted Output">
           {error ? <p className="text-sm text-rose-600">{error}</p> : null}
-          <pre className="min-h-64 overflow-auto rounded-lg bg-slate-50 p-4 text-sm">{output || "Click Format JSON to beautify your data."}</pre>
+          <pre className="min-h-64 overflow-auto rounded-lg bg-surface-2 p-4 text-sm">{output || "Click Format JSON to beautify your data."}</pre>
         </Panel>
       </div>
     </ToolPageLayout>
@@ -42,7 +42,7 @@ export function JsonFormatter({ tool }: { tool: Tool }) {
 }
 
 export function Base64Tool({ tool }: { tool: Tool }) {
-  const [input, setInput] = useState("Hello Toolora");
+  const [input, setInput] = useState("Hello DEVTOOLIO");
   const [mode, setMode] = useState("encode");
   const result = useMemo(() => {
     try {
@@ -94,11 +94,11 @@ export function WordCounter({ tool }: { tool: Tool }) {
         </Panel>
         <ResultCard title="Words" value={String(words)}>
           <div className="mt-6 grid grid-cols-2 gap-3">
-            <div className="rounded-xl bg-slate-50 p-3 text-center">
+            <div className="rounded-xl bg-surface-2 p-3 text-center">
               <p className="text-xs text-subtle">Characters</p>
               <p className="font-semibold">{chars}</p>
             </div>
-            <div className="rounded-xl bg-slate-50 p-3 text-center">
+            <div className="rounded-xl bg-surface-2 p-3 text-center">
               <p className="text-xs text-subtle">Sentences</p>
               <p className="font-semibold">{sentences}</p>
             </div>
