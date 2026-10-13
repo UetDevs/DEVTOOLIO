@@ -34,6 +34,13 @@ export async function generateMetadata({
   return {
     title: category.name,
     description: category.description,
+    alternates: { canonical: category.href },
+    openGraph: {
+      title: category.name,
+      description: category.description,
+      url: category.href,
+      type: "website",
+    },
   };
 }
 

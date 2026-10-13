@@ -29,7 +29,6 @@ export const metadata: Metadata = {
     icon: "/favicon.svg",
     apple: "/brand/devtoolio-mark.png",
   },
-  alternates: { canonical: "/" },
   openGraph: {
     title: `${site.name} — Developer tools without the friction`,
     description: site.description,

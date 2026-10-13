@@ -5,6 +5,13 @@ import { Article } from "@/components/legal/Article";
 export const metadata: Metadata = {
   title: "What is a Unix timestamp",
   description: "Unix epoch time in seconds, how it relates to UTC, and how to convert it on DEVTOOLIO.",
+  alternates: { canonical: "/guides/what-is-a-unix-timestamp" },
+  openGraph: {
+    title: "What is a Unix timestamp",
+    description: "Unix epoch time in seconds, how it relates to UTC, and how to convert it on DEVTOOLIO.",
+    url: "/guides/what-is-a-unix-timestamp",
+    type: "article",
+  },
 };
 
 export default function UnixGuidePage() {

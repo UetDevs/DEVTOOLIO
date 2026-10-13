@@ -6,6 +6,14 @@ export const metadata: Metadata = {
   title: "How to paraphrase your own writing",
   description:
     "Use a paraphrasing tool as an editor for drafts you wrote. Why rewriting someone else’s work is still plagiarism.",
+  alternates: { canonical: "/guides/how-to-paraphrase-your-own-writing" },
+  openGraph: {
+    title: "How to paraphrase your own writing",
+    description:
+      "Use a paraphrasing tool as an editor for drafts you wrote. Why rewriting someone else’s work is still plagiarism.",
+    url: "/guides/how-to-paraphrase-your-own-writing",
+    type: "article",
+  },
 };
 
 export default function ParaphraseGuidePage() {

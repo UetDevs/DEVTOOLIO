@@ -5,6 +5,13 @@ import { Article } from "@/components/legal/Article";
 export const metadata: Metadata = {
   title: "How to calculate BMI",
   description: "Learn the Body Mass Index formula, the standard adult ranges, and how to use the DEVTOOLIO BMI calculator.",
+  alternates: { canonical: "/guides/how-to-calculate-bmi" },
+  openGraph: {
+    title: "How to calculate BMI",
+    description: "Learn the Body Mass Index formula, the standard adult ranges, and how to use the DEVTOOLIO BMI calculator.",
+    url: "/guides/how-to-calculate-bmi",
+    type: "article",
+  },
 };
 
 export default function BmiGuidePage() {

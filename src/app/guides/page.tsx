@@ -5,6 +5,13 @@ import { PageFrame } from "@/components/theme/PageFrame";
 export const metadata: Metadata = {
   title: "Guides",
   description: "Short notes on BMI, loans, paraphrasing, privacy and Unix time.",
+  alternates: { canonical: "/guides" },
+  openGraph: {
+    title: "Guides",
+    description: "Short notes on BMI, loans, paraphrasing, privacy and Unix time.",
+    url: "/guides",
+    type: "website",
+  },
 };
 
 const guides = [

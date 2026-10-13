@@ -5,6 +5,13 @@ import { Article } from "@/components/legal/Article";
 export const metadata: Metadata = {
   title: "Disclaimer",
   description: "Limits of DEVTOOLIO calculators, converters, writing helpers and health or finance estimates.",
+  alternates: { canonical: "/disclaimer" },
+  openGraph: {
+    title: "Disclaimer",
+    description: "Limits of DEVTOOLIO calculators, converters, writing helpers and health or finance estimates.",
+    url: "/disclaimer",
+    type: "website",
+  },
 };
 
 export default function DisclaimerPage() {

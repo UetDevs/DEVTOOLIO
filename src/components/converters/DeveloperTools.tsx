@@ -88,7 +88,7 @@ export function Base64Tool({ tool, lockedMode }: { tool: Tool; lockedMode?: "enc
 
 export function UrlEncoder({ tool, lockedMode }: { tool: Tool; lockedMode?: "encode" | "decode" }) {
   const [input, setInput] = useState(
-    lockedMode === "decode" ? "https%3A%2F%2Fdevtoolio.app%2Ftools%3Fq%3Dpdf%20to%20jpg" : "https://devtoolio.app/tools?q=pdf to jpg",
+    lockedMode === "decode" ? "https%3A%2F%2Fdevtoolio.tech%2Ftools%3Fq%3Dpdf%20to%20jpg" : "https://devtoolio.tech/tools?q=pdf to jpg",
   );
   const [mode, setMode] = useState(lockedMode ?? "encode");
   let result = "";

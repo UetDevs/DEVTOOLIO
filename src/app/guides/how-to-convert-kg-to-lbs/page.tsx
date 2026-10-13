@@ -5,6 +5,13 @@ import { Article } from "@/components/legal/Article";
 export const metadata: Metadata = {
   title: "How to convert kilograms to pounds",
   description: "The exact kg to lbs factor, a worked example, and when to use a unit converter.",
+  alternates: { canonical: "/guides/how-to-convert-kg-to-lbs" },
+  openGraph: {
+    title: "How to convert kilograms to pounds",
+    description: "The exact kg to lbs factor, a worked example, and when to use a unit converter.",
+    url: "/guides/how-to-convert-kg-to-lbs",
+    type: "article",
+  },
 };
 
 export default function KgGuidePage() {

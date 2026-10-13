@@ -1,10 +1,18 @@
+import type { Metadata } from "next";
 import { ToolsCatalog } from "@/components/catalog/ToolsCatalog";
 import { PageFrame } from "@/components/theme/PageFrame";
 import { tools } from "@/lib/tools";
 
-export const metadata = {
+export const metadata: Metadata = {
   title: "All Tools",
   description: "Every DEVTOOLIO calculator, converter and utility on one page.",
+  alternates: { canonical: "/tools" },
+  openGraph: {
+    title: "All Tools",
+    description: "Every DEVTOOLIO calculator, converter and utility on one page.",
+    url: "/tools",
+    type: "website",
+  },
 };
 
 export default async function ToolsPage({

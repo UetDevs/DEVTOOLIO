@@ -6,6 +6,13 @@ import { site } from "@/lib/site";
 export const metadata: Metadata = {
   title: "Contact",
   description: `Email ${site.email} for ${site.name} feedback, tool requests or privacy questions.`,
+  alternates: { canonical: "/contact" },
+  openGraph: {
+    title: "Contact",
+    description: `Email ${site.email} for ${site.name} feedback, tool requests or privacy questions.`,
+    url: "/contact",
+    type: "website",
+  },
 };
 
 export default function ContactPage() {

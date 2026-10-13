@@ -6,6 +6,13 @@ import { site } from "@/lib/site";
 export const metadata: Metadata = {
   title: "About",
   description: `What ${site.name} is, what we will not build, and how to reach us.`,
+  alternates: { canonical: "/about" },
+  openGraph: {
+    title: "About",
+    description: `What ${site.name} is, what we will not build, and how to reach us.`,
+    url: "/about",
+    type: "website",
+  },
 };
 
 export default function AboutPage() {

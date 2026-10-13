@@ -6,6 +6,13 @@ import { site } from "@/lib/site";
 export const metadata: Metadata = {
   title: "Cookie Policy",
   description: "Cookies and local storage used on DEVTOOLIO, including Google AdSense if ads are enabled.",
+  alternates: { canonical: "/cookie-policy" },
+  openGraph: {
+    title: "Cookie Policy",
+    description: "Cookies and local storage used on DEVTOOLIO, including Google AdSense if ads are enabled.",
+    url: "/cookie-policy",
+    type: "website",
+  },
 };
 
 export default function CookiePolicyPage() {

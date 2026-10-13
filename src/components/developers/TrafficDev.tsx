@@ -28,7 +28,7 @@ function LocalCopy({ text }: { text: string }) {
 }
 
 export function QrCodeGenerator({ tool }: { tool: Tool }) {
-  const [text, setText] = useState("https://devtoolio.app");
+  const [text, setText] = useState("https://devtoolio.tech");
   const [src, setSrc] = useState("");
   const [error, setError] = useState("");
 
@@ -162,7 +162,7 @@ export function HtaccessGenerator({ tool }: { tool: Tool }) {
 
 export function RobotsTxtGenerator({ tool }: { tool: Tool }) {
   const [mode, setMode] = useState("allow");
-  const [sitemap, setSitemap] = useState("https://devtoolio.app/sitemap.xml");
+  const [sitemap, setSitemap] = useState("https://devtoolio.tech/sitemap.xml");
   const text = `User-agent: *\n${mode === "allow" ? "Allow: /" : "Disallow: /"}\nSitemap: ${sitemap}`;
 
   return (

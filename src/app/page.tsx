@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import { HeroSearch } from "@/components/home/HeroSearch";
@@ -7,6 +8,13 @@ import { TrustBadges } from "@/components/ui/TrustBadges";
 import { categories } from "@/lib/categories";
 import { site } from "@/lib/site";
 import { getPopularTools, getToolsByCategory, tools } from "@/lib/tools";
+
+export const metadata: Metadata = {
+  alternates: { canonical: "/" },
+  openGraph: {
+    url: "/",
+  },
+};
 
 const guides = [
   { href: "/guides/how-to-calculate-bmi", title: "How to calculate BMI", note: "Formula and ranges" },

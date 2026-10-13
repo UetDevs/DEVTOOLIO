@@ -5,6 +5,13 @@ import { Article } from "@/components/legal/Article";
 export const metadata: Metadata = {
   title: "How loan payments work",
   description: "Understand principal, interest rate and loan term, then estimate a monthly payment with DEVTOOLIO.",
+  alternates: { canonical: "/guides/how-loan-payments-work" },
+  openGraph: {
+    title: "How loan payments work",
+    description: "Understand principal, interest rate and loan term, then estimate a monthly payment with DEVTOOLIO.",
+    url: "/guides/how-loan-payments-work",
+    type: "article",
+  },
 };
 
 export default function LoanGuidePage() {
