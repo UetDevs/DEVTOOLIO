@@ -1,6 +1,6 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useState } from "react";
 import { Check, Copy } from "lucide-react";
 import { Field, Panel, PrimaryButton, ResultCard, SelectInput, TextInput } from "@/components/calculators/fields";
 import { ToolPageLayout } from "@/components/tools/ToolPageLayout";
