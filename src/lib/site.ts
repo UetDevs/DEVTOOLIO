@@ -1,6 +1,6 @@
 export const site = {
   name: "DEVTOOLIO",
-  url: process.env.NEXT_PUBLIC_SITE_URL ?? "https://toolora-chi.vercel.app",
+  url: process.env.NEXT_PUBLIC_SITE_URL ?? "https://devtoolio.tech",
   email: process.env.NEXT_PUBLIC_CONTACT_EMAIL ?? "devexe01@gmail.com",
   tagline: "Developer tools. Minus the friction.",
   description:
