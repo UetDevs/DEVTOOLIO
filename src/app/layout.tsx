@@ -26,8 +26,12 @@ export const metadata: Metadata = {
   description: site.description,
   applicationName: site.name,
   icons: {
-    icon: "/favicon.svg",
-    apple: "/brand/devtoolio-mark.png",
+    icon: [
+      { url: "/icon-192.png", sizes: "192x192", type: "image/png" },
+      { url: "/icon-48.png", sizes: "48x48", type: "image/png" },
+      { url: "/favicon.ico", sizes: "48x48", type: "image/x-icon" },
+    ],
+    apple: [{ url: "/apple-touch-icon.png", sizes: "180x180", type: "image/png" }],
   },
   openGraph: {
     title: `${site.name} — Developer tools without the friction`,
@@ -35,16 +39,11 @@ export const metadata: Metadata = {
     type: "website",
     locale: "en_US",
     siteName: site.name,
-    url: site.url,
   },
   twitter: {
     card: "summary_large_image",
     title: `${site.name} — Developer tools without the friction`,
     description: site.description,
-  },
-  robots: {
-    index: true,
-    follow: true,
   },
   verification: googleSiteVerification ? { google: googleSiteVerification } : undefined,
   other: adsenseClient ? { "google-adsense-account": adsenseClient } : undefined,
@@ -78,7 +77,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
             "@context": "https://schema.org",
             "@type": "WebSite",
             name: site.name,
-            url: site.url,
+            url: site.home,
             description: site.description,
             potentialAction: {
               "@type": "SearchAction",
@@ -92,7 +91,8 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
             "@context": "https://schema.org",
             "@type": "Organization",
             name: site.name,
-            url: site.url,
+            url: site.home,
+            logo: `${site.url}/icon-192.png`,
             email: site.email,
           }}
         />

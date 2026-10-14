@@ -1,15 +1,16 @@
 import Link from "next/link";
 import type { Metadata } from "next";
 import { PageFrame } from "@/components/theme/PageFrame";
+import { absoluteUrl } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "Guides",
   description: "Short notes on BMI, loans, paraphrasing, privacy and Unix time.",
-  alternates: { canonical: "/guides" },
+  alternates: { canonical: absoluteUrl("/guides") },
   openGraph: {
     title: "Guides",
     description: "Short notes on BMI, loans, paraphrasing, privacy and Unix time.",
-    url: "/guides",
+    url: absoluteUrl("/guides"),
     type: "website",
   },
 };

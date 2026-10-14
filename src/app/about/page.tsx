@@ -1,16 +1,16 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { Article } from "@/components/legal/Article";
-import { site } from "@/lib/site";
+import { absoluteUrl, site } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "About",
   description: `What ${site.name} is, what we will not build, and how to reach us.`,
-  alternates: { canonical: "/about" },
+  alternates: { canonical: absoluteUrl("/about") },
   openGraph: {
     title: "About",
     description: `What ${site.name} is, what we will not build, and how to reach us.`,
-    url: "/about",
+    url: absoluteUrl("/about"),
     type: "website",
   },
 };

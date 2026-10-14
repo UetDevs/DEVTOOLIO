@@ -1,4 +1,3 @@
-import type { Metadata } from "next";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import { HeroSearch } from "@/components/home/HeroSearch";
@@ -8,13 +7,6 @@ import { TrustBadges } from "@/components/ui/TrustBadges";
 import { categories } from "@/lib/categories";
 import { site } from "@/lib/site";
 import { getPopularTools, getToolsByCategory, tools } from "@/lib/tools";
-
-export const metadata: Metadata = {
-  alternates: { canonical: "/" },
-  openGraph: {
-    url: "/",
-  },
-};
 
 const guides = [
   { href: "/guides/how-to-calculate-bmi", title: "How to calculate BMI", note: "Formula and ranges" },
@@ -32,6 +24,8 @@ export default function HomePage() {
 
   return (
     <div>
+      <link rel="canonical" href={site.home} />
+      <meta property="og:url" content={site.home} />
       <section className="stage-hero border-b border-line">
         <div className="mx-auto max-w-3xl px-4 pb-10 pt-10 text-center sm:px-6 sm:pb-12 sm:pt-14">
           <p className="animate-enter font-mono text-[11px] uppercase tracking-[0.16em] text-subtle">

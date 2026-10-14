@@ -1,15 +1,16 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { Article } from "@/components/legal/Article";
+import { absoluteUrl } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "Keep files private in browser tools",
   description: "How DEVTOOLIO image, document and video tools process files locally, and when a site would need a server.",
-  alternates: { canonical: "/guides/keep-files-private-in-browser-tools" },
+  alternates: { canonical: absoluteUrl("/guides/keep-files-private-in-browser-tools") },
   openGraph: {
     title: "Keep files private in browser tools",
     description: "How DEVTOOLIO image, document and video tools process files locally, and when a site would need a server.",
-    url: "/guides/keep-files-private-in-browser-tools",
+    url: absoluteUrl("/guides/keep-files-private-in-browser-tools"),
     type: "article",
   },
 };

@@ -2,19 +2,10 @@ import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
   transpilePackages: ["pdfjs-dist"],
+  trailingSlash: false,
+  skipTrailingSlashRedirect: true,
   async redirects() {
     return [
-      {
-        source: "/:path*",
-        has: [
-          {
-            type: "host",
-            value: "www.devtoolio.tech",
-          },
-        ],
-        destination: "https://devtoolio.tech/:path*",
-        statusCode: 301,
-      },
       { source: "/paraphrasing-tool", destination: "/tools/writing/paraphrasing-tool", permanent: true },
       { source: "/sentence-rewriter", destination: "/tools/writing/sentence-rewriter", permanent: true },
       { source: "/grammar-checker", destination: "/tools/writing/grammar-checker", permanent: true },

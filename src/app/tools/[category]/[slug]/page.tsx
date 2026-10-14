@@ -1,5 +1,6 @@
 import { notFound } from "next/navigation";
 import { renderTool } from "@/components/calculators/registry";
+import { absoluteUrl } from "@/lib/site";
 import { tools, getTool } from "@/lib/tools";
 
 export function generateStaticParams() {
@@ -21,11 +22,11 @@ export async function generateMetadata({
     title: tool.name,
     description: tool.longDescription ?? tool.description,
     keywords: tool.keywords,
-    alternates: { canonical: tool.href },
+    alternates: { canonical: absoluteUrl(tool.href) },
     openGraph: {
       title: tool.name,
       description: tool.longDescription ?? tool.description,
-      url: tool.href,
+      url: absoluteUrl(tool.href),
       type: "website",
     },
   };

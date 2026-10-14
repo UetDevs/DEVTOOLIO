@@ -3,6 +3,7 @@ import { notFound } from "next/navigation";
 import { PageFrame } from "@/components/theme/PageFrame";
 import { ToolCard } from "@/components/ui/ToolCard";
 import { categories, converterGroups, getCategoryBySlug } from "@/lib/categories";
+import { absoluteUrl } from "@/lib/site";
 import { getToolsByCategory } from "@/lib/tools";
 import type { CategoryId } from "@/lib/types";
 import { cn } from "@/lib/utils";
@@ -34,11 +35,11 @@ export async function generateMetadata({
   return {
     title: category.name,
     description: category.description,
-    alternates: { canonical: category.href },
+    alternates: { canonical: absoluteUrl(category.href) },
     openGraph: {
       title: category.name,
       description: category.description,
-      url: category.href,
+      url: absoluteUrl(category.href),
       type: "website",
     },
   };

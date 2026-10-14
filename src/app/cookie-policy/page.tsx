@@ -1,16 +1,16 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { Article } from "@/components/legal/Article";
-import { site } from "@/lib/site";
+import { absoluteUrl, site } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "Cookie Policy",
   description: "Cookies and local storage used on DEVTOOLIO, including Google AdSense if ads are enabled.",
-  alternates: { canonical: "/cookie-policy" },
+  alternates: { canonical: absoluteUrl("/cookie-policy") },
   openGraph: {
     title: "Cookie Policy",
     description: "Cookies and local storage used on DEVTOOLIO, including Google AdSense if ads are enabled.",
-    url: "/cookie-policy",
+    url: absoluteUrl("/cookie-policy"),
     type: "website",
   },
 };

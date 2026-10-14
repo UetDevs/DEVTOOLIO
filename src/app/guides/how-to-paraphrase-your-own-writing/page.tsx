@@ -1,17 +1,18 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { Article } from "@/components/legal/Article";
+import { absoluteUrl } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "How to paraphrase your own writing",
   description:
     "Use a paraphrasing tool as an editor for drafts you wrote. Why rewriting someone else’s work is still plagiarism.",
-  alternates: { canonical: "/guides/how-to-paraphrase-your-own-writing" },
+  alternates: { canonical: absoluteUrl("/guides/how-to-paraphrase-your-own-writing") },
   openGraph: {
     title: "How to paraphrase your own writing",
     description:
       "Use a paraphrasing tool as an editor for drafts you wrote. Why rewriting someone else’s work is still plagiarism.",
-    url: "/guides/how-to-paraphrase-your-own-writing",
+    url: absoluteUrl("/guides/how-to-paraphrase-your-own-writing"),
     type: "article",
   },
 };

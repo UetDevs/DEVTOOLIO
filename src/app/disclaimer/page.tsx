@@ -1,15 +1,16 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { Article } from "@/components/legal/Article";
+import { absoluteUrl } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "Disclaimer",
   description: "Limits of DEVTOOLIO calculators, converters, writing helpers and health or finance estimates.",
-  alternates: { canonical: "/disclaimer" },
+  alternates: { canonical: absoluteUrl("/disclaimer") },
   openGraph: {
     title: "Disclaimer",
     description: "Limits of DEVTOOLIO calculators, converters, writing helpers and health or finance estimates.",
-    url: "/disclaimer",
+    url: absoluteUrl("/disclaimer"),
     type: "website",
   },
 };

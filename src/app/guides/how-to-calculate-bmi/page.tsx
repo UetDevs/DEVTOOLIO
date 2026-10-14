@@ -1,15 +1,16 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { Article } from "@/components/legal/Article";
+import { absoluteUrl } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "How to calculate BMI",
   description: "Learn the Body Mass Index formula, the standard adult ranges, and how to use the DEVTOOLIO BMI calculator.",
-  alternates: { canonical: "/guides/how-to-calculate-bmi" },
+  alternates: { canonical: absoluteUrl("/guides/how-to-calculate-bmi") },
   openGraph: {
     title: "How to calculate BMI",
     description: "Learn the Body Mass Index formula, the standard adult ranges, and how to use the DEVTOOLIO BMI calculator.",
-    url: "/guides/how-to-calculate-bmi",
+    url: absoluteUrl("/guides/how-to-calculate-bmi"),
     type: "article",
   },
 };

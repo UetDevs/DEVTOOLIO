@@ -1,16 +1,16 @@
 import type { Metadata } from "next";
 import { ContactForm } from "@/components/contact/ContactForm";
 import { PageFrame } from "@/components/theme/PageFrame";
-import { site } from "@/lib/site";
+import { absoluteUrl, site } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "Contact",
   description: `Email ${site.email} for ${site.name} feedback, tool requests or privacy questions.`,
-  alternates: { canonical: "/contact" },
+  alternates: { canonical: absoluteUrl("/contact") },
   openGraph: {
     title: "Contact",
     description: `Email ${site.email} for ${site.name} feedback, tool requests or privacy questions.`,
-    url: "/contact",
+    url: absoluteUrl("/contact"),
     type: "website",
   },
 };

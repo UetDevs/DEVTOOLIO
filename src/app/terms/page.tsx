@@ -1,16 +1,16 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { Article } from "@/components/legal/Article";
-import { site } from "@/lib/site";
+import { absoluteUrl, site } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "Terms & Conditions",
   description: "Rules for using DEVTOOLIO’s free tools, including acceptable use and limits of liability.",
-  alternates: { canonical: "/terms" },
+  alternates: { canonical: absoluteUrl("/terms") },
   openGraph: {
     title: "Terms & Conditions",
     description: "Rules for using DEVTOOLIO’s free tools, including acceptable use and limits of liability.",
-    url: "/terms",
+    url: absoluteUrl("/terms"),
     type: "website",
   },
 };

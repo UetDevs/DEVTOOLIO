@@ -1,16 +1,16 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { Article } from "@/components/legal/Article";
-import { site } from "@/lib/site";
+import { absoluteUrl, site } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "Privacy Policy",
   description: `How ${site.name} handles local processing, contact email, cookies and Google advertising.`,
-  alternates: { canonical: "/privacy-policy" },
+  alternates: { canonical: absoluteUrl("/privacy-policy") },
   openGraph: {
     title: "Privacy Policy",
     description: `How ${site.name} handles local processing, contact email, cookies and Google advertising.`,
-    url: "/privacy-policy",
+    url: absoluteUrl("/privacy-policy"),
     type: "website",
   },
 };

@@ -1,16 +1,15 @@
 import type { MetadataRoute } from "next";
 import { categories } from "@/lib/categories";
-import { site } from "@/lib/site";
+import { absoluteUrl, site } from "@/lib/site";
 import { tools } from "@/lib/tools";
 
-const lastModified = new Date();
+export const dynamic = "force-static";
 
 type ChangeFrequency = NonNullable<MetadataRoute.Sitemap[number]["changeFrequency"]>;
 
 function entry(path: string, changeFrequency: ChangeFrequency, priority: number): MetadataRoute.Sitemap[number] {
   return {
-    url: path ? `${site.url}${path}` : site.url,
-    lastModified,
+    url: absoluteUrl(path),
     changeFrequency,
     priority,
   };
@@ -26,8 +25,20 @@ const guidePaths = [
 ];
 
 export default function sitemap(): MetadataRoute.Sitemap {
+  const seenSlugs = new Set<string>();
+  for (const tool of tools) {
+    const expected = `/tools/${tool.category}/${tool.slug}`;
+    if (seenSlugs.has(tool.slug)) {
+      throw new Error(`Duplicate tool slug in sitemap: ${tool.slug}`);
+    }
+    seenSlugs.add(tool.slug);
+    if (tool.href !== expected) {
+      throw new Error(`Tool ${tool.slug} href ${tool.href} does not match ${expected}`);
+    }
+  }
+
   const pages: MetadataRoute.Sitemap = [
-    entry("", "weekly", 1),
+    entry("/", "weekly", 1),
     entry("/tools", "weekly", 0.9),
     entry("/guides", "weekly", 0.8),
     entry("/about", "monthly", 0.5),
@@ -45,6 +56,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
   const seen = new Set<string>();
   return pages.filter((page) => {
+    const url = new URL(page.url);
+    if (url.origin !== site.url) return false;
+    if (url.hostname.startsWith("www.")) return false;
+    if (url.search || url.hash) return false;
+    if (url.pathname !== "/" && url.pathname.endsWith("/")) return false;
+    if (url.pathname !== url.pathname.toLowerCase()) return false;
     if (seen.has(page.url)) return false;
     seen.add(page.url);
     return true;

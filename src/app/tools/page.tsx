@@ -1,16 +1,17 @@
 import type { Metadata } from "next";
 import { ToolsCatalog } from "@/components/catalog/ToolsCatalog";
 import { PageFrame } from "@/components/theme/PageFrame";
+import { absoluteUrl } from "@/lib/site";
 import { tools } from "@/lib/tools";
 
 export const metadata: Metadata = {
   title: "All Tools",
   description: "Every DEVTOOLIO calculator, converter and utility on one page.",
-  alternates: { canonical: "/tools" },
+  alternates: { canonical: absoluteUrl("/tools") },
   openGraph: {
     title: "All Tools",
     description: "Every DEVTOOLIO calculator, converter and utility on one page.",
-    url: "/tools",
+    url: absoluteUrl("/tools"),
     type: "website",
   },
 };

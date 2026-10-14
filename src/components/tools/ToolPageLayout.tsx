@@ -9,7 +9,7 @@ import { JsonLd } from "@/components/seo/JsonLd";
 import { getCategory } from "@/lib/categories";
 import { defaultFaqs, toolHowTo, toolTitle } from "@/lib/tool-copy";
 import { getRelatedTools } from "@/lib/tools";
-import { site } from "@/lib/site";
+import { absoluteUrl, site } from "@/lib/site";
 import type { Tool } from "@/lib/types";
 
 export function ToolPageLayout({
@@ -37,8 +37,8 @@ export function ToolPageLayout({
           "@type": "WebPage",
           name: tool.name,
           description: tool.longDescription ?? tool.description,
-          url: `${site.url}${tool.href}`,
-          isPartOf: { "@type": "WebSite", name: site.name, url: site.url },
+          url: absoluteUrl(tool.href),
+          isPartOf: { "@type": "WebSite", name: site.name, url: site.home },
         }}
       />
       <JsonLd

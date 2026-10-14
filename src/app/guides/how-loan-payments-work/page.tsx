@@ -1,15 +1,16 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { Article } from "@/components/legal/Article";
+import { absoluteUrl } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "How loan payments work",
   description: "Understand principal, interest rate and loan term, then estimate a monthly payment with DEVTOOLIO.",
-  alternates: { canonical: "/guides/how-loan-payments-work" },
+  alternates: { canonical: absoluteUrl("/guides/how-loan-payments-work") },
   openGraph: {
     title: "How loan payments work",
     description: "Understand principal, interest rate and loan term, then estimate a monthly payment with DEVTOOLIO.",
-    url: "/guides/how-loan-payments-work",
+    url: absoluteUrl("/guides/how-loan-payments-work"),
     type: "article",
   },
 };
