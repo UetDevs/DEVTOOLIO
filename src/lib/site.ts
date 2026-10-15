@@ -1,9 +1,12 @@
-const PREFERRED_ORIGIN = "https://devtoolio.tech";
+const PREFERRED_ORIGIN = "https://www.devtoolio.tech";
 
 function originFrom(value: string) {
   try {
     const url = new URL(value);
-    const hostname = url.hostname.replace(/^www\./i, "");
+    const hostname = url.hostname.toLowerCase();
+    if (hostname === "devtoolio.tech" || hostname === "www.devtoolio.tech") {
+      return PREFERRED_ORIGIN;
+    }
     return `${url.protocol}//${hostname}`;
   } catch {
     return PREFERRED_ORIGIN;

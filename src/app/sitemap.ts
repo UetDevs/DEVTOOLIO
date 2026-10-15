@@ -7,9 +7,12 @@ export const dynamic = "force-static";
 
 type ChangeFrequency = NonNullable<MetadataRoute.Sitemap[number]["changeFrequency"]>;
 
+const LASTMOD = "2026-10-15";
+
 function entry(path: string, changeFrequency: ChangeFrequency, priority: number): MetadataRoute.Sitemap[number] {
   return {
     url: absoluteUrl(path),
+    lastModified: LASTMOD,
     changeFrequency,
     priority,
   };
@@ -57,8 +60,10 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const seen = new Set<string>();
   return pages.filter((page) => {
     const url = new URL(page.url);
+    if (url.hostname === "devtoolio.tech") {
+      throw new Error(`Sitemap URL must use the www host: ${page.url}`);
+    }
     if (url.origin !== site.url) return false;
-    if (url.hostname.startsWith("www.")) return false;
     if (url.search || url.hash) return false;
     if (url.pathname !== "/" && url.pathname.endsWith("/")) return false;
     if (url.pathname !== url.pathname.toLowerCase()) return false;

@@ -1,6 +1,7 @@
 import { NextResponse, type NextRequest } from "next/server";
 
 const APEX = "devtoolio.tech";
+const CANONICAL_HOST = `www.${APEX}`;
 
 export function proxy(request: NextRequest) {
   if (request.method !== "GET" && request.method !== "HEAD") {
@@ -11,17 +12,18 @@ export function proxy(request: NextRequest) {
   const current = new URL(request.url);
   const normalizedPath =
     (current.pathname.length > 1 ? current.pathname.replace(/\/+$/, "") : current.pathname).toLowerCase();
-  const onWww = requestHost === `www.${APEX}`;
   const onApex = requestHost === APEX;
+  const onCanonical = requestHost === CANONICAL_HOST;
   const pathChanged = normalizedPath !== current.pathname;
 
-  if (!onWww && !pathChanged) return NextResponse.next();
+  if (!onApex && !pathChanged) return NextResponse.next();
 
   const destination = new URL(request.url);
   destination.pathname = normalizedPath;
-  if (onWww || onApex) {
+  destination.search = current.search;
+  if (onApex || onCanonical) {
     destination.protocol = "https:";
-    destination.hostname = APEX;
+    destination.hostname = CANONICAL_HOST;
     destination.port = "";
   }
 
