@@ -354,7 +354,7 @@ export function ColorConverter({ tool }: { tool: Tool }) {
               }}
             />
           </Field>
-          <div className="mt-4 grid grid-cols-3 gap-3">
+          <div className="mt-4 grid grid-cols-3 gap-2 sm:gap-3">
             {(["r", "g", "b"] as const).map((channel) => (
               <Field key={channel} label={channel.toUpperCase()}>
                 <TextInput
@@ -367,7 +367,7 @@ export function ColorConverter({ tool }: { tool: Tool }) {
               </Field>
             ))}
           </div>
-          <div className="mt-4 grid grid-cols-3 gap-3">
+          <div className="mt-4 grid grid-cols-3 gap-2 sm:gap-3">
             <Field label="H">
               <TextInput
                 type="number"

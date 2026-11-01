@@ -200,7 +200,7 @@ export function SleepCalculator({ tool }: { tool: Tool }) {
           <p className="mt-4 text-sm text-muted">Assumes 15 minutes to fall asleep and 90-minute cycles. People vary.</p>
         </Panel>
         <ResultCard title="Try going to bed at" value={cycles[0].label}>
-          <div className="mt-6 grid grid-cols-3 gap-3">
+          <div className="mt-6 grid grid-cols-1 gap-3 min-[420px]:grid-cols-3">
             {cycles.map((item) => (
               <Stat key={item.count} label={`${item.count} cycles`} value={item.label} />
             ))}

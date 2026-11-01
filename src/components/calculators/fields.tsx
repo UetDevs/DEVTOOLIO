@@ -33,7 +33,7 @@ export function AffixInput({
   return (
     <div className="flex overflow-hidden rounded-md border border-line focus-within:border-ink/30">
       <input {...props} className="h-11 min-w-0 flex-1 bg-surface px-3.5 text-sm text-ink outline-none placeholder:text-subtle" />
-      <span className="flex items-center border-l border-line bg-surface-2 px-3 font-mono text-xs text-muted">
+      <span className="flex shrink-0 items-center border-l border-line bg-surface-2 px-2 font-mono text-xs text-muted sm:px-3">
         {suffix}
       </span>
     </div>
@@ -89,7 +89,7 @@ export function Segmented<T extends string>({
           type="button"
           onClick={() => onChange(option.value)}
           className={cn(
-            "h-9 rounded-[5px] text-sm font-medium",
+            "min-h-9 rounded-[5px] px-2 py-2 text-center text-sm font-medium leading-snug",
             value === option.value ? "bg-surface text-ink" : "text-muted",
           )}
         >
@@ -112,9 +112,9 @@ export function ResultCard({
   children?: React.ReactNode;
 }) {
   return (
-    <div className="rounded-lg border border-line bg-surface p-5">
+    <div className="min-w-0 rounded-lg border border-line bg-surface p-4 sm:p-5">
       <p className="text-xs font-medium uppercase tracking-[0.12em] text-subtle">{title}</p>
-      <p className="mt-2 font-mono text-4xl font-semibold tracking-tight text-ink sm:text-5xl">{value}</p>
+      <p className="mt-2 break-words font-mono text-3xl font-semibold tracking-tight text-ink sm:text-5xl">{value}</p>
       {subtitle ? <p className="mt-2 text-sm font-medium text-success">{subtitle}</p> : null}
       {children}
     </div>
@@ -131,9 +131,9 @@ export function Panel({
   children: React.ReactNode;
 }) {
   return (
-    <section className="rounded-lg border border-line bg-surface p-5">
-      <div className="mb-4 flex items-center justify-between gap-3">
-        <h2 className="text-sm font-semibold text-ink">{title}</h2>
+    <section className="min-w-0 rounded-lg border border-line bg-surface p-4 sm:p-5">
+      <div className="mb-4 flex flex-wrap items-center justify-between gap-3">
+        <h2 className="min-w-0 text-sm font-semibold text-ink">{title}</h2>
         {action}
       </div>
       {children}

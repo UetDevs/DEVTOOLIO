@@ -48,7 +48,7 @@ export function AgeCalculator({ tool }: { tool: Tool }) {
         </Panel>
         <ResultCard title="Your Age" value={result ? `${result.years}` : "—"} subtitle={result ? "years old" : undefined}>
           {result ? (
-            <div className="mt-6 grid grid-cols-3 gap-3 text-center">
+            <div className="mt-6 grid grid-cols-2 gap-3 text-center sm:grid-cols-3">
               <Stat label="Months" value={String(result.months)} />
               <Stat label="Days" value={String(result.days)} />
               <Stat label="Total days" value={formatNumber(result.totalDays, 0)} />
@@ -278,7 +278,7 @@ export function SalaryCalculator({ tool }: { tool: Tool }) {
         </Panel>
         <ResultCard title="Yearly Salary" value={yearly == null ? "—" : `$${formatNumber(yearly, 0)}`}>
           {yearly != null ? (
-            <div className="mt-6 grid grid-cols-3 gap-3">
+            <div className="mt-6 grid grid-cols-1 gap-3 min-[420px]:grid-cols-3">
               <Stat label="Monthly" value={`$${formatNumber(yearly / 12)}`} />
               <Stat label="Weekly" value={`$${formatNumber(yearly / 52)}`} />
               <Stat label="Hourly" value={`$${formatNumber(yearly / (weeklyHours * 52))}`} />
@@ -552,7 +552,7 @@ function TimeRow({
   return (
     <div>
       <p className="mb-1.5 text-sm font-medium text-ink">{label}</p>
-      <div className="grid grid-cols-3 gap-2">
+      <div className="grid grid-cols-1 gap-2 min-[420px]:grid-cols-3">
         <AffixInput suffix="h" value={h} onChange={(e) => setH(e.target.value)} />
         <AffixInput suffix="m" value={m} onChange={(e) => setM(e.target.value)} />
         <AffixInput suffix="s" value={s} onChange={(e) => setS(e.target.value)} />

@@ -20,9 +20,9 @@ export const site = {
   url: origin,
   home: `${origin}/`,
   email: process.env.NEXT_PUBLIC_CONTACT_EMAIL ?? "devexe01@gmail.com",
-  tagline: "Developer tools. Minus the friction.",
+  tagline: "Convert, calculate, and check your writing.",
   description:
-    "Practical tools for coding, converting, calculating, and getting work done — all in one place. Most run in your browser.",
+    "Free browser tools for unit conversion, reading grade level, Unix time, calculators, and small coding jobs. No account.",
 };
 
 export function absoluteUrl(path: string) {

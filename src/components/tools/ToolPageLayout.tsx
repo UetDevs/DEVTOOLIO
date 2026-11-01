@@ -35,12 +35,39 @@ export function ToolPageLayout({
         data={{
           "@context": "https://schema.org",
           "@type": "WebPage",
-          name: tool.name,
+          name: tool.metaTitle ?? tool.name,
           description: tool.longDescription ?? tool.description,
           url: absoluteUrl(tool.href),
           isPartOf: { "@type": "WebSite", name: site.name, url: site.home },
         }}
       />
+      <JsonLd
+        data={{
+          "@context": "https://schema.org",
+          "@type": "WebApplication",
+          name: tool.metaTitle ?? tool.name,
+          description: tool.longDescription ?? tool.description,
+          url: absoluteUrl(tool.href),
+          applicationCategory: "UtilitiesApplication",
+          operatingSystem: "Any",
+          browserRequirements: "Requires a modern web browser",
+          isAccessibleForFree: true,
+          offers: { "@type": "Offer", price: "0", priceCurrency: "USD" },
+        }}
+      />
+      {category ? (
+        <JsonLd
+          data={{
+            "@context": "https://schema.org",
+            "@type": "BreadcrumbList",
+            itemListElement: [
+              { "@type": "ListItem", position: 1, name: "Home", item: site.home },
+              { "@type": "ListItem", position: 2, name: category.name, item: absoluteUrl(category.href) },
+              { "@type": "ListItem", position: 3, name: tool.name, item: absoluteUrl(tool.href) },
+            ],
+          }}
+        />
+      ) : null}
       <JsonLd
         data={{
           "@context": "https://schema.org",
@@ -55,25 +82,32 @@ export function ToolPageLayout({
       <div className="mx-auto max-w-6xl px-4 pb-16 pt-8 sm:px-6">
         <nav className="flex flex-wrap items-center gap-1 text-sm text-subtle" aria-label="Breadcrumb">
           <Link href="/" className="hover:text-ink">Home</Link>
-          <ChevronRight className="h-3.5 w-3.5" />
+          <ChevronRight className="h-3.5 w-3.5 shrink-0" />
           <Link href={category?.href ?? "/tools"} className="hover:text-ink">
             {category?.name ?? "Tools"}
           </Link>
-          <ChevronRight className="h-3.5 w-3.5" />
-          <span className="text-ink">{tool.name}</span>
+          <ChevronRight className="h-3.5 w-3.5 shrink-0" />
+          <span className="min-w-0 text-ink">{tool.name}</span>
         </nav>
 
-        <div className="mt-6 grid items-start gap-6 lg:grid-cols-[1fr_auto]">
-          <div>
+        <div className="mt-6 grid items-start gap-6 lg:grid-cols-[minmax(0,1fr)_auto]">
+          <div className="min-w-0">
             {tool.badge ? (
               <p className="font-mono text-[11px] uppercase tracking-[0.14em] text-subtle">{tool.badge}</p>
             ) : null}
-            <h1 className="mt-2 text-3xl font-semibold tracking-tight text-ink sm:text-4xl">
-              {tool.name}
+            <h1 className="mt-2 text-3xl font-semibold tracking-tight text-balance text-ink sm:text-4xl">
+              {tool.metaTitle ?? tool.name}
             </h1>
-            <p className="mt-3 max-w-2xl text-sm leading-7 text-muted sm:text-base">
+            <p className="mt-3 max-w-2xl text-sm leading-7 text-pretty text-muted sm:text-base">
               {tool.longDescription ?? tool.description}
             </p>
+            {tool.guide ? (
+              <p className="mt-3 text-sm">
+                <Link href={tool.guide.href} className="font-medium text-ink underline underline-offset-2">
+                  {tool.guide.label}
+                </Link>
+              </p>
+            ) : null}
             <div className="mt-5">
               <TrustBadges />
             </div>

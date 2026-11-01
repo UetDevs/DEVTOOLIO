@@ -42,6 +42,9 @@ export type Tool = {
   status: ToolStatus;
   keywords: string[];
   badge?: string;
+  /** Search-result title. The card still uses `name`. */
+  metaTitle?: string;
   longDescription?: string;
   faqs?: FaqItem[];
+  guide?: { href: string; label: string };
 };

@@ -61,7 +61,23 @@ export const extraTools: Tool[] = [
   t("mph-to-kmh", "MPH to KM/H", "Convert miles per hour to kilometers per hour.", "unit-converters", "Gauge", "teal", ["mph to kmh", "miles per hour"], { badge: "Units" }),
   t("kmh-to-mph", "KM/H to MPH", "Convert kilometers per hour to miles per hour.", "unit-converters", "Gauge", "teal", ["kmh to mph"], { badge: "Units" }),
   t("stone-to-kg", "Stone to KG", "Convert stone to kilograms.", "unit-converters", "Weight", "green", ["stone to kg"], { badge: "Units" }),
-  t("kg-to-stone", "KG to Stone", "Convert kilograms to stone.", "unit-converters", "Weight", "green", ["kg to stone"], { badge: "Units" }),
+  t("kg-to-stone", "KG to Stone", "Convert kilograms to stone.", "unit-converters", "Weight", "green", ["how to convert kg into stone", "kg to stone", "kg into stone", "kilograms to stone"], {
+    badge: "Units",
+    metaTitle: "How to convert kg into stone",
+    longDescription:
+      "Divide kilograms by 6.35029318. One stone is 14 pounds, or 6.35029318 kg, so 70 kg is about 11.02 stone.",
+    guide: { href: "/guides/how-to-convert-kg-to-stone", label: "See the kg to stone formula" },
+    faqs: [
+      {
+        question: "How do I convert kg into stone?",
+        answer: "Divide the kilograms by 6.35029318. 70 kg is about 11.02 stone.",
+      },
+      {
+        question: "What is a stone?",
+        answer: "A stone is a British unit of body weight. 1 stone = 14 pounds = 6.35029318 kilograms.",
+      },
+    ],
+  }),
   t("oz-to-ml", "OZ to ML", "Convert US fluid ounces to milliliters.", "unit-converters", "Droplets", "sky", ["oz to ml", "fl oz"], { badge: "Units" }),
   t("ml-to-oz", "ML to OZ", "Convert milliliters to US fluid ounces.", "unit-converters", "Droplets", "sky", ["ml to oz"], { badge: "Units" }),
   t("psi-to-bar", "PSI to Bar", "Convert pounds per square inch to bar.", "unit-converters", "Gauge", "orange", ["psi to bar", "tire pressure"], { badge: "Units" }),

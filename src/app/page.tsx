@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import { HeroSearch } from "@/components/home/HeroSearch";
@@ -8,11 +9,52 @@ import { categories } from "@/lib/categories";
 import { site } from "@/lib/site";
 import { getPopularTools, getToolsByCategory, tools } from "@/lib/tools";
 
+export const metadata: Metadata = {
+  title: { absolute: `${site.name} — Free converters, calculators, and writing tools` },
+  description: site.description,
+  alternates: { canonical: site.home },
+  openGraph: {
+    title: `${site.name} — Free converters, calculators, and writing tools`,
+    description: site.description,
+    url: site.home,
+    type: "website",
+  },
+};
+
+const answers = [
+  {
+    href: "/tools/writing/readability-checker",
+    title: "What grade level is my writing?",
+    text: "Paste a paragraph. The grade level is a Flesch–Kincaid estimate of the US school grade that can read it comfortably.",
+  },
+  {
+    href: "/tools/developer-tools/unix-timestamp",
+    title: "What is Unix time?",
+    text: "Seconds since 1 January 1970 UTC. Paste a timestamp or pick a date to convert it.",
+  },
+  {
+    href: "/tools/unit-converters/kg-to-lbs",
+    title: "How to convert kg to pounds",
+    text: "Multiply by 2.2046226218. 70 kg is about 154.32 lb. The same step transfers kg to lbs.",
+  },
+  {
+    href: "/tools/unit-converters/kg-to-stone",
+    title: "How to convert kg into stone",
+    text: "Divide by 6.35029318. One stone is 14 pounds, so 70 kg is about 11.02 stone.",
+  },
+  {
+    href: "/tools/unit-converters/liters-to-gallons",
+    title: "15 liters is how many gallons?",
+    text: "15 liters is 3.96 US gallons, or 3.30 imperial gallons.",
+  },
+];
+
 const guides = [
-  { href: "/guides/how-to-calculate-bmi", title: "How to calculate BMI", note: "Formula and ranges" },
-  { href: "/guides/how-loan-payments-work", title: "How loan payments work", note: "Principal and interest" },
-  { href: "/guides/keep-files-private-in-browser-tools", title: "Keep files private in browser tools", note: "Local processing" },
-  { href: "/guides/what-is-a-unix-timestamp", title: "What is a Unix timestamp", note: "Epoch time" },
+  { href: "/guides/what-grade-level-is-my-writing", title: "What grade level is my writing?", note: "Flesch–Kincaid" },
+  { href: "/guides/what-is-a-unix-timestamp", title: "What is Unix time?", note: "Epoch seconds" },
+  { href: "/guides/how-to-convert-kg-to-lbs", title: "How to convert kg to pounds", note: "1 kg = 2.20 lb" },
+  { href: "/guides/how-to-convert-kg-to-stone", title: "How to convert kg into stone", note: "1 st = 6.35 kg" },
+  { href: "/guides/how-many-gallons-is-15-liters", title: "15 liters is how many gallons?", note: "US and imperial" },
 ];
 
 export default function HomePage() {
@@ -24,8 +66,6 @@ export default function HomePage() {
 
   return (
     <div>
-      <link rel="canonical" href={site.home} />
-      <meta property="og:url" content={site.home} />
       <section className="stage-hero border-b border-line">
         <div className="mx-auto max-w-3xl px-4 pb-10 pt-10 text-center sm:px-6 sm:pb-12 sm:pt-14">
           <p className="animate-enter font-mono text-[11px] uppercase tracking-[0.16em] text-subtle">
@@ -43,6 +83,23 @@ export default function HomePage() {
           <div className="animate-enter mt-5 flex justify-center">
             <TrustBadges />
           </div>
+        </div>
+      </section>
+
+      <section className="mx-auto max-w-6xl px-4 py-12 sm:px-6 sm:py-14">
+        <div className="max-w-2xl">
+          <h2 className="text-xl font-semibold tracking-tight text-ink">Straight answers</h2>
+          <p className="mt-2 text-sm leading-6 text-muted">
+            Short versions of questions people look up. Open the tool if you want to run your own number.
+          </p>
+        </div>
+        <div className="mt-6 grid gap-3 sm:grid-cols-2">
+          {answers.map((item) => (
+            <Link key={item.href} href={item.href} className="motion-card rounded-lg border border-line bg-surface p-4">
+              <h3 className="text-sm font-semibold text-ink">{item.title}</h3>
+              <p className="mt-2 text-sm leading-6 text-muted">{item.text}</p>
+            </Link>
+          ))}
         </div>
       </section>
 
@@ -139,7 +196,7 @@ export default function HomePage() {
             <div className="mt-5 divide-y divide-line border-y border-line">
               {guides.map((guide) => (
                 <Link key={guide.href} href={guide.href} className="flex items-baseline justify-between gap-4 py-3">
-                  <span className="text-sm font-medium text-ink">{guide.title}</span>
+                  <span className="min-w-0 text-sm font-medium text-ink">{guide.title}</span>
                   <span className="hidden shrink-0 font-mono text-[11px] text-subtle sm:inline">{guide.note}</span>
                 </Link>
               ))}

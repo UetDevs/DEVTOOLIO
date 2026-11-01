@@ -7,7 +7,7 @@ export const dynamic = "force-static";
 
 type ChangeFrequency = NonNullable<MetadataRoute.Sitemap[number]["changeFrequency"]>;
 
-const LASTMOD = "2026-10-15";
+const LASTMOD = "2026-11-01";
 
 function entry(path: string, changeFrequency: ChangeFrequency, priority: number): MetadataRoute.Sitemap[number] {
   return {
@@ -24,6 +24,9 @@ const guidePaths = [
   "/guides/how-to-paraphrase-your-own-writing",
   "/guides/keep-files-private-in-browser-tools",
   "/guides/how-to-convert-kg-to-lbs",
+  "/guides/how-to-convert-kg-to-stone",
+  "/guides/how-many-gallons-is-15-liters",
+  "/guides/what-grade-level-is-my-writing",
   "/guides/what-is-a-unix-timestamp",
 ];
 

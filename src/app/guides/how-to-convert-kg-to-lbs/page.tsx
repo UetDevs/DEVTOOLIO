@@ -5,11 +5,11 @@ import { absoluteUrl } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "How to convert kilograms to pounds",
-  description: "The exact kg to lbs factor, a worked example, and when to use a unit converter.",
+  description: "Multiply kilograms by 2.2046226218 to get pounds. 70 kg is about 154.32 lb.",
   alternates: { canonical: absoluteUrl("/guides/how-to-convert-kg-to-lbs") },
   openGraph: {
     title: "How to convert kilograms to pounds",
-    description: "The exact kg to lbs factor, a worked example, and when to use a unit converter.",
+    description: "Multiply kilograms by 2.2046226218 to get pounds. 70 kg is about 154.32 lb.",
     url: absoluteUrl("/guides/how-to-convert-kg-to-lbs"),
     type: "article",
   },
@@ -27,7 +27,8 @@ export default function KgGuidePage() {
       </p>
       <h2>Worked example</h2>
       <p>
-        To convert 70 kg to pounds, multiply 70 × 2.2046226218. The result is about 154.32 lb. To go the
+        To convert 70 kg to pounds, multiply 70 × 2.2046226218. The result is about 154.32 lb. People
+        sometimes phrase the same job as “transfer kg to lbs.” It is still this multiplication. To go the
         other way, multiply pounds by 0.45359237.
       </p>
       <h2>When precision matters</h2>
@@ -41,7 +42,8 @@ export default function KgGuidePage() {
         <Link href="/tools/unit-converters/lbs-to-kg" >
           LBS → KG
         </Link>{" "}
-        pages use the international pound, not a rounded 2.2 shortcut.
+        pages use the international pound, not a rounded 2.2 shortcut. For British body weight, see{" "}
+        <Link href="/guides/how-to-convert-kg-to-stone">how to convert kg into stone</Link>.
       </p>
       <h2>Weight is not the same as force</h2>
       <p>

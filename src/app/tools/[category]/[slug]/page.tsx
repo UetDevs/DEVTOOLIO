@@ -18,16 +18,23 @@ export async function generateMetadata({
   const { slug } = await params;
   const tool = getTool(slug);
   if (!tool) return {};
+  const title = tool.metaTitle ?? tool.name;
+  const description = tool.longDescription ?? tool.description;
   return {
-    title: tool.name,
-    description: tool.longDescription ?? tool.description,
+    title,
+    description,
     keywords: tool.keywords,
     alternates: { canonical: absoluteUrl(tool.href) },
     openGraph: {
-      title: tool.name,
-      description: tool.longDescription ?? tool.description,
+      title,
+      description,
       url: absoluteUrl(tool.href),
       type: "website",
+    },
+    twitter: {
+      card: "summary_large_image" as const,
+      title,
+      description,
     },
   };
 }

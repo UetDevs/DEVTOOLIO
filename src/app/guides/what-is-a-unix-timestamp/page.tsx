@@ -4,12 +4,14 @@ import { Article } from "@/components/legal/Article";
 import { absoluteUrl } from "@/lib/site";
 
 export const metadata: Metadata = {
-  title: "What is a Unix timestamp",
-  description: "Unix epoch time in seconds, how it relates to UTC, and how to convert it on DEVTOOLIO.",
+  title: "What is Unix time?",
+  description:
+    "Unix time is the number of seconds since 00:00:00 UTC on 1 January 1970. See how it differs from milliseconds and how to convert it.",
   alternates: { canonical: absoluteUrl("/guides/what-is-a-unix-timestamp") },
   openGraph: {
-    title: "What is a Unix timestamp",
-    description: "Unix epoch time in seconds, how it relates to UTC, and how to convert it on DEVTOOLIO.",
+    title: "What is Unix time?",
+    description:
+      "Unix time is the number of seconds since 00:00:00 UTC on 1 January 1970. See how it differs from milliseconds and how to convert it.",
     url: absoluteUrl("/guides/what-is-a-unix-timestamp"),
     type: "article",
   },
@@ -17,11 +19,11 @@ export const metadata: Metadata = {
 
 export default function UnixGuidePage() {
   return (
-    <Article title="What is a Unix timestamp">
+    <Article title="What is Unix time?">
       <p>
-        A Unix timestamp is the number of seconds that have passed since 00:00:00 UTC on 1 January 1970,
-        not counting leap seconds. Programmers store it because it is a single integer that any timezone
-        can format later.
+        Unix time is a count of seconds. It starts at 00:00:00 UTC on 1 January 1970 and ignores leap
+        seconds. A Unix timestamp is that count written as an integer. Programmers store it because any
+        timezone can format the same number later.
       </p>
       <h2>Seconds versus milliseconds</h2>
       <p>

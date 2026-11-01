@@ -66,9 +66,9 @@ export default async function CategoryPage({
         <p className="mt-2 font-mono text-xs text-subtle">{items.length} tools</p>
 
         <div className="mt-8 grid gap-8 lg:grid-cols-[220px_1fr]">
-          <aside>
+          <aside className="min-w-0 lg:sticky lg:top-20 lg:self-start">
             <p className="px-1 pb-2 font-mono text-[11px] uppercase tracking-[0.14em] text-subtle">Categories</p>
-            <nav className="flex flex-col gap-0.5">
+            <nav className="-mx-4 flex gap-2 overflow-x-auto px-4 pb-1 lg:mx-0 lg:flex-col lg:gap-0.5 lg:overflow-visible lg:px-0">
               {categories.map((item) => {
                 const count = getToolsByCategory(item.id).length;
                 const active = item.id === category.id;
@@ -77,11 +77,11 @@ export default async function CategoryPage({
                     key={item.id}
                     href={item.href}
                     className={cn(
-                      "flex items-center justify-between rounded-md px-3 py-2 text-sm",
+                      "flex shrink-0 items-center justify-between gap-3 rounded-md px-3 py-2 text-sm lg:shrink",
                       active ? "bg-surface font-medium text-ink" : "text-muted hover:bg-surface-2 hover:text-ink",
                     )}
                   >
-                    <span>{item.name}</span>
+                    <span className="whitespace-nowrap lg:whitespace-normal">{item.name}</span>
                     <span className="font-mono text-[11px] text-subtle">{count}</span>
                   </Link>
                 );

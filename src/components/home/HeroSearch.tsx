@@ -21,7 +21,7 @@ export function HeroSearch({ suggestions }: { suggestions: Tool[] }) {
           onChange={(event) => setQuery(event.target.value)}
           onFocus={() => setOpen(true)}
           onBlur={() => window.setTimeout(() => setOpen(false), 120)}
-          placeholder="Search BMI, JSON, PDF, timestamps…"
+          placeholder="Search grade level, kg, gallons, Unix time…"
           aria-label="Search tools"
           autoComplete="off"
           className="h-12 w-full rounded-md border border-line bg-surface pl-10 pr-16 text-sm outline-none placeholder:text-subtle focus:border-ink/25"

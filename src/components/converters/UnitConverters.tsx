@@ -39,6 +39,7 @@ function PairConvert({
   digits = 4,
   reverseHref,
   reverseLabel,
+  note,
 }: {
   tool: Tool;
   fromLabel: string;
@@ -49,6 +50,7 @@ function PairConvert({
   digits?: number;
   reverseHref?: string;
   reverseLabel?: string;
+  note?: string;
 }) {
   const [value, setValue] = useState(sample);
   const parsed = parseNumber(value);
@@ -62,7 +64,8 @@ function PairConvert({
           <Field label={fromLabel}>
             <TextInput value={value} inputMode="decimal" onChange={(event) => setValue(event.target.value)} />
           </Field>
-          <p className="mt-4 text-sm text-muted">{formula}</p>
+          <p className="mt-4 text-sm leading-6 text-muted">{formula}</p>
+          {note ? <p className="mt-2 text-sm leading-6 text-muted">{note}</p> : null}
           {reverseHref ? (
             <Link href={reverseHref} className="mt-4 inline-flex items-center gap-2 text-sm font-semibold text-brand">
               <ArrowLeftRight className="h-4 w-4" />
@@ -86,7 +89,10 @@ export function KgToLbs({ tool }: { tool: Tool }) {
       tool={tool}
       fromLabel="Kilograms"
       toLabel="Pounds"
-      formula="1 kg = 2.2046226218 lb"
+      formula="1 kg = 2.2046226218 lb. Multiply kilograms by that number."
+      sample="70"
+      digits={2}
+      note="70 kg is about 154.32 pounds."
       convert={(value) => value * KG_TO_LB}
       reverseHref="/tools/unit-converters/lbs-to-kg"
       reverseLabel="LBS → KG"
@@ -242,7 +248,10 @@ export function LitersToGallons({ tool }: { tool: Tool }) {
       tool={tool}
       fromLabel="Liters"
       toLabel="US gallons"
-      formula="1 US gallon = 3.785411784 L"
+      formula="1 US gallon = 3.785411784 L. Divide liters by that number."
+      sample="15"
+      digits={2}
+      note="15 liters is 3.96 US gallons, or 3.30 imperial gallons (1 imperial gallon = 4.54609 L)."
       convert={(value) => value / LITERS_PER_US_GALLON}
     />
   );
@@ -317,7 +326,20 @@ export function StoneToKg({ tool }: { tool: Tool }) {
   return <PairConvert tool={tool} fromLabel="Stone" toLabel="Kilograms" formula="1 st = 6.35029318 kg" convert={(value) => value * KG_PER_STONE} reverseHref="/tools/unit-converters/kg-to-stone" reverseLabel="KG → Stone" />;
 }
 export function KgToStone({ tool }: { tool: Tool }) {
-  return <PairConvert tool={tool} fromLabel="Kilograms" toLabel="Stone" formula="1 st = 6.35029318 kg" convert={(value) => value / KG_PER_STONE} reverseHref="/tools/unit-converters/stone-to-kg" reverseLabel="Stone → KG" />;
+  return (
+    <PairConvert
+      tool={tool}
+      fromLabel="Kilograms"
+      toLabel="Stone"
+      formula="1 stone = 14 lb = 6.35029318 kg. Divide kilograms by 6.35029318."
+      sample="70"
+      digits={2}
+      note="70 kg is about 11.02 stone."
+      convert={(value) => value / KG_PER_STONE}
+      reverseHref="/tools/unit-converters/stone-to-kg"
+      reverseLabel="Stone → KG"
+    />
+  );
 }
 export function OzToMl({ tool }: { tool: Tool }) {
   return <PairConvert tool={tool} fromLabel="US fluid ounces" toLabel="Milliliters" formula="1 fl oz = 29.5735295625 ml" convert={(value) => value * ML_PER_US_FLOZ} reverseHref="/tools/unit-converters/ml-to-oz" reverseLabel="ML → OZ" />;

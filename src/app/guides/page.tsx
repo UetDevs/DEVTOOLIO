@@ -5,17 +5,32 @@ import { absoluteUrl } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "Guides",
-  description: "Short notes on BMI, loans, paraphrasing, privacy and Unix time.",
+  description: "Short notes on grade level, Unix time, kilograms, gallons, BMI, and keeping files private.",
   alternates: { canonical: absoluteUrl("/guides") },
   openGraph: {
     title: "Guides",
-    description: "Short notes on BMI, loans, paraphrasing, privacy and Unix time.",
+    description: "Short notes on grade level, Unix time, kilograms, gallons, BMI, and keeping files private.",
     url: absoluteUrl("/guides"),
     type: "website",
   },
 };
 
 const guides = [
+  {
+    href: "/guides/what-grade-level-is-my-writing",
+    title: "What grade level is my writing?",
+    description: "What the Flesch–Kincaid number means, and what it does not measure.",
+  },
+  {
+    href: "/guides/how-to-convert-kg-to-stone",
+    title: "How to convert kilograms into stone",
+    description: "The stone-to-kilogram factor and a 70 kg example.",
+  },
+  {
+    href: "/guides/how-many-gallons-is-15-liters",
+    title: "15 liters is how many gallons?",
+    description: "US gallons and imperial gallons are different sizes.",
+  },
   {
     href: "/guides/how-to-calculate-bmi",
     title: "How to calculate BMI",
@@ -43,7 +58,7 @@ const guides = [
   },
   {
     href: "/guides/what-is-a-unix-timestamp",
-    title: "What is a Unix timestamp",
+    title: "What is Unix time?",
     description: "Epoch seconds, milliseconds, and how to read them.",
   },
 ];

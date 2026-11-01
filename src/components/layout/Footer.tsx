@@ -8,7 +8,7 @@ import { categories } from "@/lib/categories";
 export function Footer() {
   return (
     <footer className="stage-footer border-t border-white/10 text-[#c8c9c2]">
-      <div className="mx-auto grid max-w-6xl gap-10 px-4 py-12 sm:px-6 md:grid-cols-4">
+      <div className="mx-auto grid max-w-6xl gap-10 px-4 py-12 sm:grid-cols-2 sm:px-6 lg:grid-cols-4">
         <div>
           <Logo inverted />
           <p className="mt-4 max-w-xs text-sm leading-6 text-[#9a9d95]">{site.tagline}</p>

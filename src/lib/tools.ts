@@ -752,14 +752,30 @@ export const tools: Tool[] = [
   {
     slug: "unix-timestamp",
     name: "Unix Timestamp Converter",
+    metaTitle: "What is Unix time?",
     description: "Convert Unix time to a readable date and back.",
+    longDescription:
+      "Unix time is the number of seconds since 00:00:00 UTC on 1 January 1970, not counting leap seconds. It is also called epoch time or a Unix timestamp. Paste a number to see the date, or pick a date to get the timestamp.",
     category: "developer-tools",
     href: "/tools/developer-tools/unix-timestamp",
     icon: "Timer",
     iconTint: "amber",
     status: "ready",
     badge: "Developers",
-    keywords: ["unix timestamp", "epoch", "utc"],
+    keywords: ["what is unix time", "unix time", "unix timestamp", "epoch", "utc"],
+    guide: { href: "/guides/what-is-a-unix-timestamp", label: "Read the short note on Unix time" },
+    faqs: [
+      {
+        question: "What is Unix time?",
+        answer:
+          "Unix time counts seconds since 00:00:00 UTC on 1 January 1970, ignoring leap seconds. People also call it epoch time or a Unix timestamp.",
+      },
+      {
+        question: "Why does my number have 13 digits?",
+        answer:
+          "That is milliseconds, which JavaScript uses. Divide by 1000 to get seconds. This converter accepts both.",
+      },
+    ],
   },
   {
     slug: "uuid-generator",
@@ -943,6 +959,7 @@ export const tools: Tool[] = [
   {
     slug: "kg-to-lbs",
     name: "KG → LBS",
+    metaTitle: "How to convert kg to pounds",
     description: "Convert kilograms to pounds.",
     category: "unit-converters",
     href: "/tools/unit-converters/kg-to-lbs",
@@ -951,8 +968,27 @@ export const tools: Tool[] = [
     popular: true,
     status: "ready",
     badge: "Units",
-    keywords: ["kg to lbs", "kilograms to pounds"],
-    longDescription: "Convert kilograms to pounds using 1 kg = 2.2046226218 lb.",
+    keywords: [
+      "how to convert kg to pounds",
+      "how to transfer kg to lbs",
+      "kg to lbs",
+      "kilograms to pounds",
+      "kg into lbs",
+    ],
+    longDescription:
+      "Multiply kilograms by 2.2046226218. One kilogram is 2.2046226218 pounds, so 70 kg is about 154.32 lb. The same multiplication covers “convert kg to pounds” and “transfer kg to lbs.”",
+    guide: { href: "/guides/how-to-convert-kg-to-lbs", label: "See the kg to pounds formula" },
+    faqs: [
+      {
+        question: "How do I convert kg to pounds?",
+        answer: "Multiply the kilograms by 2.2046226218. 70 kg × 2.2046226218 is about 154.32 pounds.",
+      },
+      {
+        question: "How do I transfer kg to lbs?",
+        answer:
+          "Same conversion. Transfer here means change the unit. Multiply kilograms by 2.2046226218 to get pounds.",
+      },
+    ],
   },
   {
     slug: "lbs-to-kg",
@@ -1065,6 +1101,7 @@ export const tools: Tool[] = [
   {
     slug: "liters-to-gallons",
     name: "Liters → Gallons",
+    metaTitle: "15 liters is how many gallons?",
     description: "Convert liters to US gallons.",
     category: "unit-converters",
     href: "/tools/unit-converters/liters-to-gallons",
@@ -1072,8 +1109,22 @@ export const tools: Tool[] = [
     iconTint: "sky",
     status: "ready",
     badge: "Units",
-    keywords: ["liters to gallons", "l to gal"],
-    longDescription: "Convert liters to US liquid gallons. 1 US gallon is 3.785411784 liters.",
+    keywords: ["15 liters is how many gallons", "liters to gallons", "l to gal", "15 liters"],
+    longDescription:
+      "15 liters is 3.96 US gallons. A US gallon is 3.785411784 liters. In imperial gallons, 15 liters is 3.30 gallons, because an imperial gallon is 4.54609 liters. Change the number if you need a different amount.",
+    guide: { href: "/guides/how-many-gallons-is-15-liters", label: "US gallons versus imperial gallons" },
+    faqs: [
+      {
+        question: "15 liters is how many gallons?",
+        answer:
+          "15 liters is 3.96 US gallons. It is 3.30 imperial (UK) gallons. The page result uses US gallons.",
+      },
+      {
+        question: "Which gallon should I use?",
+        answer:
+          "Use US gallons for US recipes, fuel, and labels. Use imperial gallons for older UK measures. They are not the same size.",
+      },
+    ],
   },
   {
     slug: "inches-to-cm",
@@ -1340,14 +1391,30 @@ export const tools: Tool[] = [
   {
     slug: "readability-checker",
     name: "Readability Checker",
+    metaTitle: "What grade level is my writing?",
     description: "Estimate reading ease and grade level.",
+    longDescription:
+      "Paste a paragraph you wrote. The grade level is a Flesch–Kincaid estimate of the US school grade that would read it comfortably. A 6 is about sixth grade. An 11 is about high school. It measures sentence length and word length, not whether the writing is good.",
     category: "writing",
     href: "/tools/writing/readability-checker",
     icon: "BookOpen",
     iconTint: "green",
     status: "ready",
     badge: "Writing",
-    keywords: ["readability", "flesch", "grade level"],
+    keywords: ["what grade level is my writing", "grade level", "readability", "flesch", "writing"],
+    guide: { href: "/guides/what-grade-level-is-my-writing", label: "How the grade-level number works" },
+    faqs: [
+      {
+        question: "What grade level is my writing?",
+        answer:
+          "Paste your text above. The grade level is Flesch–Kincaid. A result of 8 means a typical eighth-grade reader can follow the sentences.",
+      },
+      {
+        question: "Is a lower grade level better?",
+        answer:
+          "For instructions, email, and the web, grades 6 to 8 are usually easier to finish. A higher number is fine when the reader expects technical words.",
+      },
+    ],
   },
   {
     slug: "pdf-to-jpg",
@@ -1561,13 +1628,77 @@ export function getRelatedTools(tool: Tool, limit = 4) {
   return tools.filter((item) => item.slug !== tool.slug && item.category === tool.category).slice(0, limit);
 }
 
+const SEARCH_STOP = new Set([
+  "a",
+  "an",
+  "the",
+  "is",
+  "my",
+  "to",
+  "of",
+  "in",
+  "on",
+  "for",
+  "and",
+  "or",
+  "how",
+  "what",
+  "into",
+  "it",
+  "many",
+  "your",
+  "do",
+  "does",
+]);
+
+const SEARCH_SYNONYMS: Record<string, string[]> = {
+  pounds: ["lbs", "lb", "pound"],
+  pound: ["lbs", "lb", "pounds"],
+  lbs: ["pounds", "pound", "lb"],
+  lb: ["pounds", "pound", "lbs"],
+  kg: ["kilogram", "kilograms"],
+  kilograms: ["kg"],
+  kilogram: ["kg"],
+  stone: ["stones"],
+  stones: ["stone"],
+  liters: ["litres", "liter", "litre"],
+  litres: ["liters", "liter"],
+  liter: ["liters", "litres"],
+  litre: ["liters", "litres"],
+  gallons: ["gallon"],
+  gallon: ["gallons"],
+  unix: ["epoch", "timestamp"],
+  timestamp: ["unix", "epoch"],
+  epoch: ["unix", "timestamp"],
+  transfer: ["convert", "conversion"],
+  convert: ["conversion"],
+  grade: ["readability", "flesch"],
+  writing: ["readability"],
+};
+
 export function searchTools(query: string) {
   const q = query.trim().toLowerCase();
   if (!q) return tools;
-  return tools.filter((tool) => {
-    const haystack = [tool.name, tool.description, tool.slug, ...tool.keywords].join(" ").toLowerCase();
-    return haystack.includes(q);
-  });
+  const terms = q.split(/[^a-z0-9]+/).filter((term) => term.length > 1 && !SEARCH_STOP.has(term));
+  const scored = tools
+    .map((tool) => {
+      const haystack = [tool.name, tool.metaTitle, tool.description, tool.longDescription, tool.slug, ...tool.keywords]
+        .filter(Boolean)
+        .join(" ")
+        .toLowerCase();
+      if (!terms.length) return haystack.includes(q) ? { tool, score: 1 } : null;
+      let score = 0;
+      for (const term of terms) {
+        const variants = [term, ...(SEARCH_SYNONYMS[term] ?? [])];
+        if (!variants.some((variant) => haystack.includes(variant))) return null;
+        score += haystack.includes(term) ? 2 : 1;
+      }
+      if (haystack.includes(q)) score += 5;
+      return { tool, score };
+    })
+    .filter((item): item is { tool: Tool; score: number } => item != null);
+  scored.sort((a, b) => b.score - a.score || a.tool.name.localeCompare(b.tool.name));
+  return scored.map((item) => item.tool);
 }
 
 export function getCategoryToolCount(category: CategoryId) {

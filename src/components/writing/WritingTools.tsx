@@ -453,10 +453,11 @@ export function ReadabilityChecker({ tool }: { tool: Tool }) {
       tool={tool}
       extra={
         <section className="mt-4 rounded-lg border border-line bg-surface p-5">
-          <h2 className="text-lg font-semibold text-ink">How to read the score</h2>
+          <h2 className="text-lg font-semibold text-ink">How to read the grade level</h2>
           <p className="mt-2 text-sm leading-6 text-muted">
-            Flesch Reading Ease runs from 0 to 100. Higher is easier. The grade estimate is Flesch–Kincaid.
-            These are guides, not a judgment of whether the writing is good.
+            The grade level is Flesch–Kincaid. It estimates the US school grade that can read the passage
+            comfortably. Shorter sentences and shorter words lower the number. Flesch Reading Ease runs from
+            0 to 100, and a higher ease score is easier. Neither number says whether the writing is good.
           </p>
         </section>
       }

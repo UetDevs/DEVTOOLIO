@@ -83,7 +83,7 @@ export function GpaCalculator({ tool }: { tool: Tool }) {
     >
       <div className="grid gap-4 lg:grid-cols-2">
         <Panel title="Semester Courses" action={<AddRowButton onClick={() => setRows([...rows, { name: "", grade: "B", credits: "3" }])}>Add course</AddRowButton>}>
-          <div className="mb-2 hidden grid-cols-[1.3fr_0.7fr_0.6fr_36px] gap-2 text-xs font-medium text-subtle sm:grid">
+          <div className="course-row mb-2 hidden text-xs font-medium text-subtle sm:grid">
             <span>Course</span>
             <span>Grade</span>
             <span>Credits</span>
@@ -91,7 +91,7 @@ export function GpaCalculator({ tool }: { tool: Tool }) {
           </div>
           <div className="space-y-3">
             {rows.map((row, index) => (
-              <div key={index} className="grid grid-cols-[1fr_80px_70px_36px] gap-2 sm:grid-cols-[1.3fr_0.7fr_0.6fr_36px]">
+              <div key={index} className="course-row">
                 <TextInput
                   placeholder="Course"
                   value={row.name}
@@ -176,7 +176,7 @@ export function CgpaCalculator({ tool }: { tool: Tool }) {
         <Panel title="Semester Results" action={<AddRowButton onClick={() => setRows([...rows, { name: `Semester ${rows.length + 1}`, gpa: "3.50", credits: "18" }])}>Add semester</AddRowButton>}>
           <div className="space-y-3">
             {rows.map((row, index) => (
-              <div key={index} className="grid grid-cols-[1fr_80px_80px_36px] gap-2">
+              <div key={index} className="course-row">
                 <TextInput
                   value={row.name}
                   onChange={(e) => {
@@ -313,7 +313,7 @@ export function GradeCalculator({ tool }: { tool: Tool }) {
         <Panel title="Assessments" action={<AddRowButton onClick={() => setRows([...rows, { name: "", score: "", total: "100" }])}>Add score</AddRowButton>}>
           <div className="space-y-3">
             {rows.map((row, index) => (
-              <div key={index} className="grid grid-cols-[1fr_70px_70px_36px] gap-2">
+              <div key={index} className="course-row">
                 <TextInput
                   placeholder="Quiz, homework..."
                   value={row.name}
@@ -393,7 +393,7 @@ export function MarksPercentageCalculator({ tool }: { tool: Tool }) {
         <Panel title="Subject Marks" action={<AddRowButton onClick={() => setRows([...rows, { name: "", obtained: "", total: "100" }])}>Add subject</AddRowButton>}>
           <div className="space-y-3">
             {rows.map((row, index) => (
-              <div key={index} className="grid grid-cols-[1fr_80px_80px_36px] gap-2">
+              <div key={index} className="course-row">
                 <TextInput
                   placeholder="Subject"
                   value={row.name}
@@ -517,7 +517,7 @@ export function WeightedGradeCalculator({ tool }: { tool: Tool }) {
     >
       <div className="grid gap-4 lg:grid-cols-2">
         <Panel title="Grade Categories" action={<AddRowButton onClick={() => setRows([...rows, { name: "", score: "", weight: "10" }])}>Add category</AddRowButton>}>
-          <div className="mb-2 hidden grid-cols-[1fr_80px_80px_36px] gap-2 text-xs font-medium text-subtle sm:grid">
+          <div className="course-row mb-2 hidden text-xs font-medium text-subtle sm:grid">
             <span>Category</span>
             <span>Score %</span>
             <span>Weight</span>
@@ -525,7 +525,7 @@ export function WeightedGradeCalculator({ tool }: { tool: Tool }) {
           </div>
           <div className="space-y-3">
             {rows.map((row, index) => (
-              <div key={index} className="grid grid-cols-[1fr_80px_80px_36px] gap-2">
+              <div key={index} className="course-row">
                 <TextInput
                   placeholder="Homework"
                   value={row.name}

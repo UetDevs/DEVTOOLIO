@@ -48,12 +48,12 @@ export function ToolsCatalog({ initialQuery = "" }: { initialQuery?: string }) {
             className="h-11 w-full rounded-md border border-line bg-surface pl-9 pr-3 text-sm outline-none placeholder:text-subtle focus:border-ink/25"
           />
         </label>
-        <label className="flex items-center gap-2 text-sm text-muted">
+        <label className="flex min-w-0 items-center gap-2 text-sm text-muted">
           <span className="shrink-0">Sort</span>
           <select
             value={sort}
             onChange={(event) => setSort(event.target.value as SortKey)}
-            className="h-11 rounded-md border border-line bg-surface px-3 text-sm text-ink outline-none focus:border-ink/25"
+            className="h-11 min-w-0 flex-1 rounded-md border border-line bg-surface px-3 text-sm text-ink outline-none focus:border-ink/25 sm:flex-none"
           >
             <option value="category">Category</option>
             <option value="name">Name</option>
@@ -61,7 +61,7 @@ export function ToolsCatalog({ initialQuery = "" }: { initialQuery?: string }) {
         </label>
       </div>
 
-      <div className="-mx-4 mt-4 flex gap-2 overflow-x-auto px-4 pb-1 sm:mx-0 sm:flex-wrap sm:overflow-visible sm:px-0">
+      <div className="mt-4 flex flex-wrap gap-2">
         <FilterChip active={category === "all"} onClick={() => setCategory("all")} label="All" count={tools.length} />
         {categories.map((item) => (
           <FilterChip
@@ -135,7 +135,7 @@ function FilterChip({
       type="button"
       onClick={onClick}
       className={cn(
-        "inline-flex h-8 shrink-0 items-center gap-1.5 rounded-md border px-2.5 text-xs font-medium",
+        "inline-flex h-8 items-center gap-1.5 rounded-md border px-2.5 text-xs font-medium",
         active ? "border-ink bg-ink text-canvas" : "border-line bg-surface text-muted hover:text-ink",
       )}
     >

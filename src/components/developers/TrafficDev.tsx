@@ -229,7 +229,7 @@ export function BoxShadowGenerator({ tool }: { tool: Tool }) {
     <ToolPageLayout tool={tool}>
       <div className="grid gap-4 lg:grid-cols-2">
         <Panel title="Shadow">
-          <div className="grid grid-cols-3 gap-3">
+          <div className="grid grid-cols-1 gap-3 min-[420px]:grid-cols-3">
             <Field label="X"><TextInput value={x} onChange={(e) => setX(e.target.value)} /></Field>
             <Field label="Y"><TextInput value={y} onChange={(e) => setY(e.target.value)} /></Field>
             <Field label="Blur"><TextInput value={blur} onChange={(e) => setBlur(e.target.value)} /></Field>

@@ -39,7 +39,7 @@ export function Navbar() {
 
   return (
     <header className="sticky top-0 z-40 border-b border-line bg-canvas/72 backdrop-blur-md">
-      <div className="mx-auto flex h-14 max-w-6xl items-center gap-3 px-4 sm:px-6">
+      <div className="mx-auto flex h-14 min-w-0 max-w-6xl items-center gap-2 px-4 sm:gap-3 sm:px-6">
         <Logo />
         <nav className="hidden items-center gap-5 text-sm text-muted md:flex">
           {links.map((link) => (
@@ -95,7 +95,7 @@ export function Navbar() {
               /
             </kbd>
             {openSearch && query.trim() ? (
-              <div className="animate-menu absolute right-0 top-full z-30 mt-1.5 w-80 rounded-lg border border-line bg-surface p-1.5 shadow-sm">
+              <div className="animate-menu absolute right-0 top-full z-30 mt-1.5 w-[min(20rem,calc(100vw-2rem))] rounded-lg border border-line bg-surface p-1.5 shadow-sm">
                 {results.length ? (
                   results.map((tool) => (
                     <Link
@@ -151,7 +151,7 @@ export function Navbar() {
             ))}
           </div>
           <p className="mt-3 px-3 font-mono text-[11px] uppercase tracking-[0.14em] text-subtle">Categories</p>
-          <div className="mt-1 grid grid-cols-2 gap-0.5">
+          <div className="mt-1 grid grid-cols-1 gap-0.5 min-[420px]:grid-cols-2">
             {categories.map((category) => (
               <Link
                 key={category.id}

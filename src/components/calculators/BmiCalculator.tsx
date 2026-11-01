@@ -159,7 +159,7 @@ export function BmiCalculator({ tool }: { tool: Tool }) {
               className="absolute -top-2 h-0 w-0 -translate-x-1/2 border-x-6 border-t-8 border-x-transparent border-t-slate-700"
               style={{ left: `${marker}%`, borderLeftWidth: 6, borderRightWidth: 6, borderTopWidth: 8 }}
             />
-            <div className="mt-3 flex justify-between text-[11px] text-subtle">
+            <div className="mt-3 grid grid-cols-2 gap-x-3 gap-y-1 text-[11px] leading-4 text-subtle sm:flex sm:justify-between">
               <span>Underweight &lt; 18.5</span>
               <span>Normal 18.5–24.9</span>
               <span>Overweight 25–29.9</span>
@@ -172,7 +172,7 @@ export function BmiCalculator({ tool }: { tool: Tool }) {
               Your BMI is within the normal range. Keep up the good work!
             </p>
           ) : null}
-          <div className="mt-6 grid grid-cols-3 gap-3 text-center">
+          <div className="mt-6 grid grid-cols-2 gap-3 text-center sm:grid-cols-3">
             <Stat label="Weight" value={unit === "metric" ? `${weight || "—"} kg` : `${weight || "—"} lb`} />
             <Stat label="Height" value={unit === "metric" ? `${height || "—"} cm` : `${feet}'${inches}"`} />
             <Stat label="BMI" value={result != null ? formatNumber(result, 1) : "—"} />
