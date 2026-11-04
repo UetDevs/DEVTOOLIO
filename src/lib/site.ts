@@ -31,6 +31,7 @@ export function absoluteUrl(path: string) {
   return `${origin}${normalized}`;
 }
 
-export const adsenseClient = process.env.NEXT_PUBLIC_ADSENSE_CLIENT ?? "";
+export const adsenseClient =
+  process.env.NEXT_PUBLIC_ADSENSE_CLIENT || "ca-pub-3499075809777399";
 export const adsenseSlot = process.env.NEXT_PUBLIC_ADSENSE_SLOT ?? "";
 export const googleSiteVerification = process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION ?? "";

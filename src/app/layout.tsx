@@ -68,7 +68,9 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       suppressHydrationWarning
     >
       <head>
+        <AdSenseScript />
         <script
+          suppressHydrationWarning
           dangerouslySetInnerHTML={{
             __html: `try{var t=localStorage.getItem('devtoolio-theme');if(t==='dark'||(!t&&matchMedia('(prefers-color-scheme: dark)').matches))document.documentElement.classList.add('dark')}catch(e){}`,
           }}
@@ -99,7 +101,6 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
             email: site.email,
           }}
         />
-        <AdSenseScript />
         <SiteShell>{children}</SiteShell>
         <CookieBanner />
       </body>
