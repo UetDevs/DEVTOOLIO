@@ -1,5 +1,6 @@
 import type { MetadataRoute } from "next";
 import { categories } from "@/lib/categories";
+import { guideArticles } from "@/lib/guide-articles";
 import { absoluteUrl, site } from "@/lib/site";
 import { tools } from "@/lib/tools";
 
@@ -19,6 +20,7 @@ function entry(path: string, changeFrequency: ChangeFrequency, priority: number)
 }
 
 const guidePaths = [
+  ...guideArticles.map((guide) => `/guides/${guide.slug}`),
   "/guides/how-to-calculate-bmi",
   "/guides/how-loan-payments-work",
   "/guides/how-to-paraphrase-your-own-writing",

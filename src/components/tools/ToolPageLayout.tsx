@@ -7,10 +7,15 @@ import { ToolCard } from "@/components/ui/ToolCard";
 import { TrustBadges } from "@/components/ui/TrustBadges";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { getCategory } from "@/lib/categories";
-import { defaultFaqs, toolHowTo, toolTitle } from "@/lib/tool-copy";
+import { defaultFaqs, toolHowTo } from "@/lib/tool-copy";
+import { toolDetails } from "@/lib/tool-details";
 import { getRelatedTools } from "@/lib/tools";
 import { absoluteUrl, site } from "@/lib/site";
 import type { Tool } from "@/lib/types";
+
+function isHealthTool(tool: Tool) {
+  return tool.badge?.startsWith("Health") ?? false;
+}
 
 export function ToolPageLayout({
   tool,
@@ -28,6 +33,7 @@ export function ToolPageLayout({
   const category = getCategory(tool.category);
   const related = getRelatedTools(tool);
   const faqs = defaultFaqs(tool);
+  const detail = toolDetails[tool.slug];
 
   return (
     <PageFrame className="animate-fade">
@@ -115,6 +121,15 @@ export function ToolPageLayout({
           {illustration}
         </div>
 
+        {isHealthTool(tool) ? (
+          <p className="mt-6 rounded-lg border border-line bg-surface-2 p-4 text-sm leading-6 text-muted">
+            <span className="font-semibold text-ink">Health note.</span> This is an estimate for general information.
+            It does not diagnose, treat, or prevent any condition. Talk to a doctor, midwife, or dietitian before
+            you change diet, exercise, or medication, and especially if you are pregnant, trying to conceive, or
+            managing a medical condition.
+          </p>
+        ) : null}
+
         <div className="mt-10">{children}</div>
 
         <div className="mt-6">
@@ -123,7 +138,7 @@ export function ToolPageLayout({
 
         <div className="mt-8 grid gap-4 lg:grid-cols-2">
           <section className="rounded-lg border border-line bg-surface p-5">
-            <h2 className="text-sm font-semibold text-ink">How to use {toolTitle(tool)}</h2>
+            <h2 className="text-sm font-semibold text-ink">How to use {tool.name}</h2>
             <p className="mt-3 text-sm leading-7 text-muted">{toolHowTo(tool)}</p>
             {example}
           </section>
@@ -134,6 +149,31 @@ export function ToolPageLayout({
             </div>
           </section>
         </div>
+
+        {detail ? (
+          <section className="mt-8 rounded-lg border border-line bg-surface p-5 sm:p-6">
+            <h2 className="text-lg font-semibold text-ink">How {tool.metaTitle ?? tool.name} works</h2>
+            <p className="mt-3 text-sm leading-7 text-muted">{detail.howItWorks}</p>
+            {detail.formula ? (
+              <div className="mt-4 rounded-md border border-line bg-surface-2 p-3">
+                <p className="text-xs font-semibold uppercase tracking-[0.12em] text-subtle">Formula</p>
+                <p className="mt-1 break-words font-mono text-sm text-ink">{detail.formula}</p>
+              </div>
+            ) : null}
+            <div className="mt-4">
+              <p className="text-sm font-semibold text-ink">Example</p>
+              <p className="mt-1 text-sm leading-7 text-muted">{detail.example}</p>
+            </div>
+            <div className="mt-4">
+              <p className="text-sm font-semibold text-ink">Common mistakes</p>
+              <ul className="mt-2 list-disc space-y-2 pl-5 text-sm leading-7 text-muted">
+                {detail.mistakes.map((item) => (
+                  <li key={item}>{item}</li>
+                ))}
+              </ul>
+            </div>
+          </section>
+        ) : null}
 
         {extra}
 

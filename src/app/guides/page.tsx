@@ -1,6 +1,7 @@
 import Link from "next/link";
 import type { Metadata } from "next";
 import { PageFrame } from "@/components/theme/PageFrame";
+import { guideArticles } from "@/lib/guide-articles";
 import { absoluteUrl } from "@/lib/site";
 
 export const metadata: Metadata = {
@@ -16,6 +17,11 @@ export const metadata: Metadata = {
 };
 
 const guides = [
+  ...guideArticles.map((guide) => ({
+    href: `/guides/${guide.slug}`,
+    title: guide.title,
+    description: guide.description,
+  })),
   {
     href: "/guides/what-grade-level-is-my-writing",
     title: "What grade level is my writing?",
