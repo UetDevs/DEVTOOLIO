@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { Article } from "@/components/legal/Article";
+import { guideBreadcrumbs } from "@/lib/guides-index";
 import { absoluteUrl } from "@/lib/site";
 
 export const metadata: Metadata = {
@@ -17,7 +18,7 @@ export const metadata: Metadata = {
 
 export default function BmiGuidePage() {
   return (
-    <Article title="How to calculate BMI">
+    <Article breadcrumbs={guideBreadcrumbs} title="How to calculate BMI">
       <p>
         Body Mass Index is weight in kilograms divided by height in meters squared. For 70 kg and 175 cm,
         that is 70 ÷ 1.75² = 22.9, which sits in the usual adult “normal” band.

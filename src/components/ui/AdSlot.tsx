@@ -19,7 +19,8 @@ export function AdSlot({ label = "Advertisement" }: { label?: string }) {
   if (!adsenseClient || !adsenseSlot) return null;
 
   return (
-    <aside aria-label={label} className="overflow-hidden rounded-lg border border-line bg-surface-2">
+    <aside aria-label={label} className="my-4 overflow-hidden rounded-lg border border-line bg-surface-2">
+      <p className="px-3 pt-2 font-mono text-[10px] uppercase tracking-[0.14em] text-subtle">{label}</p>
       <ins
         className="adsbygoogle"
         style={{ display: "block" }}

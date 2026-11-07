@@ -4,17 +4,27 @@ import { PageFrame } from "@/components/theme/PageFrame";
 import { absoluteUrl } from "@/lib/site";
 import { tools } from "@/lib/tools";
 
-export const metadata: Metadata = {
-  title: "All Tools",
-  description: "Every DEVTOOLIO calculator, converter and utility on one page.",
-  alternates: { canonical: absoluteUrl("/tools") },
-  openGraph: {
+const description = `All ${tools.length} DEVTOOLIO calculators, converters, image, PDF, writing and developer utilities on one searchable page.`;
+
+export async function generateMetadata({
+  searchParams,
+}: {
+  searchParams: Promise<{ q?: string }>;
+}): Promise<Metadata> {
+  const { q } = await searchParams;
+  return {
     title: "All Tools",
-    description: "Every DEVTOOLIO calculator, converter and utility on one page.",
-    url: absoluteUrl("/tools"),
-    type: "website",
-  },
-};
+    description,
+    alternates: { canonical: absoluteUrl("/tools") },
+    robots: q ? { index: false, follow: true } : undefined,
+    openGraph: {
+      title: "All Tools",
+      description,
+      url: absoluteUrl("/tools"),
+      type: "website",
+    },
+  };
+}
 
 export default async function ToolsPage({
   searchParams,
@@ -28,10 +38,12 @@ export default async function ToolsPage({
       <p className="font-mono text-[11px] uppercase tracking-[0.14em] text-subtle">{tools.length} utilities</p>
       <h1 className="mt-2 text-3xl font-semibold tracking-tight text-ink">All tools</h1>
       <p className="mt-2 max-w-2xl text-sm leading-6 text-muted">
-        {q ? `Results for “${q}”. Refine with a category or sort.` : "Search, filter by category, or scan the full catalog."}
+        {q
+          ? `Results for “${q}”. Refine with a category or sort.`
+          : "Every calculator, converter, and utility on the site. Search by name or task, filter by category, then open a tool to use it in your browser."}
       </p>
       <div className="mt-6">
-        <ToolsCatalog initialQuery={q ?? ""} />
+        <ToolsCatalog key={q ?? ""} initialQuery={q ?? ""} />
       </div>
     </PageFrame>
   );

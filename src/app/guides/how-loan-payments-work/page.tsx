@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { Article } from "@/components/legal/Article";
+import { guideBreadcrumbs } from "@/lib/guides-index";
 import { absoluteUrl } from "@/lib/site";
 
 export const metadata: Metadata = {
@@ -17,7 +18,7 @@ export const metadata: Metadata = {
 
 export default function LoanGuidePage() {
   return (
-    <Article title="How loan payments work">
+    <Article breadcrumbs={guideBreadcrumbs} title="How loan payments work">
       <p>
         A standard installment loan splits repayment into equal monthly amounts. Each payment covers some
         interest and some principal. Early in the term, more of the payment is interest. Later, more of it

@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { Article } from "@/components/legal/Article";
+import { guideBreadcrumbs } from "@/lib/guides-index";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { absoluteUrl } from "@/lib/site";
 
@@ -39,7 +40,7 @@ export default function GradeLevelGuidePage() {
           ],
         }}
       />
-      <Article title={title}>
+      <Article breadcrumbs={guideBreadcrumbs} title={title}>
         <p>
           The grade level of a piece of writing is an estimate, not a mark from a teacher. The usual
           formula on the web is Flesch–Kincaid. It looks at how long the sentences are and how many

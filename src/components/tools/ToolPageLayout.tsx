@@ -40,16 +40,6 @@ export function ToolPageLayout({
       <JsonLd
         data={{
           "@context": "https://schema.org",
-          "@type": "WebPage",
-          name: tool.metaTitle ?? tool.name,
-          description: tool.longDescription ?? tool.description,
-          url: absoluteUrl(tool.href),
-          isPartOf: { "@type": "WebSite", name: site.name, url: site.home },
-        }}
-      />
-      <JsonLd
-        data={{
-          "@context": "https://schema.org",
           "@type": "WebApplication",
           name: tool.metaTitle ?? tool.name,
           description: tool.longDescription ?? tool.description,
@@ -74,17 +64,19 @@ export function ToolPageLayout({
           }}
         />
       ) : null}
-      <JsonLd
-        data={{
-          "@context": "https://schema.org",
-          "@type": "FAQPage",
-          mainEntity: faqs.map((item) => ({
-            "@type": "Question",
-            name: item.question,
-            acceptedAnswer: { "@type": "Answer", text: item.answer },
-          })),
-        }}
-      />
+      {tool.faqs?.length ? (
+        <JsonLd
+          data={{
+            "@context": "https://schema.org",
+            "@type": "FAQPage",
+            mainEntity: tool.faqs.map((item) => ({
+              "@type": "Question",
+              name: item.question,
+              acceptedAnswer: { "@type": "Answer", text: item.answer },
+            })),
+          }}
+        />
+      ) : null}
       <div className="mx-auto max-w-6xl px-4 pb-16 pt-8 sm:px-6">
         <nav className="flex flex-wrap items-center gap-1 text-sm text-subtle" aria-label="Breadcrumb">
           <Link href="/" className="hover:text-ink">Home</Link>

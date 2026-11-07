@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { Article } from "@/components/legal/Article";
+import { guideBreadcrumbs } from "@/lib/guides-index";
 import { absoluteUrl } from "@/lib/site";
 
 export const metadata: Metadata = {
@@ -17,7 +18,7 @@ export const metadata: Metadata = {
 
 export default function PrivacyGuidePage() {
   return (
-    <Article title="Keep files private in browser tools">
+    <Article breadcrumbs={guideBreadcrumbs} title="Keep files private in browser tools">
       <p>
         A lot of “free converters” ask you to upload a photo or PDF. Then a copy sits on someone else’s
         disk until they delete it. These pages try not to do that.

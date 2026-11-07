@@ -4,6 +4,7 @@ import { AdSenseScript } from "@/components/ads/AdSenseScript";
 import { CookieBanner } from "@/components/legal/CookieBanner";
 import { SiteShell } from "@/components/layout/SiteShell";
 import { JsonLd } from "@/components/seo/JsonLd";
+import { consentBootstrapScript } from "@/lib/consent";
 import { adsenseClient, googleSiteVerification, site } from "@/lib/site";
 import "./globals.css";
 
@@ -68,6 +69,9 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       suppressHydrationWarning
     >
       <head>
+        {adsenseClient ? (
+          <script suppressHydrationWarning dangerouslySetInnerHTML={{ __html: consentBootstrapScript }} />
+        ) : null}
         <AdSenseScript />
         <script
           suppressHydrationWarning

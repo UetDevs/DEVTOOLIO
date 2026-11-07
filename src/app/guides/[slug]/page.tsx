@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { Article } from "@/components/legal/Article";
+import { guideBreadcrumbs } from "@/lib/guides-index";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { guideArticles, getGuideArticle } from "@/lib/guide-articles";
 import { absoluteUrl } from "@/lib/site";
@@ -52,7 +53,7 @@ export default async function GuidePage({ params }: { params: Promise<{ slug: st
           })),
         }}
       />
-      <Article title={guide.title}>
+      <Article breadcrumbs={guideBreadcrumbs} title={guide.title}>
         {guide.body.map((block, index) => {
           if (block.t === "h2") return <h2 key={index}>{block.text}</h2>;
           if (block.t === "formula")

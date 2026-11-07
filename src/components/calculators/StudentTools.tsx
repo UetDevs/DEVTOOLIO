@@ -1,6 +1,6 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { Plus, Trash2 } from "lucide-react";
 import { ToolPageLayout } from "@/components/tools/ToolPageLayout";
 import type { Tool } from "@/lib/types";
@@ -574,21 +574,42 @@ export function WeightedGradeCalculator({ tool }: { tool: Tool }) {
 
 export function ExamCountdown({ tool }: { tool: Tool }) {
   const [name, setName] = useState("Final Exam");
-  const [date, setDate] = useState("2026-12-15");
+  const [date, setDate] = useState("");
   const [time, setTime] = useState("09:00");
   const [hoursNeeded, setHoursNeeded] = useState("20");
+  // The clock is read only in the browser so server and client HTML match.
+  const [now, setNow] = useState<number | null>(null);
+
+  useEffect(() => {
+    const tick = () => setNow(Date.now());
+    const frame = window.requestAnimationFrame(() => {
+      tick();
+      setDate((current) => {
+        if (current) return current;
+        const inMonth = new Date(Date.now() + 30 * 86400000);
+        const pad = (value: number) => String(value).padStart(2, "0");
+        return `${inMonth.getFullYear()}-${pad(inMonth.getMonth() + 1)}-${pad(inMonth.getDate())}`;
+      });
+    });
+    const timer = window.setInterval(tick, 60000);
+    return () => {
+      window.cancelAnimationFrame(frame);
+      window.clearInterval(timer);
+    };
+  }, []);
 
   const result = useMemo(() => {
+    if (now == null || !date) return null;
     const target = new Date(`${date}T${time || "00:00"}`);
     if (Number.isNaN(target.getTime())) return null;
-    const ms = target.getTime() - Date.now();
+    const ms = target.getTime() - now;
     const totalHours = ms / 3600000;
     const days = Math.floor(ms / 86400000);
     const hours = Math.floor((ms % 86400000) / 3600000);
     const study = parseNumber(hoursNeeded);
     const perDay = days > 0 && study != null ? study / days : study;
     return { ms, days, hours, totalHours, perDay };
-  }, [date, time, hoursNeeded]);
+  }, [now, date, time, hoursNeeded]);
 
   const passed = result != null && result.ms < 0;
 
@@ -606,7 +627,7 @@ export function ExamCountdown({ tool }: { tool: Tool }) {
         <ResultCard
           title={name || "Days Remaining"}
           value={result == null ? "—" : String(Math.max(result.days, 0))}
-          subtitle={passed ? "This exam date has passed" : "days to go"}
+          subtitle={result == null ? "Pick a date" : passed ? "This exam date has passed" : "days to go"}
         >
           {result && !passed ? (
             <div className="mt-6 grid grid-cols-2 gap-3">

@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { Article } from "@/components/legal/Article";
+import { guideBreadcrumbs } from "@/lib/guides-index";
 import { absoluteUrl } from "@/lib/site";
 
 export const metadata: Metadata = {
@@ -19,7 +20,7 @@ export const metadata: Metadata = {
 
 export default function ParaphraseGuidePage() {
   return (
-    <Article title="How to paraphrase your own writing">
+    <Article breadcrumbs={guideBreadcrumbs} title="How to paraphrase your own writing">
       <p>
         A paraphrasing tool is useful when you already have a draft and want a clearer, simpler or more
         formal version. Paste text you wrote, pick a style, then edit the suggestion so it still sounds

@@ -1,7 +1,6 @@
-"use client";
-
 import Link from "next/link";
 import { Logo } from "@/components/brand/Logo";
+import { CookieSettingsButton } from "@/components/legal/CookieSettingsButton";
 import { site } from "@/lib/site";
 import { categories } from "@/lib/categories";
 
@@ -16,34 +15,35 @@ export function Footer() {
             {site.email}
           </a>
         </div>
-        <div>
-          <h2 className="text-xs font-semibold uppercase tracking-[0.14em] text-white">Product</h2>
+        <nav aria-label="Site">
+          <h2 className="text-xs font-semibold uppercase tracking-[0.14em] text-white">Site</h2>
           <ul className="mt-4 space-y-2 text-sm">
             <li><Link href="/tools" className="hover:text-white">All tools</Link></li>
             <li><Link href="/guides" className="hover:text-white">Guides</Link></li>
-            <li><Link href="/about" className="hover:text-white">About</Link></li>
-            <li><Link href="/contact" className="hover:text-white">Contact</Link></li>
+            <li><Link href="/about" className="hover:text-white">About us</Link></li>
+            <li><Link href="/contact" className="hover:text-white">Contact us</Link></li>
           </ul>
-        </div>
-        <div>
+        </nav>
+        <nav aria-label="Categories">
           <h2 className="text-xs font-semibold uppercase tracking-[0.14em] text-white">Categories</h2>
           <ul className="mt-4 space-y-2 text-sm">
-            {categories.slice(0, 6).map((category) => (
+            {categories.map((category) => (
               <li key={category.id}>
                 <Link href={category.href} className="hover:text-white">{category.name}</Link>
               </li>
             ))}
           </ul>
-        </div>
-        <div>
+        </nav>
+        <nav aria-label="Legal">
           <h2 className="text-xs font-semibold uppercase tracking-[0.14em] text-white">Legal</h2>
           <ul className="mt-4 space-y-2 text-sm">
-            <li><Link href="/privacy-policy" className="hover:text-white">Privacy</Link></li>
-            <li><Link href="/cookie-policy" className="hover:text-white">Cookies</Link></li>
-            <li><Link href="/terms" className="hover:text-white">Terms</Link></li>
+            <li><Link href="/privacy-policy" className="hover:text-white">Privacy Policy</Link></li>
+            <li><Link href="/cookie-policy" className="hover:text-white">Cookie Policy</Link></li>
+            <li><Link href="/terms" className="hover:text-white">Terms of Service</Link></li>
             <li><Link href="/disclaimer" className="hover:text-white">Disclaimer</Link></li>
+            <li><CookieSettingsButton className="text-left hover:text-white" /></li>
           </ul>
-        </div>
+        </nav>
       </div>
       <div className="border-t border-white/10">
         <div className="mx-auto flex max-w-6xl flex-col gap-2 px-4 py-4 text-xs text-[#7d8078] sm:flex-row sm:items-center sm:justify-between sm:px-6">

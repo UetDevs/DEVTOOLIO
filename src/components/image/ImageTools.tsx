@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import { Check, Copy, Upload } from "lucide-react";
 import { Field, Panel, PrimaryButton, ResultCard, SelectInput, TextInput } from "@/components/calculators/fields";
 import { ToolPageLayout } from "@/components/tools/ToolPageLayout";
@@ -104,12 +104,15 @@ export function ImageResizer({ tool }: { tool: Tool }) {
   const [lock, setLock] = useState(true);
   const [format, setFormat] = useState<ImageFormat>("image/png");
   const ratio = loaded ? loaded.image.width / loaded.image.height : 1;
+  const [sizedFor, setSizedFor] = useState(loaded);
 
-  useEffect(() => {
-    if (!loaded) return;
-    setWidth(String(loaded.image.width));
-    setHeight(String(loaded.image.height));
-  }, [loaded]);
+  if (loaded !== sizedFor) {
+    setSizedFor(loaded);
+    if (loaded) {
+      setWidth(String(loaded.image.width));
+      setHeight(String(loaded.image.height));
+    }
+  }
 
   return (
     <ToolPageLayout tool={tool}>
@@ -501,12 +504,10 @@ export function SvgToPng({ tool }: { tool: Tool }) {
 
 export function ImageToBase64({ tool }: { tool: Tool }) {
   const { loaded, error, onFile } = useLoadedImage();
-  const [data, setData] = useState("");
-
-  useEffect(() => {
-    if (!loaded) return;
+  const data = useMemo(() => {
+    if (!loaded) return "";
     const canvas = drawImage(loaded.image, loaded.image.width, loaded.image.height);
-    setData(canvas.toDataURL(loaded.file.type || "image/png"));
+    return canvas.toDataURL(loaded.file.type || "image/png");
   }, [loaded]);
 
   return (

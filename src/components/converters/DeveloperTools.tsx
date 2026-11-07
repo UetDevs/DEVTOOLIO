@@ -1,6 +1,6 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { Field, Panel, PrimaryButton, SelectInput, TextInput } from "@/components/calculators/fields";
 import { ToolPageLayout } from "@/components/tools/ToolPageLayout";
 import type { Tool } from "@/lib/types";
@@ -157,9 +157,19 @@ export function HtmlEntityEncoder({ tool }: { tool: Tool }) {
 }
 
 export function UnixTimestamp({ tool }: { tool: Tool }) {
-  const now = Math.floor(Date.now() / 1000);
-  const [seconds, setSeconds] = useState(String(now));
-  const [iso, setIso] = useState(new Date().toISOString().slice(0, 16));
+  // Fixed sample on the server; the current time is filled in after mount so hydration matches.
+  const [seconds, setSeconds] = useState("1704067200");
+  const [iso, setIso] = useState("2024-01-01T00:00");
+
+  useEffect(() => {
+    const frame = window.requestAnimationFrame(() => {
+      const current = new Date();
+      setSeconds(String(Math.floor(current.getTime() / 1000)));
+      const local = new Date(current.getTime() - current.getTimezoneOffset() * 60000);
+      setIso(local.toISOString().slice(0, 16));
+    });
+    return () => window.cancelAnimationFrame(frame);
+  }, []);
 
   const fromUnix = (() => {
     const value = Number(seconds);

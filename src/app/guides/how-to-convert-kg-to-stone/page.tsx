@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { Article } from "@/components/legal/Article";
+import { guideBreadcrumbs } from "@/lib/guides-index";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { absoluteUrl } from "@/lib/site";
 
@@ -39,7 +40,7 @@ export default function KgToStoneGuidePage() {
           ],
         }}
       />
-      <Article title={title}>
+      <Article breadcrumbs={guideBreadcrumbs} title={title}>
         <p>
           A stone is a British unit still used for body weight. One stone is exactly 14 international
           pounds. One pound is 0.45359237 kilograms, so:

@@ -7,7 +7,6 @@ export type Category = {
   href: string;
   icon: string;
   iconTint: IconTint;
-  countLabel: string;
 };
 
 export const categories: Category[] = [
@@ -18,7 +17,6 @@ export const categories: Category[] = [
     href: "/tools/calculators",
     icon: "Calculator",
     iconTint: "blue",
-    countLabel: "28 tools",
   },
   {
     id: "student-tools",
@@ -27,7 +25,6 @@ export const categories: Category[] = [
     href: "/tools/student-tools",
     icon: "GraduationCap",
     iconTint: "green",
-    countLabel: "11 tools",
   },
   {
     id: "writing",
@@ -36,7 +33,6 @@ export const categories: Category[] = [
     href: "/tools/writing",
     icon: "PenLine",
     iconTint: "purple",
-    countLabel: "23 tools",
   },
   {
     id: "image-tools",
@@ -45,7 +41,6 @@ export const categories: Category[] = [
     href: "/tools/image-tools",
     icon: "Image",
     iconTint: "red",
-    countLabel: "25 tools",
   },
   {
     id: "file-converters",
@@ -54,7 +49,6 @@ export const categories: Category[] = [
     href: "/tools/file-converters",
     icon: "FileText",
     iconTint: "amber",
-    countLabel: "11 tools",
   },
   {
     id: "data-tools",
@@ -63,7 +57,6 @@ export const categories: Category[] = [
     href: "/tools/data-tools",
     icon: "Database",
     iconTint: "sky",
-    countLabel: "6 tools",
   },
   {
     id: "media-tools",
@@ -72,7 +65,6 @@ export const categories: Category[] = [
     href: "/tools/media-tools",
     icon: "Clapperboard",
     iconTint: "rose",
-    countLabel: "9 tools",
   },
   {
     id: "unit-converters",
@@ -81,7 +73,6 @@ export const categories: Category[] = [
     href: "/tools/unit-converters",
     icon: "ArrowLeftRight",
     iconTint: "teal",
-    countLabel: "18 tools",
   },
   {
     id: "developer-tools",
@@ -90,7 +81,6 @@ export const categories: Category[] = [
     href: "/tools/developer-tools",
     icon: "Code2",
     iconTint: "indigo",
-    countLabel: "30 tools",
   },
 ];
 

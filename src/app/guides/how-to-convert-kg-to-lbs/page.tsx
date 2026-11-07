@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { Article } from "@/components/legal/Article";
+import { guideBreadcrumbs } from "@/lib/guides-index";
 import { absoluteUrl } from "@/lib/site";
 
 export const metadata: Metadata = {
@@ -17,7 +18,7 @@ export const metadata: Metadata = {
 
 export default function KgGuidePage() {
   return (
-    <Article title="How to convert kilograms to pounds">
+    <Article breadcrumbs={guideBreadcrumbs} title="How to convert kilograms to pounds">
       <p>
         A kilogram is the SI unit of mass. A pound (lb) in everyday US use is the international avoirdupois
         pound. The exact factor is:

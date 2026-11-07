@@ -1,7 +1,7 @@
 "use client";
 
 import { useMemo, useState } from "react";
-import { Field, Panel, PrimaryButton, SelectInput, TextInput } from "@/components/calculators/fields";
+import { Field, Panel, PrimaryButton, TextInput } from "@/components/calculators/fields";
 import { CodeBox, CopyButton } from "@/components/converters/shared";
 import { ToolPageLayout } from "@/components/tools/ToolPageLayout";
 import { decodeJwt, formatHtml, hslToRgb, minifyCss, parseHex, rgbToHex, rgbToHsl } from "@/lib/dev/format";

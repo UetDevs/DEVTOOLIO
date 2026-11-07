@@ -1,15 +1,17 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { Article } from "@/components/legal/Article";
-import { absoluteUrl } from "@/lib/site";
+import { absoluteUrl, site } from "@/lib/site";
+
+const description = `The limits of ${site.name} calculators, converters, writing helpers and developer utilities, including health and finance estimates.`;
 
 export const metadata: Metadata = {
   title: "Disclaimer",
-  description: "Limits of DEVTOOLIO calculators, converters, writing helpers and health or finance estimates.",
+  description,
   alternates: { canonical: absoluteUrl("/disclaimer") },
   openGraph: {
     title: "Disclaimer",
-    description: "Limits of DEVTOOLIO calculators, converters, writing helpers and health or finance estimates.",
+    description,
     url: absoluteUrl("/disclaimer"),
     type: "website",
   },
@@ -17,47 +19,68 @@ export const metadata: Metadata = {
 
 export default function DisclaimerPage() {
   return (
-    <Article title="Disclaimer" updated="3 October 2026">
+    <Article title="Disclaimer" updated="7 November 2026">
       <p>
-        DEVTOOLIO publishes free utilities and short explainers. Nothing on this website is professional
-        advice tailored to you.
+        {site.name} publishes free utilities and short explainers for general information. Nothing on this
+        website is professional advice tailored to your situation. Use the results as a starting point and
+        confirm anything important.
       </p>
+
       <h2>Health and fitness</h2>
       <p>
-        BMI, calorie and similar numbers are screening estimates. They do not diagnose a condition and they
-        do not replace a doctor, dietitian or other clinician.
+        BMI, calorie, TDEE, protein, water, pregnancy and ovulation results are general estimates based on common
+        formulas. They do not diagnose, treat or prevent any condition and do not replace a doctor, midwife,
+        dietitian or other clinician.
       </p>
+
       <h2>Money and work</h2>
       <p>
-        Loan, interest, salary and tip results are illustrations. Lenders, employers and tax rules differ.
-        Check figures with an accountant or the institution involved before you commit money.
+        Loan, mortgage, interest, SIP, GST/VAT, salary, overtime and tip results are illustrations. Lenders,
+        employers and tax authorities apply their own rules, fees and rounding. Check figures with the institution
+        involved or a qualified accountant before you commit money.
       </p>
+
       <h2>Study and grades</h2>
       <p>
-        GPA, attendance and exam tools follow common formulas. Your school may use another scale. The
-        official record is whatever your institution publishes.
+        GPA, CGPA, attendance and grade tools follow widely used formulas. Your school or university may use a
+        different scale or conversion rule. The official record is whatever your institution publishes.
       </p>
+
       <h2>Writing tools</h2>
       <p>
-        Rewriters and grammar helpers are for drafts you created. Using them to disguise copied text is
-        still plagiarism. You are responsible for citations and for what you submit.
+        The rewriting, paraphrasing and grammar tools are rule-based helpers, not AI models, and they can change
+        meaning. They are meant for drafts you wrote. Using them to disguise copied text is still plagiarism. You
+        are responsible for what you publish or submit.
       </p>
+
       <h2>Files and conversions</h2>
       <p>
-        Image, document and video conversions can drop layout, fonts or metadata. Keep the original file.
-        Document tools that extract text are not a substitute for a print-ready office suite.
+        Image, PDF, document and video conversions can lose layout, fonts, quality or metadata. Always keep the
+        original file. Text extraction tools do not perform OCR on scanned pages.
       </p>
+
       <h2>Developer utilities</h2>
       <p>
-        Hash, JWT and encoding tools are for inspection and learning. A JWT decoder does not prove a token
-        is genuine. Do not paste production secrets into a public computer.
+        Hash, JWT, encoding, regex and formatting tools are for inspection, debugging and learning. A JWT decoder
+        reads a token but does not verify its signature. Avoid pasting production secrets on a shared computer.
       </p>
+
+      <h2>Accuracy and corrections</h2>
       <p>
-        Privacy practices are in the{" "}
-        <Link href="/privacy-policy" >
-          Privacy Policy
-        </Link>
-        .
+        We work to keep formulas, conversion factors and explanations correct, but we cannot guarantee that every
+        result is complete or error-free. If you find a mistake, please{" "}
+        <Link href="/contact">tell us</Link> and we will review and fix it.
+      </p>
+
+      <h2>Advertising and external links</h2>
+      <p>
+        Some pages show ads served by Google. Ads are provided by third parties, and we do not endorse the products
+        or services advertised. Links to other websites are provided for convenience, and we are not responsible
+        for their content.
+      </p>
+
+      <p>
+        How we handle data is described in the <Link href="/privacy-policy">Privacy Policy</Link>.
       </p>
     </Article>
   );

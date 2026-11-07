@@ -270,7 +270,6 @@ export async function gifToVideo(file: File, onProgress?: (ratio: number) => voi
 export function parseMp4Meta(buffer: ArrayBuffer) {
   const view = new DataView(buffer);
   const result: Record<string, string | number> = {};
-  let offset = 0;
   const limit = Math.min(view.byteLength, 2 * 1024 * 1024);
 
   const readType = (at: number) =>

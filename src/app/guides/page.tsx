@@ -1,83 +1,34 @@
 import Link from "next/link";
 import type { Metadata } from "next";
 import { PageFrame } from "@/components/theme/PageFrame";
-import { guideArticles } from "@/lib/guide-articles";
+import { allGuides } from "@/lib/guides-index";
 import { absoluteUrl } from "@/lib/site";
+
+const description =
+  "Plain-language guides behind the tools: percentages, GST and VAT, mortgages, GPA, JSON, QR codes, password length, Unix time, unit conversions and file privacy.";
 
 export const metadata: Metadata = {
   title: "Guides",
-  description: "Short notes on grade level, Unix time, kilograms, gallons, BMI, and keeping files private.",
+  description,
   alternates: { canonical: absoluteUrl("/guides") },
   openGraph: {
     title: "Guides",
-    description: "Short notes on grade level, Unix time, kilograms, gallons, BMI, and keeping files private.",
+    description,
     url: absoluteUrl("/guides"),
     type: "website",
   },
 };
-
-const guides = [
-  ...guideArticles.map((guide) => ({
-    href: `/guides/${guide.slug}`,
-    title: guide.title,
-    description: guide.description,
-  })),
-  {
-    href: "/guides/what-grade-level-is-my-writing",
-    title: "What grade level is my writing?",
-    description: "What the Flesch–Kincaid number means, and what it does not measure.",
-  },
-  {
-    href: "/guides/how-to-convert-kg-to-stone",
-    title: "How to convert kilograms into stone",
-    description: "The stone-to-kilogram factor and a 70 kg example.",
-  },
-  {
-    href: "/guides/how-many-gallons-is-15-liters",
-    title: "15 liters is how many gallons?",
-    description: "US gallons and imperial gallons are different sizes.",
-  },
-  {
-    href: "/guides/how-to-calculate-bmi",
-    title: "How to calculate BMI",
-    description: "The formula, healthy ranges, and what BMI can and cannot tell you.",
-  },
-  {
-    href: "/guides/how-loan-payments-work",
-    title: "How loan payments work",
-    description: "A plain-language look at principal, interest and monthly EMI.",
-  },
-  {
-    href: "/guides/how-to-paraphrase-your-own-writing",
-    title: "How to paraphrase your own writing",
-    description: "Rewrite your own draft. Do not pass off someone else's words.",
-  },
-  {
-    href: "/guides/keep-files-private-in-browser-tools",
-    title: "Keep files private in browser tools",
-    description: "Why local image and document tools avoid uploading your files.",
-  },
-  {
-    href: "/guides/how-to-convert-kg-to-lbs",
-    title: "How to convert kilograms to pounds",
-    description: "The exact factor, a worked example, and when rounding is enough.",
-  },
-  {
-    href: "/guides/what-is-a-unix-timestamp",
-    title: "What is Unix time?",
-    description: "Epoch seconds, milliseconds, and how to read them.",
-  },
-];
 
 export default function GuidesPage() {
   return (
     <PageFrame className="mx-auto max-w-3xl px-4 py-10 sm:px-6 sm:py-14">
       <h1 className="text-3xl font-semibold tracking-tight">Guides</h1>
       <p className="mt-3 text-sm leading-7 text-muted">
-        A few notes that sit next to the tools. How a formula works, or why a file stays on your computer.
+        Short explainers that sit next to the tools. Each one covers how a formula works, a worked example, and
+        the mistakes people commonly make, so you can understand a result instead of just copying it.
       </p>
       <div className="mt-8 divide-y divide-line border-y border-line">
-        {guides.map((guide) => (
+        {allGuides.map((guide) => (
           <Link key={guide.href} href={guide.href} className="block py-4">
             <h2 className="text-sm font-semibold text-ink">{guide.title}</h2>
             <p className="mt-1 text-sm text-muted">{guide.description}</p>

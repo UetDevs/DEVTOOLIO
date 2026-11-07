@@ -107,7 +107,7 @@ export default function HomePage() {
         <div className="flex items-end justify-between gap-4">
           <div>
             <h2 className="text-xl font-semibold tracking-tight text-ink">Browse by category</h2>
-            <p className="mt-1 text-sm text-muted">Counts come from the live catalog.</p>
+            <p className="mt-1 text-sm text-muted">Nine groups of tools, each focused on one kind of job.</p>
           </div>
           <Link href="/tools" className="hidden text-sm font-medium text-ink underline-offset-2 hover:underline sm:inline">
             All tools
@@ -215,8 +215,8 @@ export default function HomePage() {
             <h2 className="text-xl font-semibold tracking-tight text-ink">What stays on your machine</h2>
             <p className="mt-3 text-sm leading-7 text-muted">
               Most converters and editors run in this tab. We do not get a copy of the numbers, drafts, or
-              files you drop in. Ads, if they appear later, pay for hosting. You still get the answer without
-              clicking one.
+              files you drop in. The site is supported by Google ads, which are kept apart from tool buttons
+              and results. You never need to click an ad to get an answer.
             </p>
           </div>
           <ul className="mt-8 grid gap-3 text-sm text-muted sm:grid-cols-2 lg:grid-cols-4">

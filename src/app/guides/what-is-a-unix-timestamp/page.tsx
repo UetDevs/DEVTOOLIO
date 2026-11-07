@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { Article } from "@/components/legal/Article";
+import { guideBreadcrumbs } from "@/lib/guides-index";
 import { absoluteUrl } from "@/lib/site";
 
 export const metadata: Metadata = {
@@ -19,7 +20,7 @@ export const metadata: Metadata = {
 
 export default function UnixGuidePage() {
   return (
-    <Article title="What is Unix time?">
+    <Article breadcrumbs={guideBreadcrumbs} title="What is Unix time?">
       <p>
         Unix time is a count of seconds. It starts at 00:00:00 UTC on 1 January 1970 and ignores leap
         seconds. A Unix timestamp is that count written as an integer. Programmers store it because any

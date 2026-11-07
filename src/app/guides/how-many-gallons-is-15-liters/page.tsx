@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { Article } from "@/components/legal/Article";
+import { guideBreadcrumbs } from "@/lib/guides-index";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { absoluteUrl } from "@/lib/site";
 
@@ -39,7 +40,7 @@ export default function LitersGuidePage() {
           ],
         }}
       />
-      <Article title={title}>
+      <Article breadcrumbs={guideBreadcrumbs} title={title}>
         <p>
           <strong className="text-ink">15 liters is 3.96 US gallons.</strong> It is 3.30 imperial
           gallons. The word “gallon” on its own is ambiguous, so the rest of this note separates the two.

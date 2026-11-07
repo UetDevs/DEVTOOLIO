@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { useEffect, useMemo, useRef, useState } from "react";
 import { ChevronDown, Menu, Search, X } from "lucide-react";
 import { Logo } from "@/components/brand/Logo";
@@ -12,9 +13,13 @@ import { cn } from "@/lib/utils";
 const links = [
   { href: "/tools", label: "Tools" },
   { href: "/guides", label: "Guides" },
+  { href: "/about", label: "About" },
 ];
 
+const mobileOnlyLinks = [{ href: "/contact", label: "Contact" }];
+
 export function Navbar() {
+  const router = useRouter();
   const [query, setQuery] = useState("");
   const [openMenu, setOpenMenu] = useState(false);
   const [openSearch, setOpenSearch] = useState(false);
@@ -24,6 +29,11 @@ export function Navbar() {
 
   useEffect(() => {
     function onKey(event: KeyboardEvent) {
+      if (event.key === "Escape") {
+        setOpenCategories(false);
+        setOpenSearch(false);
+        return;
+      }
       if (event.key !== "/" || event.metaKey || event.ctrlKey || event.altKey) return;
       const target = event.target as HTMLElement | null;
       if (target && (target.tagName === "INPUT" || target.tagName === "TEXTAREA" || target.isContentEditable)) {
@@ -41,12 +51,10 @@ export function Navbar() {
     <header className="sticky top-0 z-40 border-b border-line bg-canvas/72 backdrop-blur-md">
       <div className="mx-auto flex h-14 min-w-0 max-w-6xl items-center gap-2 px-4 sm:gap-3 sm:px-6">
         <Logo />
-        <nav className="hidden items-center gap-5 text-sm text-muted md:flex">
-          {links.map((link) => (
-            <Link key={link.href} href={link.href} className="transition hover:text-ink">
-              {link.label}
-            </Link>
-          ))}
+        <nav aria-label="Main" className="hidden items-center gap-5 text-sm text-muted md:flex">
+          <Link href={links[0].href} className="transition hover:text-ink">
+            {links[0].label}
+          </Link>
           <div
             className="relative"
             onMouseEnter={() => setOpenCategories(true)}
@@ -56,13 +64,22 @@ export function Navbar() {
               type="button"
               className="inline-flex items-center gap-1 transition hover:text-ink"
               aria-expanded={openCategories}
+              aria-controls="nav-categories"
               onClick={() => setOpenCategories((value) => !value)}
             >
               Categories
-              <ChevronDown className="h-3.5 w-3.5" />
+              <ChevronDown className="h-3.5 w-3.5" aria-hidden />
             </button>
             {openCategories ? (
-              <div className="animate-menu absolute left-0 top-full z-30 w-72 rounded-lg border border-line bg-surface p-1.5 shadow-sm">
+              <div
+                id="nav-categories"
+                className="animate-menu absolute left-0 top-full z-30 w-72 rounded-lg border border-line bg-surface p-1.5 shadow-sm"
+                onBlur={(event) => {
+                  if (!event.currentTarget.parentElement?.contains(event.relatedTarget as Node | null)) {
+                    setOpenCategories(false);
+                  }
+                }}
+              >
                 {categories.map((category) => (
                   <Link
                     key={category.id}
@@ -77,6 +94,11 @@ export function Navbar() {
               </div>
             ) : null}
           </div>
+          {links.slice(1).map((link) => (
+            <Link key={link.href} href={link.href} className="transition hover:text-ink">
+              {link.label}
+            </Link>
+          ))}
         </nav>
         <div className="ml-auto flex items-center gap-2">
           <div className="relative hidden sm:block">
@@ -87,6 +109,13 @@ export function Navbar() {
               onChange={(event) => setQuery(event.target.value)}
               onFocus={() => setOpenSearch(true)}
               onBlur={() => window.setTimeout(() => setOpenSearch(false), 120)}
+              onKeyDown={(event) => {
+                if (event.key !== "Enter" || !query.trim()) return;
+                event.preventDefault();
+                setOpenSearch(false);
+                router.push(`/tools?q=${encodeURIComponent(query.trim())}`);
+              }}
+              type="search"
               placeholder="Search tools"
               aria-label="Search tools"
               className="h-9 w-44 rounded-md border border-line bg-surface pl-8 pr-10 text-sm outline-none placeholder:text-subtle focus:border-ink/25 lg:w-56"
@@ -121,25 +150,34 @@ export function Navbar() {
             className="inline-flex h-9 w-9 items-center justify-center rounded-md border border-line text-muted md:hidden"
             onClick={() => setOpenMenu((value) => !value)}
             aria-label={openMenu ? "Close menu" : "Open menu"}
+            aria-expanded={openMenu}
+            aria-controls="mobile-menu"
           >
             {openMenu ? <X className="h-4 w-4" /> : <Menu className="h-4 w-4" />}
           </button>
         </div>
       </div>
       {openMenu ? (
-        <div className="animate-menu border-t border-line bg-canvas px-4 py-3 md:hidden">
+        <nav id="mobile-menu" aria-label="Mobile" className="animate-menu border-t border-line bg-canvas px-4 py-3 md:hidden">
           <div className="relative mb-3">
             <Search className="pointer-events-none absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-subtle" />
             <input
               value={query}
               onChange={(event) => setQuery(event.target.value)}
+              onKeyDown={(event) => {
+                if (event.key !== "Enter" || !query.trim()) return;
+                event.preventDefault();
+                setOpenMenu(false);
+                router.push(`/tools?q=${encodeURIComponent(query.trim())}`);
+              }}
+              type="search"
               placeholder="Search tools"
               aria-label="Search tools"
               className="h-10 w-full rounded-md border border-line bg-surface pl-9 pr-3 text-sm outline-none"
             />
           </div>
           <div className="flex flex-col gap-0.5 text-sm">
-            {links.map((link) => (
+            {[...links, ...mobileOnlyLinks].map((link) => (
               <Link
                 key={link.href}
                 href={link.href}
@@ -177,7 +215,7 @@ export function Navbar() {
               ))}
             </div>
           ) : null}
-        </div>
+        </nav>
       ) : null}
     </header>
   );
