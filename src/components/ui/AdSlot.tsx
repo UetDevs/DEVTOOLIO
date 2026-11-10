@@ -25,42 +25,48 @@ export function AdSlot({
     const box = ins?.closest("aside");
     if (!ins || !box || !adsenseClient || !slot) return;
 
-    if (!pushedUnits.has(ins) && !ins.dataset.adsbygoogleStatus) {
+    let cancelled = false;
+
+    const request = () => {
+      if (cancelled || pushedUnits.has(ins) || ins.dataset.adsbygoogleStatus) return;
+      // A 0×0 slot makes Google return no creative. Wait until the box has width.
+      if (ins.getBoundingClientRect().width < 120) return;
       pushedUnits.add(ins);
       try {
         ((window as Window & { adsbygoogle?: unknown[] }).adsbygoogle ??= []).push({});
       } catch {
-        /* A second push on the same unit throws. The unit still renders from the first call. */
+        /* A second push on the same unit throws. The first call still renders. */
       }
-    }
-
-    const sync = () => {
-      const status = ins.getAttribute("data-ad-status");
-      if (status === "filled") box.hidden = false;
-      if (status === "unfilled") box.hidden = true;
     };
-    const observer = new MutationObserver(sync);
-    observer.observe(ins, { attributes: true, attributeFilter: ["data-ad-status"] });
-    const timer = window.setTimeout(() => {
-      const status = ins.getAttribute("data-ad-status");
-      if (status !== "filled" && !ins.querySelector("iframe")) box.hidden = true;
-    }, 8000);
+
+    request();
+    const frame = window.requestAnimationFrame(request);
+    const resize = new ResizeObserver(request);
+    resize.observe(box);
+
+    const status = new MutationObserver(() => {
+      if (ins.getAttribute("data-ad-status") === "unfilled") box.hidden = true;
+      if (ins.getAttribute("data-ad-status") === "filled") box.hidden = false;
+    });
+    status.observe(ins, { attributes: true, attributeFilter: ["data-ad-status"] });
 
     return () => {
-      observer.disconnect();
-      window.clearTimeout(timer);
+      cancelled = true;
+      window.cancelAnimationFrame(frame);
+      resize.disconnect();
+      status.disconnect();
     };
   }, [slot]);
 
   if (!adsenseClient || !slot) return null;
 
   return (
-    <aside aria-label={label} className="overflow-hidden rounded-lg border border-line bg-surface-2">
+    <aside aria-label={label} className="w-full rounded-lg border border-line bg-surface-2">
       <p className="px-3 pt-2 font-mono text-[10px] uppercase tracking-[0.14em] text-subtle">{label}</p>
       <ins
         ref={insRef}
         className="adsbygoogle"
-        style={{ display: "block" }}
+        style={{ display: "block", width: "100%", minHeight: format === "autorelaxed" ? 280 : 90 }}
         data-ad-client={adsenseClient}
         data-ad-slot={slot}
         data-ad-format={format}
