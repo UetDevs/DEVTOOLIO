@@ -6,6 +6,11 @@ const nextConfig: NextConfig = {
   skipTrailingSlashRedirect: true,
   async redirects() {
     return [
+      // These files are excluded from the host proxy because the path contains a dot.
+      // Without this, /sitemap.xml/ /robots.txt/ and /ads.txt/ return 200 copies.
+      { source: "/sitemap.xml/", destination: "/sitemap.xml", permanent: true },
+      { source: "/robots.txt/", destination: "/robots.txt", permanent: true },
+      { source: "/ads.txt/", destination: "/ads.txt", permanent: true },
       { source: "/paraphrasing-tool", destination: "/tools/writing/paraphrasing-tool", permanent: true },
       { source: "/sentence-rewriter", destination: "/tools/writing/sentence-rewriter", permanent: true },
       { source: "/grammar-checker", destination: "/tools/writing/grammar-checker", permanent: true },

@@ -7,7 +7,7 @@ import { ToolCard } from "@/components/ui/ToolCard";
 import { TrustBadges } from "@/components/ui/TrustBadges";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { getCategory } from "@/lib/categories";
-import { defaultFaqs, toolHowTo } from "@/lib/tool-copy";
+import { toolHowTo } from "@/lib/tool-copy";
 import { toolDetails } from "@/lib/tool-details";
 import { getRelatedTools } from "@/lib/tools";
 import { absoluteUrl, site } from "@/lib/site";
@@ -32,7 +32,7 @@ export function ToolPageLayout({
 }) {
   const category = getCategory(tool.category);
   const related = getRelatedTools(tool);
-  const faqs = defaultFaqs(tool);
+  const faqs = tool.faqs ?? [];
   const detail = toolDetails[tool.slug];
 
   return (
@@ -128,18 +128,20 @@ export function ToolPageLayout({
           <AdSlot />
         </div>
 
-        <div className="mt-8 grid gap-4 lg:grid-cols-2">
+        <div className={faqs.length ? "mt-8 grid gap-4 lg:grid-cols-2" : "mt-8"}>
           <section className="rounded-lg border border-line bg-surface p-5">
             <h2 className="text-sm font-semibold text-ink">How to use {tool.name}</h2>
             <p className="mt-3 text-sm leading-7 text-muted">{toolHowTo(tool)}</p>
             {example}
           </section>
-          <section className="rounded-lg border border-line bg-surface p-5">
-            <h2 className="text-sm font-semibold text-ink">Questions</h2>
-            <div className="mt-2">
-              <FaqAccordion items={faqs} />
-            </div>
-          </section>
+          {faqs.length ? (
+            <section className="rounded-lg border border-line bg-surface p-5">
+              <h2 className="text-sm font-semibold text-ink">Questions</h2>
+              <div className="mt-2">
+                <FaqAccordion items={faqs} />
+              </div>
+            </section>
+          ) : null}
         </div>
 
         {detail ? (

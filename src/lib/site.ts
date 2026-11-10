@@ -18,7 +18,9 @@ const origin = originFrom(process.env.NEXT_PUBLIC_SITE_URL ?? PREFERRED_ORIGIN);
 export const site = {
   name: "DEVTOOLIO",
   url: origin,
-  home: `${origin}/`,
+  // No trailing slash. Next strips it from the canonical tag when trailingSlash is false,
+  // and the sitemap must use that same URL.
+  home: origin,
   email: process.env.NEXT_PUBLIC_CONTACT_EMAIL ?? "devexe01@gmail.com",
   tagline: "Convert, calculate, and check your writing.",
   description:

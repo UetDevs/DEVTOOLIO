@@ -8,7 +8,7 @@ export const dynamic = "force-static";
 
 type ChangeFrequency = NonNullable<MetadataRoute.Sitemap[number]["changeFrequency"]>;
 
-const LASTMOD = "2026-11-07";
+const LASTMOD = "2026-11-10";
 
 function entry(path: string, changeFrequency: ChangeFrequency, priority: number): MetadataRoute.Sitemap[number] {
   return {
