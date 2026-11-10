@@ -35,5 +35,6 @@ export function absoluteUrl(path: string) {
 
 export const adsenseClient =
   process.env.NEXT_PUBLIC_ADSENSE_CLIENT || "ca-pub-3499075809777399";
-export const adsenseSlot = process.env.NEXT_PUBLIC_ADSENSE_SLOT ?? "";
+export const adsenseDisplaySlot = process.env.NEXT_PUBLIC_ADSENSE_SLOT || "5052607893";
+export const adsenseGridSlot = process.env.NEXT_PUBLIC_ADSENSE_GRID_SLOT || "2755627942";
 export const googleSiteVerification = process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION ?? "";

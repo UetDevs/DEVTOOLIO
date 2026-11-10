@@ -1,7 +1,6 @@
 import Link from "next/link";
 import { ChevronRight } from "lucide-react";
 import { PageFrame } from "@/components/theme/PageFrame";
-import { AdSlot } from "@/components/ui/AdSlot";
 import { FaqAccordion } from "@/components/ui/FaqAccordion";
 import { ToolCard } from "@/components/ui/ToolCard";
 import { TrustBadges } from "@/components/ui/TrustBadges";
@@ -123,10 +122,6 @@ export function ToolPageLayout({
         ) : null}
 
         <div className="mt-10">{children}</div>
-
-        <div className="mt-6">
-          <AdSlot />
-        </div>
 
         <div className={faqs.length ? "mt-8 grid gap-4 lg:grid-cols-2" : "mt-8"}>
           <section className="rounded-lg border border-line bg-surface p-5">

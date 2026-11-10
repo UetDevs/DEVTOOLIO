@@ -25,6 +25,28 @@ export function CookieBanner() {
     };
   }, []);
 
+  useEffect(() => {
+    const root = document.documentElement;
+    if (!visible) {
+      root.classList.remove("has-cookie-banner");
+      root.style.removeProperty("--cookie-banner-offset");
+      return;
+    }
+    const sync = () => {
+      const banner = document.querySelector<HTMLElement>('[aria-label="Cookie choices"]');
+      const height = banner ? Math.ceil(banner.getBoundingClientRect().height) : 0;
+      root.classList.add("has-cookie-banner");
+      root.style.setProperty("--cookie-banner-offset", `${height + 16}px`);
+    };
+    sync();
+    window.addEventListener("resize", sync);
+    return () => {
+      window.removeEventListener("resize", sync);
+      root.classList.remove("has-cookie-banner");
+      root.style.removeProperty("--cookie-banner-offset");
+    };
+  }, [visible]);
+
   if (!visible) return null;
 
   function choose(value: ConsentChoice) {
