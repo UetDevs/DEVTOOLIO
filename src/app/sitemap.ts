@@ -54,8 +54,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const seen = new Set<string>();
   return pages.filter((page) => {
     const url = new URL(page.url);
-    if (url.hostname === "devtoolio.tech") {
-      throw new Error(`Sitemap URL must use the www host: ${page.url}`);
+    if (url.hostname === "www.devtoolio.tech") {
+      throw new Error(`Sitemap URL must use the bare domain, not www: ${page.url}`);
     }
     if (url.origin !== site.url) return false;
     if (url.search || url.hash) return false;

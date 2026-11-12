@@ -13,7 +13,7 @@ Open [http://localhost:3000](http://localhost:3000).
 
 ## Production URL
 
-Canonical links use `https://www.devtoolio.tech`. `https://devtoolio.tech` redirects to the same path on www. If `NEXT_PUBLIC_SITE_URL` is set to either of those hosts, it still resolves to www.
+Canonical links use `https://devtoolio.tech`. `https://www.devtoolio.tech` redirects to the same path on the bare domain. If `NEXT_PUBLIC_SITE_URL` is set to either of those hosts, it still resolves to `https://devtoolio.tech`.
 
 Optional env vars:
 

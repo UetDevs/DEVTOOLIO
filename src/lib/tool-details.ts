@@ -206,7 +206,7 @@ export const toolDetails: Record<string, ToolDetail> = {
     howItWorks:
       "The text or link you enter is encoded into a grid of black and white squares. Scanners read that grid, and extra error correction lets them recover from small damage.",
     example:
-      "A short link like https://www.devtoolio.tech/tools makes a simple code. A long paragraph makes a dense code that is harder to scan.",
+      "A short link like https://devtoolio.tech/tools makes a simple code. A long paragraph makes a dense code that is harder to scan.",
     mistakes: [
       "Using a very long URL. Shorter links give larger, easier-to-scan squares.",
       "Printing too small. Give the code enough room to scan from the distance people will hold a phone.",
@@ -270,7 +270,7 @@ export const toolDetails: Record<string, ToolDetail> = {
   "url-decoder": {
     howItWorks:
       "The tool uses decodeURIComponent. Each %XX sequence is turned back into a byte, and the bytes are read as UTF-8 text. An invalid sequence, such as % followed by non-hex characters, shows an error instead of a guess.",
-    example: "https%3A%2F%2Fwww.devtoolio.tech%2Ftools%3Fq%3Dpdf%20to%20jpg decodes to https://www.devtoolio.tech/tools?q=pdf to jpg.",
+    example: "https%3A%2F%2Fdevtoolio.tech%2Ftools%3Fq%3Dpdf%20to%20jpg decodes to https://devtoolio.tech/tools?q=pdf to jpg.",
     mistakes: [
       "Expecting + to become a space. decodeURIComponent leaves + unchanged. Replace + with %20 first if the text came from an HTML form.",
       "Decoding a string that was encoded twice. You will still see %20-style codes, so run the decoder a second time.",
@@ -433,7 +433,7 @@ export const toolDetails: Record<string, ToolDetail> = {
   "robots-txt-generator": {
     howItWorks:
       "The generator writes a robots.txt that either allows or blocks all crawlers (User-agent: *) and adds a Sitemap line. Upload the file to the root of your domain, for example https://example.com/robots.txt.",
-    example: "User-agent: *\nAllow: /\nSitemap: https://www.devtoolio.tech/sitemap.xml lets all crawlers in and points them to the sitemap.",
+    example: "User-agent: *\nAllow: /\nSitemap: https://devtoolio.tech/sitemap.xml lets all crawlers in and points them to the sitemap.",
     mistakes: [
       "Using Disallow to remove a page from search results. Blocked pages can still be indexed from links. Use a noindex tag and keep the page crawlable.",
       "Leaving Disallow: / on after launch. A staging setting that blocks the whole site is a common cause of vanished search traffic.",

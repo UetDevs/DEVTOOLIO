@@ -1,4 +1,4 @@
-const PREFERRED_ORIGIN = "https://www.devtoolio.tech";
+const PREFERRED_ORIGIN = "https://devtoolio.tech";
 
 function originFrom(value: string) {
   try {

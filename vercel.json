@@ -6,32 +6,21 @@
       "has": [
         {
           "type": "host",
-          "value": "devtoolio.tech"
+          "value": "www.devtoolio.tech"
         }
       ],
-      "destination": "https://www.devtoolio.tech/",
+      "destination": "https://devtoolio.tech/",
       "statusCode": 301
     },
     {
-      "source": "/:path+/",
+      "source": "/:path+",
       "has": [
         {
           "type": "host",
-          "value": "devtoolio.tech"
+          "value": "www.devtoolio.tech"
         }
       ],
-      "destination": "https://www.devtoolio.tech/:path+",
-      "statusCode": 301
-    },
-    {
-      "source": "/:path((?!ads\\.txt$).*)",
-      "has": [
-        {
-          "type": "host",
-          "value": "devtoolio.tech"
-        }
-      ],
-      "destination": "https://www.devtoolio.tech/:path*",
+      "destination": "https://devtoolio.tech/:path+",
       "statusCode": 301
     }
   ]
