@@ -1,4 +1,3 @@
-import { PageAds } from "@/components/ads/PageAds";
 import { Footer } from "./Footer";
 import { Navbar } from "./Navbar";
 import { SiteBackdrop } from "@/components/theme/SiteBackdrop";
@@ -18,7 +17,6 @@ export function SiteShell({ children }: { children: React.ReactNode }) {
         <Navbar />
         <main id="main-content" tabIndex={-1} className="relative z-10 flex-1 outline-none">
           {children}
-          <PageAds />
         </main>
         <Footer />
       </div>

@@ -1,6 +1,5 @@
 import Link from "next/link";
 import { Logo } from "@/components/brand/Logo";
-import { CookieSettingsButton } from "@/components/legal/CookieSettingsButton";
 import { site } from "@/lib/site";
 import { categories } from "@/lib/categories";
 
@@ -41,7 +40,6 @@ export function Footer() {
             <li><Link href="/cookie-policy" className="hover:text-white">Cookie Policy</Link></li>
             <li><Link href="/terms" className="hover:text-white">Terms of Service</Link></li>
             <li><Link href="/disclaimer" className="hover:text-white">Disclaimer</Link></li>
-            <li><CookieSettingsButton className="text-left hover:text-white" /></li>
           </ul>
         </nav>
       </div>

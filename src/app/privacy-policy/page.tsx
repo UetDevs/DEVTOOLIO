@@ -3,7 +3,7 @@ import Link from "next/link";
 import { Article } from "@/components/legal/Article";
 import { absoluteUrl, site } from "@/lib/site";
 
-const description = `What ${site.name} collects, how browser-based tools keep your files local, and how Google AdSense uses cookies.`;
+const description = `What ${site.name} collects, how browser-based tools keep your files local, and how our advertising partner uses cookies and notifications.`;
 
 export const metadata: Metadata = {
   title: "Privacy Policy",
@@ -19,7 +19,7 @@ export const metadata: Metadata = {
 
 export default function PrivacyPage() {
   return (
-    <Article title="Privacy Policy" updated="7 November 2026">
+    <Article title="Privacy Policy" updated="20 November 2026">
       <p>
         This policy explains what information {site.name} ({site.home}) collects, why, and the choices you
         have. If something here is unclear, email{" "}
@@ -62,69 +62,43 @@ export default function PrivacyPage() {
         will be updated before it goes live.
       </p>
 
-      <h2>Advertising and Google AdSense</h2>
+      <h2>Advertising</h2>
       <p>
-        {site.name} uses Google AdSense, an advertising service provided by Google, to pay for hosting. The
-        AdSense code loads on our pages, so Google may receive information such as your IP address, browser
-        details and the page you visit, even before ads are shown.
+        {site.name} shows ads from an advertising partner to pay for hosting. The partner&apos;s code loads on our
+        pages and can show three kinds of ad: browser push notifications (after you accept the browser&apos;s
+        permission prompt), in-page notification-style ads, and full-screen vignette ads.
+      </p>
+      <p>
+        To serve these ads, the partner may receive your IP address, browser details, the page you are viewing,
+        and the time of your visit. It may set cookies or similar storage on your device to limit how often you
+        see an ad, measure ad performance and prevent fraud.
       </p>
       <ul>
         <li>
-          Third-party vendors, including Google, use cookies to serve ads based on your prior visits to this
-          website or other websites.
+          Push notifications only appear if you allow them in the browser prompt. You can turn them off at any
+          time in your browser settings.
         </li>
         <li>
-          Google&apos;s use of advertising cookies enables it and its partners to serve ads to you based on
-          your visits to this site and/or other sites on the internet.
-        </li>
-        <li>
-          You can opt out of personalized advertising by visiting{" "}
-          <a href="https://adssettings.google.com" rel="noreferrer" target="_blank">Google Ads Settings</a>.
-          You can also opt out of some third-party vendors&apos; use of cookies for personalized advertising at{" "}
-          <a href="https://www.aboutads.info/choices/" rel="noreferrer" target="_blank">aboutads.info</a>{" "}
-          (US) or{" "}
-          <a href="https://www.youronlinechoices.eu/" rel="noreferrer" target="_blank">youronlinechoices.eu</a>{" "}
-          (Europe).
-        </li>
-        <li>
-          Learn more in{" "}
-          <a href="https://policies.google.com/technologies/partner-sites" rel="noreferrer" target="_blank">
-            how Google uses information from sites that use its services
-          </a>{" "}
-          and{" "}
-          <a href="https://policies.google.com/technologies/ads" rel="noreferrer" target="_blank">
-            how Google uses cookies in advertising
-          </a>
-          .
+          Refusing the browser prompt keeps notifications off. Closing or dismissing an ad does not give the
+          partner any extra permission.
         </li>
       </ul>
       <p>
-        Unless you choose &quot;Allow personalized ads&quot; in our cookie banner, we ask Google to show
-        non-personalized ads only. Non-personalized ads are based on context, such as the page you are on, rather
-        than your browsing history. Google may still use cookies or similar technology for frequency capping,
-        aggregated reporting and fraud prevention. You can change your choice at any time with the
-        &quot;Cookie settings&quot; link in the footer. Visitors in some regions may instead see a consent
-        message provided by Google.
-      </p>
-      <p>
-        Pages also load a separate advertising network for browser push notifications, in-page notification-style
-        ads, and full-screen vignette ads. That network can ask for notification permission and can receive your
-        IP address, browser details, and the page you are on. You can refuse the permission prompt, and you can
-        turn notifications off later in your browser settings.
+        Our advertising partner&apos;s own privacy policy describes how it uses data. Contact us at{" "}
+        <a href={`mailto:${site.email}`}>{site.email}</a> if you want us to pass on a question to it.
       </p>
 
       <h2>Cookies and local storage we set</h2>
       <p>
-        {site.name} itself stores two small values in your browser&apos;s local storage: your light or dark theme
-        preference, and your advertising cookie choice. Neither is sent to us. The full list is on the{" "}
+        {site.name} itself stores one small value in your browser&apos;s local storage: your light or dark theme
+        preference. It is not sent to us. The full list is on the{" "}
         <Link href="/cookie-policy">Cookie Policy</Link>.
       </p>
 
       <h2>Your choices and rights</h2>
       <ul>
-        <li>Block or delete cookies in your browser settings. Tools will still work.</li>
-        <li>Change your ad personalization choice with the &quot;Cookie settings&quot; link in the footer.</li>
-        <li>Opt out of personalized ads through the Google and industry links above.</li>
+        <li>Block or delete cookies and notifications in your browser settings. Tools will still work.</li>
+        <li>Refuse or revoke the browser notification permission for this site.</li>
         <li>
           Ask what correspondence we hold about you, or ask us to correct or delete it, by emailing{" "}
           <a href={`mailto:${site.email}`}>{site.email}</a>.

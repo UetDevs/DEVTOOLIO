@@ -78,8 +78,8 @@ export default function AboutPage() {
 
       <h2>How the site is funded</h2>
       <p>
-        {site.name} is free to use and is supported by advertising through Google AdSense. Ads are kept separate
-        from tool buttons and results, and you never have to click an ad to get an answer. Read more in the{" "}
+        {site.name} is free to use and is supported by advertising. Ads are kept separate from tool buttons and
+        results, and you never have to click an ad to get an answer. Read more in the{" "}
         <Link href="/privacy-policy">Privacy Policy</Link> and <Link href="/cookie-policy">Cookie Policy</Link>.
       </p>
 

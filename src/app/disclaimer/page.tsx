@@ -74,7 +74,7 @@ export default function DisclaimerPage() {
 
       <h2>Advertising and external links</h2>
       <p>
-        Some pages show ads served by Google. Ads are provided by third parties, and we do not endorse the products
+        Some pages show ads from third parties. Ads are provided by those parties, and we do not endorse the products
         or services advertised. Links to other websites are provided for convenience, and we are not responsible
         for their content.
       </p>

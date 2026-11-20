@@ -53,7 +53,7 @@ export default function PrivacyGuidePage() {
         <Link href="/privacy-policy" >
           Privacy Policy
         </Link>{" "}
-        for contact email and advertising cookies.
+        for contact email and advertising notices.
       </p>
     </Article>
   );

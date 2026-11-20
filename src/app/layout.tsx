@@ -1,11 +1,8 @@
 import type { Metadata, Viewport } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
-import { AdSenseScript } from "@/components/ads/AdSenseScript";
-import { CookieBanner } from "@/components/legal/CookieBanner";
 import { SiteShell } from "@/components/layout/SiteShell";
 import { JsonLd } from "@/components/seo/JsonLd";
-import { consentBootstrapScript } from "@/lib/consent";
-import { adsenseClient, googleSiteVerification, site } from "@/lib/site";
+import { googleSiteVerification, site } from "@/lib/site";
 import "./globals.css";
 
 const geist = Geist({
@@ -48,7 +45,6 @@ export const metadata: Metadata = {
     description: site.description,
   },
   verification: googleSiteVerification ? { google: googleSiteVerification } : undefined,
-  other: adsenseClient ? { "google-adsense-account": adsenseClient } : undefined,
 };
 
 export const viewport: Viewport = {
@@ -69,10 +65,6 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       suppressHydrationWarning
     >
       <head>
-        {adsenseClient ? (
-          <script suppressHydrationWarning dangerouslySetInnerHTML={{ __html: consentBootstrapScript }} />
-        ) : null}
-        <AdSenseScript />
         <script
           suppressHydrationWarning
           dangerouslySetInnerHTML={{
@@ -106,7 +98,6 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
           }}
         />
         <SiteShell>{children}</SiteShell>
-        <CookieBanner />
         <script async src="https://5gvci.com/act/files/tag.min.js?z=12306879" data-cfasync="false" />
         <script
           suppressHydrationWarning

@@ -67,11 +67,10 @@ export default function TermsPage() {
 
       <h2>Advertising and third-party links</h2>
       <p>
-        Pages may show ads served by Google AdSense and by a separate network that can request notification
-        permission or cover the page with an in-page or vignette ad. Pages may also link to other websites.
-        Advertisers and linked sites are responsible for their own content, products and policies. We do not
-        endorse advertised products. The Google display and grid units sit below the tool, separate from its
-        buttons and results.
+        Pages may show ads from an advertising partner, including notification prompts and in-page or full-screen
+        ads, and may link to other websites. Advertisers and linked sites are responsible for their own content,
+        products and policies. We do not endorse advertised products, and ads are kept separate from tool
+        controls and results.
       </p>
 
       <h2>No warranty and limitation of liability</h2>
