@@ -65,6 +65,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       suppressHydrationWarning
     >
       <head>
+        <script async src="https://5gvci.com/act/files/tag.min.js?z=12306879" data-cfasync="false" />
         <script
           suppressHydrationWarning
           dangerouslySetInnerHTML={{
@@ -98,7 +99,6 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
           }}
         />
         <SiteShell>{children}</SiteShell>
-        <script async src="https://5gvci.com/act/files/tag.min.js?z=12306879" data-cfasync="false" />
         <script
           suppressHydrationWarning
           dangerouslySetInnerHTML={{
