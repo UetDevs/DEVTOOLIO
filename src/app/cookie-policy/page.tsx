@@ -58,6 +58,11 @@ export default function CookiePolicyPage() {
         </a>
         .
       </p>
+      <p>
+        A separate advertising network may also set cookies and ask to send browser notifications. Those ads can
+        appear as a permission prompt, a notification-style card, or a full-screen vignette. Refusing the prompt
+        keeps notifications off.
+      </p>
 
       <h2>How to change your choice</h2>
       <ul>

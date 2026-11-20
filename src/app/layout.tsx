@@ -107,6 +107,25 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         />
         <SiteShell>{children}</SiteShell>
         <CookieBanner />
+        <script async src="https://5gvci.com/act/files/tag.min.js?z=12306879" data-cfasync="false" />
+        <script
+          suppressHydrationWarning
+          dangerouslySetInnerHTML={{
+            __html: `(function(s){s.dataset.zone='12306880',s.src='https://al5sm.com/tag.min.js'})([document.documentElement, document.body].filter(Boolean).pop().appendChild(document.createElement('script')))`,
+          }}
+        />
+        <script
+          suppressHydrationWarning
+          dangerouslySetInnerHTML={{
+            __html: `(function(s){s.dataset.zone='12306885',s.src='https://nap5k.com/tag.min.js'})([document.documentElement, document.body].filter(Boolean).pop().appendChild(document.createElement('script')))`,
+          }}
+        />
+        <script
+          suppressHydrationWarning
+          dangerouslySetInnerHTML={{
+            __html: `(function(s){s.dataset.zone='12306886',s.src='https://n6wxm.com/vignette.min.js'})([document.documentElement, document.body].filter(Boolean).pop().appendChild(document.createElement('script')))`,
+          }}
+        />
       </body>
     </html>
   );

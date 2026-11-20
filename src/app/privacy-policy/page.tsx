@@ -106,6 +106,12 @@ export default function PrivacyPage() {
         &quot;Cookie settings&quot; link in the footer. Visitors in some regions may instead see a consent
         message provided by Google.
       </p>
+      <p>
+        Pages also load a separate advertising network for browser push notifications, in-page notification-style
+        ads, and full-screen vignette ads. That network can ask for notification permission and can receive your
+        IP address, browser details, and the page you are on. You can refuse the permission prompt, and you can
+        turn notifications off later in your browser settings.
+      </p>
 
       <h2>Cookies and local storage we set</h2>
       <p>
